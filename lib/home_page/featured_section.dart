@@ -43,6 +43,7 @@ class FeaturedSection extends StatelessWidget {
                       width: MediaQuery.of(context).size.width - 150,
                       child: Text(
                         books[i].content,
+                        textAlign: TextAlign.justify,
                         style: Theme.of(context).textTheme.bodySmall,
                       )),
                 ],
