@@ -33,13 +33,13 @@ class CollectionItem extends StatelessWidget {
                         ),
                     child: Text(
                       '$index - $title',
-                      style: Theme.of(context).textTheme.titleSmall,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     )),
               ),
               Expanded(
                 child: Text(
                   '0:00',
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ),
               const Icon(
