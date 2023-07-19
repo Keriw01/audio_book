@@ -12,22 +12,10 @@ class HomePage extends StatelessWidget {
             'Home',
             style: Theme.of(context).appBarTheme.titleTextStyle,
           ),
-          leading: Builder(
-            builder: (context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {},
-              );
-            },
-          ),
           actions: [
-            Builder(
-              builder: (context) {
-                return IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () {},
-                );
-              },
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {},
             ),
           ],
         ),
@@ -37,8 +25,7 @@ class HomePage extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(30), topLeft: Radius.circular(30)),
               boxShadow: [
-                BoxShadow(
-                    color: Colors.grey, spreadRadius: -8, blurRadius: 10),
+                BoxShadow(color: Colors.grey, spreadRadius: -8, blurRadius: 10),
               ],
             ),
             child: ClipRRect(

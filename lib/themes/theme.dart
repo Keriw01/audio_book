@@ -8,10 +8,11 @@ ThemeData customTheme = ThemeData(
     ),
     useMaterial3: true,
     textTheme: TextTheme(
-      titleSmall: GoogleFonts.getFont('Lato',
-          fontSize: 14,
-          fontWeight:
-              FontWeight.bold), // tytul ksiazki np. w zakladce HOME - FOR YOU
+      titleSmall: GoogleFonts.getFont(
+        'Lato',
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ), // tytul ksiazki w HOME
       titleMedium: GoogleFonts.getFont('Lato',
           fontSize: 18,
           fontWeight: FontWeight
