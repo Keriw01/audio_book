@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/home_page/choose_kind_section.dart';
-import 'package:testproject/home_page/favorite_section.dart';
-import 'package:testproject/home_page/featured_section.dart';
+import 'package:testproject/home_page/home_content.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,22 +31,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        body: const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                FavoriteItems(),
-                ChooseKind(),
-                SizedBox(
-                  height: 10,
-                ),
-                FeaturedSection()
-              ],
-            ),
-          ),
-        ),
+        body: const HomePageContent(),
         bottomNavigationBar: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(

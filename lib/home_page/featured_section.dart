@@ -29,7 +29,6 @@ class FeaturedSection extends StatelessWidget {
                 width: 10,
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(

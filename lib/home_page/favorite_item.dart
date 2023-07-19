@@ -18,21 +18,29 @@ class FavoriteItem extends StatelessWidget {
               Image.asset(
                 "assets/images/${book.imageUrl}",
                 width: 200,
-                //height: 0,
                 alignment: Alignment.centerLeft,
               ),
             ],
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
-             Expanded(child: Text(book.title, style: Theme.of(context).textTheme.titleSmall)),
+              Expanded(
+                  child: Text(book.title,
+                      style: Theme.of(context).textTheme.titleSmall)),
             ],
           ),
-          const SizedBox(height: 2,),
+          const SizedBox(
+            height: 2,
+          ),
           Row(
             children: [
-              Text("\$ ${book.priceActual} ", style: Theme.of(context).textTheme.displaySmall,),
+              Text(
+                "\$ ${book.priceActual} ",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
               Text(
                 "\$ ${book.priceWithDiscount}",
                 style: Theme.of(context).textTheme.displayMedium,
