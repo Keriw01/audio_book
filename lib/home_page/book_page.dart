@@ -50,9 +50,6 @@ class BookPage extends StatelessWidget {
                         "Dla ciebie",
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
                       SizedBox(
                         height: 400,
                         child: ListView.builder(
@@ -62,37 +59,58 @@ class BookPage extends StatelessWidget {
                             padding: const EdgeInsets.only(
                               right: 10.0,
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CachedNetworkImage(
-                                  imageUrl: provider.books[index].simpleThumb,
-                                  placeholder: (context, url) =>
-                                      const CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                  width: 200,
-                                  alignment: Alignment.centerLeft,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  provider.books[index].title,
-                                  style:
-                                      Theme.of(context).textTheme.headlineSmall,
-                                ),
-                                const SizedBox(
-                                  height: 2,
-                                ),
-                                Text(
-                                  provider.books[index].author,
-                                  style: Theme.of(context).textTheme.titleSmall,
-                                ),
-                              ],
+                            child: SizedBox(
+                              width: 210,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          provider.books[index].simpleThumb,
+                                      placeholder: (context, url) =>
+                                          const CircularProgressIndicator(),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                      width: 200,
+                                      alignment: Alignment.centerLeft,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          provider.books[index].title,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineSmall,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 2,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          provider.books[index].author,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                       Text("Wybrane",
                           style: Theme.of(context).textTheme.headlineSmall),

@@ -1,50 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:testproject/category_page/category_page.dart';
 import 'package:testproject/home_page/home_content.dart';
 
-class HomePage extends StatelessWidget {
+import '../app_bar_custom.dart';
+import '../bottom_navigation_custom.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePageContent(),
+    CategoryPage()
+  ];
+  static const List<String> _widgetTitle = <String>['Home', 'Categories'];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Home',
-            style: Theme.of(context).appBarTheme.titleTextStyle,
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {},
-            ),
-          ],
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(50.0),
+            child: AppBarCustom(_widgetTitle.elementAt(_selectedIndex))),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
-        body: const HomePageContent(),
-        bottomNavigationBar: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-              boxShadow: [
-                BoxShadow(color: Colors.grey, spreadRadius: -8, blurRadius: 10),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-              ),
-              child: BottomNavigationBar(items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: "Home",
-                ),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.category), label: "Kategorie"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.library_books), label: "Biblioteka"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: "Profil"),
-              ]),
-            )));
+        bottomNavigationBar: BottomNavigationCustom(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
+        ));
   }
 }

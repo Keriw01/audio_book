@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../book_page.dart';
+import 'book_page.dart';
 
 class CollectionItem extends StatelessWidget {
   final String title;
