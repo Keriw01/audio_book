@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+
+import 'book_page.dart';
+
+class CollectionItem extends StatelessWidget {
+  final String title;
+  final String href;
+  final int index;
+  const CollectionItem({
+    super.key,
+    required this.title,
+    required this.href,
+    required this.index,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 4,
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookPage(title: title, href: href),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                  child: Text(
+                    '${index + 1} - $title',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                    maxLines: 2,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Text(
+                '0:00',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.more_horiz,
+                size: 20,
+              ),
+              color: const Color.fromARGB(255, 94, 94, 94),
+            ),
+          ],
+        ),
+        const Divider(
+          height: 1,
+          thickness: 1,
+          color: Color.fromARGB(255, 220, 220, 220),
+        ),
+      ],
+    );
+  }
+}

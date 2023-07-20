@@ -8,32 +8,44 @@ ThemeData customTheme = ThemeData(
     ),
     useMaterial3: true,
     textTheme: TextTheme(
-      titleSmall: GoogleFonts.getFont('Lato',
-          fontSize: 14,
-          fontWeight:
-              FontWeight.bold), // tytul ksiazki np. w zakladce HOME - FOR YOU
+      titleSmall: GoogleFonts.getFont(
+        'Lato',
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ), // tytul ksiazki w Favorite
       titleMedium: GoogleFonts.getFont('Lato',
           fontSize: 18,
-          fontWeight: FontWeight
-              .bold), // tytul ksiazki w zakladce LATESTED czy FEATURED
-      headlineSmall: GoogleFonts.getFont('Lato',
-          fontSize: 20,
-          fontWeight: FontWeight.bold), // tekst For You w zakladce Home
+          fontWeight: FontWeight.bold), // tytul ksiazki w zakladce Featured
+      headlineSmall: GoogleFonts.getFont(
+        'Lato',
+        fontSize: 12,
+        color: Colors.grey,
+      ), // autor ksiazki w Favorite
+      headlineMedium: GoogleFonts.getFont(
+        'Lato',
+        fontSize: 14,
+        color: const Color.fromARGB(255, 94, 94, 94),
+        fontWeight: FontWeight.bold,
+      ), // tekst naglowek Favorite
+      headlineLarge: GoogleFonts.getFont(
+        'Lato',
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ), // tekst naglowek Favorite,
       displaySmall: GoogleFonts.getFont('Lato',
           fontSize: 12,
           fontWeight: FontWeight.bold,
           color: Colors
               .orange), // dla pomaranczowych znakow, np. w zakladce HOME - FOR YOU
-      displayMedium: GoogleFonts.getFont('Lato',
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: Colors.grey,
-          decoration: TextDecoration
-              .lineThrough), // // dla szarych, przekreslonych znakow, np. w zakladce HOME - FOR YOU
+      displayMedium: GoogleFonts.getFont(
+        'Lato',
+        fontSize: 12,
+        fontWeight: FontWeight.bold,
+        color: Colors.grey,
+      ), // // dla szarych znakow, np. w zakladce HOME - FOR YOU
       bodySmall: GoogleFonts.getFont('Lato',
           fontSize: 12,
-          color: const Color.fromARGB(
-              255, 94, 94, 94)), // tekst opisu ksiazki w Home -> Featured
+          color: Colors.grey), // tekst opisu ksiazki w Home -> Featured
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
