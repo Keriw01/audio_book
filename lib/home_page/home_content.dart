@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testproject/styles/colors.dart';
 
-import '../provider/collections_provider.dart';
+import '../providers/collections_provider.dart';
 import 'collection_item.dart';
 
 class HomePageContent extends StatelessWidget {
@@ -15,34 +16,37 @@ class HomePageContent extends StatelessWidget {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (provider.errorMessage.isNotEmpty) {
+        }
+        if (provider.errorMessage.isNotEmpty) {
           return Center(
             child: Column(
               children: [
-                const Text("An error occured:"),
+                const Text('Wystąpił błąd:'),
                 Text(provider.errorMessage),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     provider.refreshCollection();
                   },
-                  child: const Text('Refresh data'),
+                  child: const Text('Odśwież dane'),
                 )
               ],
             ),
           );
-        } else {
-          return ListView.builder(
-            itemCount: provider.collections.length,
-            itemBuilder: (_, index) => CollectionItem(
-              title: provider.collections[index].title,
-              href: provider.collections[index].href,
-              index: index,
-            ),
-          );
         }
+        return ListView.separated(
+          itemCount: provider.collections.length,
+          separatorBuilder: (context, index) => const Divider(
+            height: 1,
+            thickness: 1,
+            color: dividerColor,
+          ),
+          itemBuilder: (_, index) => CollectionItem(
+            title: provider.collections[index].title,
+            href: provider.collections[index].href,
+            index: index,
+          ),
+        );
       },
     );
   }

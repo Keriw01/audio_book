@@ -41,13 +41,14 @@ class CollectionsProvider with ChangeNotifier {
             .map((e) => Collection.fromJson(e as Map<String, dynamic>))
             .toList();
       } else {
-        _errorMessage = 'Request failed with status: ${response.statusCode}';
+        _errorMessage =
+            'Żądanie nie powiodło się ze stanem: ${response.statusCode}';
       }
     } catch (error) {
       if (error is SocketException) {
-        _errorMessage = 'Network error: $error';
+        _errorMessage = 'Błąd sieci: $error';
       } else {
-        _errorMessage = 'Other error: $error';
+        _errorMessage = 'Inny błąd: $error';
       }
     }
 

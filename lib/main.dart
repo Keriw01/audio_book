@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page/home_page.dart';
-import 'package:testproject/provider/collections_provider.dart';
-import 'package:testproject/themes/theme.dart';
+import 'package:testproject/providers/collections_provider.dart';
+import 'package:testproject/styles/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => CollectionsProvider(),
       child: MaterialApp(
-        title: 'Book Voice',
+        title: 'Utwory',
         theme: customTheme,
         home: const HomePage(),
       ),

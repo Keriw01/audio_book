@@ -74,16 +74,17 @@ class BooksProvider with ChangeNotifier {
             _books = bookDataList.map((item) => Book.fromJson(item)).toList();
             _saveBookListToCache(_books, href);
           } else {
-            _errorMessage = 'Invalid data format: expected a list.';
+            _errorMessage = 'Nieprawidłowy format danych: oczekiwano listy.';
           }
         } else {
-          _errorMessage = 'Request failed with status: ${response.statusCode}';
+          _errorMessage =
+              'Żądanie nie powiodło się ze stanem: ${response.statusCode}';
         }
       } catch (error) {
         if (error is SocketException) {
-          _errorMessage = 'Network error: $error';
+          _errorMessage = 'Błąd sieci: $error';
         } else {
-          _errorMessage = 'Other error: $error';
+          _errorMessage = 'Inny błąd: $error';
         }
       }
     } else {

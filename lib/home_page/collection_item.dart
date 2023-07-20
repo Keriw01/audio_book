@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:testproject/styles/colors.dart';
 
-import 'book_page.dart';
+import 'books_page.dart';
 
 class CollectionItem extends StatelessWidget {
   final String title;
   final String href;
   final int index;
+
   const CollectionItem({
     super.key,
     required this.title,
@@ -13,57 +15,34 @@ class CollectionItem extends StatelessWidget {
     required this.index,
   });
 
+  Future<Future> navigateToBooksPage(BuildContext context) async {
+    return Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BooksPage(
+          title: title,
+          href: href,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Expanded(
-              flex: 4,
-              child: GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BookPage(title: title, href: href),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                  child: Text(
-                    '${index + 1} - $title',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                    maxLines: 2,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Expanded(
-              child: Text(
-                '0:00',
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_horiz,
-                size: 20,
-              ),
-              color: const Color.fromARGB(255, 94, 94, 94),
-            ),
-          ],
+    return InkWell(
+      radius: 100,
+      highlightColor: deepOrange.withOpacity(0.1),
+      splashColor: seedColor.withOpacity(0.8),
+      onTap: () => navigateToBooksPage(context),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
         ),
-        const Divider(
-          height: 1,
-          thickness: 1,
-          color: Color.fromARGB(255, 220, 220, 220),
-        ),
-      ],
+      ]),
     );
   }
 }

@@ -3,7 +3,6 @@ import 'package:testproject/category_page/category_page.dart';
 import 'package:testproject/home_page/home_content.dart';
 
 import '../app_bar_custom.dart';
-import '../bottom_navigation_custom.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,20 +13,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomePageContent(),
-    CategoryPage(),
-    CategoryPage(),
-    CategoryPage()
-  ];
+
   static const List<String> _widgetTitle = <String>[
-    'Home',
+    'Strona główna',
     'Kategorie',
-    'Biblioteka',
-    'Profil'
   ];
 
-  void _onItemTapped(int index) {
+  void _onPageSwitch(int index) {
     setState(
       () {
         _selectedIndex = index;
@@ -39,18 +31,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50.0),
+        preferredSize: const Size.fromHeight(50),
         child: AppBarCustom(
           _widgetTitle.elementAt(_selectedIndex),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationCustom(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: PageView(
+          scrollDirection: Axis.horizontal,
+          onPageChanged: (index) => _onPageSwitch(index),
+          children: const [
+            HomePageContent(),
+            CategoryPage(),
+          ],
+        ),
       ),
     );
   }
