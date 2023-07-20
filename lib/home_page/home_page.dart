@@ -16,9 +16,16 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePageContent(),
+    CategoryPage(),
+    CategoryPage(),
     CategoryPage()
   ];
-  static const List<String> _widgetTitle = <String>['Home', 'Categories'];
+  static const List<String> _widgetTitle = <String>[
+    'Home',
+    'Kategorie',
+    'Biblioteka',
+    'Profil'
+  ];
 
   void _onItemTapped(int index) {
     setState(
