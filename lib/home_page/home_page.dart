@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:testproject/category_page/category_page.dart';
 import 'package:testproject/home_page/home_content.dart';
 
-import '../app_bar_custom.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -20,32 +18,39 @@ class _HomePageState extends State<HomePage> {
   ];
 
   void _onPageSwitch(int index) {
-    setState(
-      () {
-        _selectedIndex = index;
-      },
-    );
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: AppBarCustom(
+      appBar: AppBar(
+        title: Text(
           _widgetTitle.elementAt(_selectedIndex),
         ),
+        titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: PageView(
-          scrollDirection: Axis.horizontal,
-          onPageChanged: (index) => _onPageSwitch(index),
-          children: const [
-            HomePageContent(),
-            CategoryPage(),
-          ],
-        ),
+            scrollDirection: Axis.horizontal,
+            onPageChanged: (index) => _onPageSwitch(index),
+            children: const [
+              HomePageContent(),
+              CategoryPage(),
+            ]),
       ),
     );
   }

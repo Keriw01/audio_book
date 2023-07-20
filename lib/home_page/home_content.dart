@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testproject/styles/colors.dart';
-
-import '../providers/collections_provider.dart';
-import 'collection_item.dart';
+import 'package:testproject/providers/collections_provider.dart';
+import 'package:testproject/home_page/collection_item.dart';
 
 class HomePageContent extends StatelessWidget {
   const HomePageContent({super.key});
@@ -19,19 +18,17 @@ class HomePageContent extends StatelessWidget {
         }
         if (provider.errorMessage.isNotEmpty) {
           return Center(
-            child: Column(
-              children: [
-                const Text('Wystąpił błąd:'),
-                Text(provider.errorMessage),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    provider.refreshCollection();
-                  },
-                  child: const Text('Odśwież dane'),
-                )
-              ],
-            ),
+            child: Column(children: [
+              const Text('Wystąpił błąd:'),
+              Text(provider.errorMessage),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  provider.refreshCollection();
+                },
+                child: const Text('Odśwież dane'),
+              ),
+            ]),
           );
         }
         return ListView.separated(

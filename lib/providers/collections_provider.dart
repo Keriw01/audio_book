@@ -1,9 +1,8 @@
 import 'dart:convert' as convert;
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import '../models/collection.dart';
+import 'package:testproject/models/collection.dart';
 import 'package:http/http.dart' as http;
 
 class CollectionsProvider with ChangeNotifier {

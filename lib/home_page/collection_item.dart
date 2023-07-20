@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/styles/colors.dart';
-
-import 'books_page.dart';
+import 'package:testproject/home_page/books_page.dart';
 
 class CollectionItem extends StatelessWidget {
   final String title;
@@ -36,7 +35,7 @@ class CollectionItem extends StatelessWidget {
       onTap: () => navigateToBooksPage(context),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
+          padding: const EdgeInsets.fromLTRB(0, 15, 15, 15),
           child: Text(
             title,
             style: Theme.of(context).textTheme.headlineMedium,

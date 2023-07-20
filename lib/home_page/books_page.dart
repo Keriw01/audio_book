@@ -41,33 +41,38 @@ class BooksPage extends StatelessWidget {
               }
               return SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 15, top: 20),
+                  padding: const EdgeInsets.only(
+                    left: 15,
+                    top: 20,
+                  ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(
-                        'Dla ciebie',
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        height: 320,
-                        child: ListView.builder(
-                          physics: const ClampingScrollPhysics(),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 4,
-                          itemBuilder: (_, index) =>
-                              FavoriteItem(provider: provider, index: index),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Dla ciebie',
+                          style: Theme.of(context).textTheme.headlineLarge,
                         ),
-                      ),
-                      Text(
-                        'Wybrane',
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                      const SizedBox(height: 15),
-                      ListView.separated(
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          height: 320,
+                          child: ListView.builder(
+                            physics: const ClampingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 4,
+                            itemBuilder: (_, index) => FavoriteItem(
+                              provider: provider,
+                              index: index,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          'Wybrane',
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        ),
+                        const SizedBox(height: 15),
+                        ListView.separated(
                           physics: const ClampingScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: provider.books.length,
@@ -79,10 +84,12 @@ class BooksPage extends StatelessWidget {
                               color: dividerColor,
                             );
                           },
-                          itemBuilder: (_, index) =>
-                              FeaturedItem(provider: provider, index: index)),
-                    ],
-                  ),
+                          itemBuilder: (_, index) => FeaturedItem(
+                            provider: provider,
+                            index: index,
+                          ),
+                        ),
+                      ]),
                 ),
               );
             },

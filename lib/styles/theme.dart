@@ -14,8 +14,11 @@ ThemeData customTheme = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.bold,
     ), // tytul ksiazki Dla ciebie
-    titleMedium: GoogleFonts.getFont('Lato',
-        fontSize: 18, fontWeight: FontWeight.bold), // tytul ksiazki w Wybrane
+    titleMedium: GoogleFonts.getFont(
+      'Lato',
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ), // tytul ksiazki w Wybrane
     headlineSmall: GoogleFonts.getFont(
       'Lato',
       fontSize: 12,
@@ -31,15 +34,21 @@ ThemeData customTheme = ThemeData(
       'Lato',
       fontSize: 18,
       fontWeight: FontWeight.bold,
-    ), // tekst naglowek Dla ciebie,
+    ), // tekst naglowek Dla ciebie
   ),
   appBarTheme: AppBarTheme(
     shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20))),
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(20),
+      ),
+    ),
     backgroundColor: seedColor,
     foregroundColor: whiteColor,
     centerTitle: true,
-    titleTextStyle:
-        GoogleFonts.getFont('Lato', fontSize: 20, fontWeight: FontWeight.bold),
+    titleTextStyle: GoogleFonts.getFont(
+      'Lato',
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
   ),
 );
