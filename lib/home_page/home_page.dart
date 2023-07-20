@@ -21,24 +21,30 @@ class _HomePageState extends State<HomePage> {
   static const List<String> _widgetTitle = <String>['Home', 'Categories'];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(
+      () {
+        _selectedIndex = index;
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(50.0),
-            child: AppBarCustom(_widgetTitle.elementAt(_selectedIndex))),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: _widgetOptions.elementAt(_selectedIndex),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50.0),
+        child: AppBarCustom(
+          _widgetTitle.elementAt(_selectedIndex),
         ),
-        bottomNavigationBar: BottomNavigationCustom(
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
-        ));
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationCustom(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
+    );
   }
 }

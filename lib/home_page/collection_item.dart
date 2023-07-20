@@ -24,17 +24,21 @@ class CollectionItem extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: GestureDetector(
-                    onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                BookPage(title: title, href: href),
-                          ),
-                        ),
-                    child: Text(
-                      '$index - $title',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    )),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookPage(title: title, href: href),
+                    ),
+                  ),
+                  child: Text(
+                    '${index + 1} - $title',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                    maxLines: 2,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
               ),
               Expanded(
                 child: Text(
@@ -49,13 +53,13 @@ class CollectionItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Divider(
-            height: 1,
-            thickness: 1,
-            color: Color.fromARGB(255, 220, 220, 220),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            child: Divider(
+              height: 1,
+              thickness: 1,
+              color: Color.fromARGB(255, 220, 220, 220),
+            ),
           ),
         ],
       ),

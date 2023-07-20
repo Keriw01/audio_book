@@ -37,9 +37,10 @@ class HomePageContent extends StatelessWidget {
           return ListView.builder(
             itemCount: provider.collections.length,
             itemBuilder: (_, index) => CollectionItem(
-                title: provider.collections[index].title,
-                href: provider.collections[index].href,
-                index: index),
+              title: provider.collections[index].title,
+              href: provider.collections[index].href,
+              index: index,
+            ),
           );
         }
       },

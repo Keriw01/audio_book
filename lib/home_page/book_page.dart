@@ -42,8 +42,7 @@ class BookPage extends StatelessWidget {
               } else {
                 return SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15.0, top: 10.0, right: 15.0),
+                    padding: const EdgeInsets.only(left: 15.0, top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -56,7 +55,7 @@ class BookPage extends StatelessWidget {
                           height: 10,
                         ),
                         SizedBox(
-                          height: 220,
+                          height: 320,
                           child: ListView.builder(
                             physics: const ClampingScrollPhysics(),
                             shrinkWrap: true,
@@ -67,7 +66,7 @@ class BookPage extends StatelessWidget {
                                 right: 10.0,
                               ),
                               child: SizedBox(
-                                width: 100,
+                                width: 150,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -80,6 +79,9 @@ class BookPage extends StatelessWidget {
                                           const Icon(Icons.error),
                                       width: 150,
                                       alignment: Alignment.centerLeft,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
                                     ),
                                     Row(
                                       children: [
@@ -106,6 +108,8 @@ class BookPage extends StatelessWidget {
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .headlineSmall,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
                                           ),
                                         ),
                                       ],
@@ -125,67 +129,74 @@ class BookPage extends StatelessWidget {
                             physics: const ClampingScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: provider.books.length,
-                            itemBuilder: (_, index) => Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        CachedNetworkImage(
-                                          imageUrl:
-                                              provider.books[index].simpleThumb,
-                                          placeholder: (context, url) =>
-                                              const CircularProgressIndicator(),
-                                          errorWidget: (context, url, error) =>
-                                              const Icon(Icons.error),
-                                          width: 100,
-                                          alignment: Alignment.centerLeft,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width -
-                                                  150,
-                                              child: Text(
-                                                provider.books[index].title,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleMedium,
+                            itemBuilder: (_, index) => Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          CachedNetworkImage(
+                                            imageUrl: provider
+                                                .books[index].simpleThumb,
+                                            placeholder: (context, url) =>
+                                                const CircularProgressIndicator(),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(Icons.error),
+                                            width: 100,
+                                            alignment: Alignment.centerLeft,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width -
+                                                    150,
+                                                child: Text(
+                                                  provider.books[index].title,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleMedium,
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width -
-                                                  150,
-                                              child: Text(
-                                                provider.books[index].author,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .headlineSmall,
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width -
+                                                    150,
+                                                child: Text(
+                                                  provider.books[index].author,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headlineSmall,
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    const Divider(
-                                      height: 1,
-                                      thickness: 1,
-                                      color: Color.fromARGB(255, 220, 220, 220),
-                                    ),
-                                  ],
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 15.0),
+                                        child: Divider(
+                                          height: 1,
+                                          thickness: 1,
+                                          color: Color.fromARGB(
+                                              255, 220, 220, 220),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 )),
                       ],
                     ),
