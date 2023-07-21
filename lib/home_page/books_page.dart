@@ -5,9 +5,8 @@ import 'package:testproject/home_page/featured_section.dart';
 import 'package:testproject/providers/books_provider.dart';
 
 class BooksPage extends StatelessWidget {
-  final String title;
   final String href;
-  const BooksPage({super.key, required this.title, required this.href});
+  const BooksPage({super.key, required this.href});
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +38,12 @@ class BooksPage extends StatelessWidget {
                 );
               }
               return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    top: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      FavoriteSection(provider: provider),
-                      FeaturedSection(provider: provider),
-                    ],
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FavoriteSection(books: provider.books),
+                    FeaturedSection(books: provider.books),
+                  ],
                 ),
               );
             },

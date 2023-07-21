@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/home_page/featured_item.dart';
-import 'package:testproject/providers/books_provider.dart';
+import 'package:testproject/models/book.dart';
 import 'package:testproject/widgets/custom_divider.dart';
 
 class FeaturedSection extends StatelessWidget {
-  final BooksProvider provider;
-  const FeaturedSection({super.key, required this.provider});
+  final List<Book> books;
+  const FeaturedSection({super.key, required this.books});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Wybrane',
-          style: Theme.of(context).textTheme.headlineLarge,
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            'Wybrane',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
         ),
         ListView.separated(
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
-          itemCount: provider.books.length,
-          padding: const EdgeInsets.only(right: 15),
+          itemCount: books.length,
+          padding: const EdgeInsets.only(left: 10),
           separatorBuilder: (context, index) => const CustomDivider(),
-          itemBuilder: (_, index) => FeaturedItem(
-            provider: provider,
-            index: index,
-          ),
+          itemBuilder: (_, index) => FeaturedItem(book: books[index]),
         ),
       ],
     );

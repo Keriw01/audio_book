@@ -10,25 +10,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+  final ValueNotifier<int> _selectedIndexNotifier = ValueNotifier<int>(0);
 
   static const List<String> _widgetTitle = <String>[
     'Strona główna',
     'Kategorie',
   ];
 
-  void _onPageSwitch(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  void dispose() {
+    _selectedIndexNotifier.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          _widgetTitle.elementAt(_selectedIndex),
+        title: ValueListenableBuilder(
+          valueListenable: _selectedIndexNotifier,
+          builder: (context, selectedIndex, child) =>
+              Text(_widgetTitle.elementAt(selectedIndex)),
         ),
         titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
         leading: IconButton(
@@ -42,16 +44,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: PageView(
-          scrollDirection: Axis.horizontal,
-          onPageChanged: (index) => _onPageSwitch(index),
-          children: const [
-            HomePageContent(),
-            CategoryPage(),
-          ],
-        ),
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        onPageChanged: (index) => _selectedIndexNotifier.value = index,
+        children: const [
+          HomePageContent(),
+          CategoryPage(),
+        ],
       ),
     );
   }

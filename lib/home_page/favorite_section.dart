@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/home_page/favorite_item.dart';
-import 'package:testproject/providers/books_provider.dart';
+import 'package:testproject/models/book.dart';
 
 class FavoriteSection extends StatelessWidget {
-  final BooksProvider provider;
-  const FavoriteSection({super.key, required this.provider});
+  final List<Book> books;
+  const FavoriteSection({super.key, required this.books});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Dla ciebie',
-          style: Theme.of(context).textTheme.headlineLarge,
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 10,
+            top: 15,
+          ),
+          child: Text(
+            'Dla ciebie',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
         ),
         const SizedBox(height: 10),
         SizedBox(
@@ -23,12 +29,9 @@ class FavoriteSection extends StatelessWidget {
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: 4,
-            itemBuilder: (_, index) => FavoriteItem(
-              provider: provider,
-              index: index,
-            ),
+            itemBuilder: (_, index) => FavoriteItem(book: books[index]),
           ),
-        )
+        ),
       ],
     );
   }

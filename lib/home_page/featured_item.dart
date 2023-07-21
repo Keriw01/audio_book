@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:testproject/providers/books_provider.dart';
+import 'package:testproject/models/book.dart';
 
 class FeaturedItem extends StatelessWidget {
-  final BooksProvider provider;
-  final int index;
-  const FeaturedItem({super.key, required this.provider, required this.index});
+  final Book book;
+  const FeaturedItem({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class FeaturedItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CachedNetworkImage(
-                imageUrl: provider.books[index].simpleThumb,
+                imageUrl: book.simpleThumb,
                 placeholder: (context, url) =>
                     const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -30,16 +29,16 @@ class FeaturedItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width - 150,
+                    width: MediaQuery.of(context).size.width - 120,
                     child: Text(
-                      provider.books[index].title,
+                      book.title,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width - 150,
+                    width: MediaQuery.of(context).size.width - 120,
                     child: Text(
-                      provider.books[index].author,
+                      book.author,
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),

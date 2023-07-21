@@ -35,9 +35,7 @@ class HomePageContent extends StatelessWidget {
           itemCount: provider.collections.length,
           separatorBuilder: (context, index) => const CustomDivider(),
           itemBuilder: (_, index) => CollectionItem(
-            title: provider.collections[index].title,
-            href: provider.collections[index].href,
-            index: index,
+            collection: provider.collections[index],
           ),
         );
       },
