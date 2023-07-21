@@ -45,12 +45,13 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: PageView(
-            scrollDirection: Axis.horizontal,
-            onPageChanged: (index) => _onPageSwitch(index),
-            children: const [
-              HomePageContent(),
-              CategoryPage(),
-            ]),
+          scrollDirection: Axis.horizontal,
+          onPageChanged: (index) => _onPageSwitch(index),
+          children: const [
+            HomePageContent(),
+            CategoryPage(),
+          ],
+        ),
       ),
     );
   }

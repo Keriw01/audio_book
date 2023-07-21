@@ -33,15 +33,18 @@ class CollectionItem extends StatelessWidget {
       highlightColor: deepOrange.withOpacity(0.1),
       splashColor: seedColor.withOpacity(0.8),
       onTap: () => navigateToBooksPage(context),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 15, 15, 15),
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.headlineMedium,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 15, 15),
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
