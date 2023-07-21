@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:testproject/models/book.dart';
+import 'package:testproject/models/book/book_model.dart';
 
 class BooksProvider with ChangeNotifier {
   List<Book> _books = [];

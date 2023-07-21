@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/home_page/featured_item.dart';
-import 'package:testproject/models/book.dart';
+import 'package:testproject/models/book/book_model.dart';
 import 'package:testproject/widgets/custom_divider.dart';
 
 class FeaturedSection extends StatelessWidget {

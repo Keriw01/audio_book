@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/models/collection.dart';
+import 'package:testproject/models/collection/collection_model.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:testproject/home_page/books_page.dart';
 
