@@ -28,7 +28,7 @@ class FavoriteSection extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 4,
+            itemCount: books.length > 4 ? 4 : books.length,
             itemBuilder: (_, index) => FavoriteItem(book: books[index]),
           ),
         ),
