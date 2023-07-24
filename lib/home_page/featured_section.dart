@@ -13,9 +13,9 @@ class FeaturedSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 10, top: 10),
           child: Text(
-            'Wybrane',
+            'Pozostałe',
             style: Theme.of(context).textTheme.headlineLarge,
           ),
         ),

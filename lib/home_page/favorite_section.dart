@@ -17,7 +17,7 @@ class FavoriteSection extends StatelessWidget {
             top: 15,
           ),
           child: Text(
-            'Dla ciebie',
+            'Twoje ulubione',
             style: Theme.of(context).textTheme.headlineLarge,
           ),
         ),

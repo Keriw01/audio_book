@@ -3,18 +3,19 @@ import 'package:provider/provider.dart';
 import 'package:testproject/home_page/favorite_section.dart';
 import 'package:testproject/home_page/featured_section.dart';
 import 'package:testproject/providers/books_provider.dart';
+import 'package:testproject/models/collection.dart';
 
 class BooksPage extends StatelessWidget {
-  final String href;
-  const BooksPage({super.key, required this.href});
+  final Collection collection;
+  const BooksPage({super.key, required this.collection});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => BooksProvider(href),
+      create: (_) => BooksProvider(collection.href),
       builder: (context, child) {
         return Scaffold(
-          appBar: AppBar(title: const Text('Książki')),
+          appBar: AppBar(title: Text(collection.title)),
           body: Consumer<BooksProvider>(
             builder: (_, provider, __) {
               if (provider.isLoading) {
@@ -30,7 +31,8 @@ class BooksPage extends StatelessWidget {
                       Text(provider.errorMessage),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: () => provider.refreshBookCollection(href),
+                        onPressed: () =>
+                            provider.refreshBookCollection(collection.href),
                         child: const Text('Odśwież dane'),
                       )
                     ],

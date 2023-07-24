@@ -13,7 +13,7 @@ class CollectionItem extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) => BooksPage(
-          href: collection.href,
+          collection: collection,
         ),
       ),
     );

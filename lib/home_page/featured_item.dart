@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/styles/colors.dart';
 
 class FeaturedItem extends StatelessWidget {
   final Book book;
@@ -40,6 +41,20 @@ class FeaturedItem extends StatelessWidget {
                     child: Text(
                       book.author,
                       style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    width: 25,
+                    height: 25,
+                    padding: EdgeInsets.zero,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.favorite,
+                        color: heartColor,
+                      ),
+                      padding: EdgeInsets.zero,
                     ),
                   ),
                 ],
