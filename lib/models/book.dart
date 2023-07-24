@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'book_model.freezed.dart';
-part 'book_model.g.dart';
+part 'book.freezed.dart';
+part 'book.g.dart';
 
 @freezed
 class Book with _$Book {

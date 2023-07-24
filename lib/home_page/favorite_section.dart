@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/home_page/favorite_item.dart';
-import 'package:testproject/models/book/book_model.dart';
+import 'package:testproject/models/book.dart';
 
 class FavoriteSection extends StatelessWidget {
   final List<Book> books;

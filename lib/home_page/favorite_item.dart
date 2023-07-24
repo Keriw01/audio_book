@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:testproject/models/book/book_model.dart';
+import 'package:testproject/models/book.dart';
 
 class FavoriteItem extends StatelessWidget {
   final Book book;
