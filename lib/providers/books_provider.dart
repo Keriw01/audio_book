@@ -1,10 +1,10 @@
-import 'dart:convert' as convert;
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/models/book_response.dart';
+import 'package:testproject/service/book_api.dart';
+import 'package:dio/dio.dart';
 
 class BooksProvider with ChangeNotifier {
   List<Book> _books = [];
@@ -61,26 +61,14 @@ class BooksProvider with ChangeNotifier {
     bool isDataCached = await _isDataCached(href);
     if (isDataCached != true) {
       try {
-        final url =
-            Uri.https('wolnelektury.pl', href.split('wolnelektury.pl')[1]);
-        final response = await http.get(url);
-
-        if (response.statusCode == 200) {
-          final jsonData = convert.jsonDecode(utf8.decode(response.bodyBytes));
-          if (jsonData['books'] is List) {
-            final bookDataList = jsonData['books'] as List<dynamic>;
-            _books = bookDataList.map((item) => Book.fromJson(item)).toList();
-            _saveBookListToCache(_books, href);
-          } else {
-            _errorMessage = 'Nieprawidłowy format danych: oczekiwano listy.';
-          }
-        } else {
-          _errorMessage =
-              'Żądanie nie powiodło się ze stanem: ${response.statusCode}';
-        }
+        final dio = Dio();
+        final api = BooksApi(dio);
+        final BookResponse response = await api.getBooks(href);
+        _books = response.books;
+        _saveBookListToCache(_books, href);
       } catch (error) {
-        if (error is SocketException) {
-          _errorMessage = 'Błąd sieci: $error';
+        if (error is DioException) {
+          _errorMessage = 'Błąd sieci: ${error.message}';
         } else {
           _errorMessage = 'Inny błąd: $error';
         }

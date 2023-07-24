@@ -1,9 +1,7 @@
-import 'dart:convert' as convert;
-import 'dart:convert';
-import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/models/collection.dart';
-import 'package:http/http.dart' as http;
+import 'package:testproject/service/collections_api.dart';
 
 class CollectionsProvider with ChangeNotifier {
   List<Collection> _collections = [];
@@ -31,21 +29,13 @@ class CollectionsProvider with ChangeNotifier {
     _isLoading = true;
 
     try {
-      final url = Uri.https('wolnelektury.pl', '/api/collections/');
-      final response = await http.get(url);
+      final dio = Dio();
+      final api = CollectionsApi(dio);
 
-      if (response.statusCode == 200) {
-        _collections = (convert.jsonDecode(utf8.decode(response.bodyBytes))
-                as List<dynamic>)
-            .map((e) => Collection.fromJson(e as Map<String, dynamic>))
-            .toList();
-      } else {
-        _errorMessage =
-            'Żądanie nie powiodło się ze stanem: ${response.statusCode}';
-      }
+      _collections = await api.getCollections();
     } catch (error) {
-      if (error is SocketException) {
-        _errorMessage = 'Błąd sieci: $error';
+      if (error is DioException) {
+        _errorMessage = 'Błąd sieci: ${error.message}';
       } else {
         _errorMessage = 'Inny błąd: $error';
       }

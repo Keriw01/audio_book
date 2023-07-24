@@ -127,7 +127,7 @@ class _$_Book implements _Book {
 
   @override
   String toString() {
-    return 'Book(title: $title, author: $author, simpleThumb: $simpleThumb)';
+    return 'Book(title: $title, author: $author, simple_thumb: $simpleThumb)';
   }
 
   @override
