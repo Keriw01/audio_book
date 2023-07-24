@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/models/book_response.dart';
+import 'package:testproject/models/collection_detail.dart';
 import 'package:testproject/service/book_api.dart';
 import 'package:dio/dio.dart';
 
@@ -63,7 +63,7 @@ class BooksProvider with ChangeNotifier {
       try {
         final dio = Dio();
         final api = BooksApi(dio);
-        final BookResponse response = await api.getBooks(href);
+        final CollectionDetail response = await api.getBooks(href);
         _books = response.books;
         _saveBookListToCache(_books, href);
       } catch (error) {
