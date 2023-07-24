@@ -26,7 +26,7 @@ class BooksPage extends StatelessWidget {
                 return Center(
                   child: Column(
                     children: [
-                      const Text('Wystąpił błąd:'),
+                      const Text('Wystąpił błąd'),
                       Text(provider.errorMessage),
                       const SizedBox(height: 20),
                       ElevatedButton(
