@@ -22,6 +22,7 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 mixin _$Book {
   String get title => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
+  @JsonKey(name: 'simple_thumb')
   String get simpleThumb => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +35,10 @@ abstract class $BookCopyWith<$Res> {
   factory $BookCopyWith(Book value, $Res Function(Book) then) =
       _$BookCopyWithImpl<$Res, Book>;
   @useResult
-  $Res call({String title, String author, String simpleThumb});
+  $Res call(
+      {String title,
+      String author,
+      @JsonKey(name: 'simple_thumb') String simpleThumb});
 }
 
 /// @nodoc
@@ -77,7 +81,10 @@ abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
       __$$_BookCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String author, String simpleThumb});
+  $Res call(
+      {String title,
+      String author,
+      @JsonKey(name: 'simple_thumb') String simpleThumb});
 }
 
 /// @nodoc
@@ -114,7 +121,9 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
 @JsonSerializable()
 class _$_Book implements _Book {
   const _$_Book(
-      {required this.title, required this.author, required this.simpleThumb});
+      {required this.title,
+      required this.author,
+      @JsonKey(name: 'simple_thumb') required this.simpleThumb});
 
   factory _$_Book.fromJson(Map<String, dynamic> json) => _$$_BookFromJson(json);
 
@@ -123,11 +132,12 @@ class _$_Book implements _Book {
   @override
   final String author;
   @override
+  @JsonKey(name: 'simple_thumb')
   final String simpleThumb;
 
   @override
   String toString() {
-    return 'Book(title: $title, author: $author, simple_thumb: $simpleThumb)';
+    return 'Book(title: $title, author: $author, simpleThumb: $simpleThumb)';
   }
 
   @override
@@ -161,9 +171,10 @@ class _$_Book implements _Book {
 
 abstract class _Book implements Book {
   const factory _Book(
-      {required final String title,
-      required final String author,
-      required final String simpleThumb}) = _$_Book;
+          {required final String title,
+          required final String author,
+          @JsonKey(name: 'simple_thumb') required final String simpleThumb}) =
+      _$_Book;
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$_Book.fromJson;
 
@@ -172,6 +183,7 @@ abstract class _Book implements Book {
   @override
   String get author;
   @override
+  @JsonKey(name: 'simple_thumb')
   String get simpleThumb;
   @override
   @JsonKey(ignore: true)
