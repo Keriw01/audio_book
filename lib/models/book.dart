@@ -1,25 +1,15 @@
-class Book {
-  final String title;
-  final String author;
-  final String simpleThumb;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Book({
-    required this.title,
-    required this.author,
-    required this.simpleThumb,
-  });
+part 'book.freezed.dart';
+part 'book.g.dart';
 
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
-      title: json['title'] as String,
-      author: json['author'] as String,
-      simpleThumb: json['simple_thumb'] as String,
-    );
-  }
+@freezed
+class Book with _$Book {
+  const factory Book({
+    required String title,
+    required String author,
+    required String simpleThumb,
+  }) = _Book;
 
-  Map<String, dynamic> toJson() => {
-        'title': title,
-        'author': author,
-        'simple_thumb': simpleThumb,
-      };
+  factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
 }

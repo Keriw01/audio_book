@@ -1,14 +1,15 @@
-class Collection {
-  final String href;
-  final String title;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Collection({
-    required this.href,
-    required this.title,
-  });
+part 'collection.freezed.dart';
+part 'collection.g.dart';
 
-  factory Collection.fromJson(Map<String, dynamic> json) => Collection(
-        href: json['href'] as String,
-        title: json['title'] as String,
-      );
+@freezed
+class Collection with _$Collection {
+  const factory Collection({
+    required String href,
+    required String title,
+  }) = _Collection;
+
+  factory Collection.fromJson(Map<String, dynamic> json) =>
+      _$CollectionFromJson(json);
 }
