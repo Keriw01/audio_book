@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/styles/colors.dart';
 
 class FeaturedItem extends StatelessWidget {
@@ -9,6 +11,29 @@ class FeaturedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoritesProvider>(context);
+
+    Icon heartIcon = const Icon(
+      Icons.favorite_outline,
+      color: heartColor,
+    );
+
+    void heartIconButtonHandler() {
+      if (!favoriteProvider.favorite.contains(book)) {
+        favoriteProvider.addToFavorites(book);
+        heartIcon = const Icon(
+          Icons.favorite_outline,
+          color: heartColor,
+        );
+      } else {
+        favoriteProvider.removeFromFavorites(book);
+        heartIcon = const Icon(
+          Icons.favorite,
+          color: heartColor,
+        );
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -49,11 +74,8 @@ class FeaturedItem extends StatelessWidget {
                     height: 25,
                     padding: EdgeInsets.zero,
                     child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite,
-                        color: heartColor,
-                      ),
+                      onPressed: heartIconButtonHandler,
+                      icon: heartIcon,
                       padding: EdgeInsets.zero,
                     ),
                   ),

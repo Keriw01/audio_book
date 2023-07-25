@@ -17,22 +17,22 @@ class BooksPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(title: Text(collection.title)),
           body: Consumer<BooksProvider>(
-            builder: (_, provider, __) {
-              if (provider.isLoading) {
+            builder: (_, booksProvider, __) {
+              if (booksProvider.isLoading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
-              if (provider.errorMessage.isNotEmpty) {
+              if (booksProvider.errorMessage.isNotEmpty) {
                 return Center(
                   child: Column(
                     children: [
                       const Text('Wystąpił błąd'),
-                      Text(provider.errorMessage),
+                      Text(booksProvider.errorMessage),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: () =>
-                            provider.refreshBookCollection(collection.href),
+                        onPressed: () => booksProvider
+                            .refreshBookCollection(collection.href),
                         child: const Text('Odśwież dane'),
                       )
                     ],
@@ -43,8 +43,8 @@ class BooksPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FavoriteSection(books: provider.books),
-                    FeaturedSection(books: provider.books),
+                    FavoriteSection(books: booksProvider.books),
+                    FeaturedSection(books: booksProvider.books)
                   ],
                 ),
               );

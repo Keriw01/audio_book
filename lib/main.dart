@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testproject/home_page/home_page.dart';
 import 'package:testproject/providers/collections_provider.dart';
+import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/styles/theme.dart';
 
 void main() async {
@@ -17,8 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => CollectionsProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CollectionsProvider()),
+        ChangeNotifierProvider(create: (_) => FavoritesProvider())
+      ],
       child: MaterialApp(
         title: 'Utwory',
         theme: customTheme,
