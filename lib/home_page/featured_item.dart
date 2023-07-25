@@ -13,27 +13,6 @@ class FeaturedItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoriteProvider = Provider.of<FavoritesProvider>(context);
 
-    Icon heartIcon = const Icon(
-      Icons.favorite_outline,
-      color: heartColor,
-    );
-
-    void heartIconButtonHandler() {
-      if (!favoriteProvider.favorite.contains(book)) {
-        favoriteProvider.addToFavorites(book);
-        heartIcon = const Icon(
-          Icons.favorite_outline,
-          color: heartColor,
-        );
-      } else {
-        favoriteProvider.removeFromFavorites(book);
-        heartIcon = const Icon(
-          Icons.favorite,
-          color: heartColor,
-        );
-      }
-    }
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -74,8 +53,11 @@ class FeaturedItem extends StatelessWidget {
                     height: 25,
                     padding: EdgeInsets.zero,
                     child: IconButton(
-                      onPressed: heartIconButtonHandler,
-                      icon: heartIcon,
+                      onPressed: () => favoriteProvider.addToFavorites(book),
+                      icon: const Icon(
+                        Icons.favorite_outline,
+                        color: heartColor,
+                      ),
                       padding: EdgeInsets.zero,
                     ),
                   ),

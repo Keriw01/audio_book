@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/providers/favorites_provider.dart';
+import 'package:testproject/styles/colors.dart';
 
 class FavoriteItem extends StatelessWidget {
   final Book book;
@@ -8,6 +11,8 @@ class FavoriteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoritesProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: SizedBox(
@@ -15,12 +20,26 @@ class FavoriteItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CachedNetworkImage(
-              imageUrl: book.simpleThumb,
-              placeholder: (context, url) => const CircularProgressIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-              width: 150,
-              alignment: Alignment.centerLeft,
+            Stack(
+              alignment: Alignment.topRight,
+              children: [
+                CachedNetworkImage(
+                  imageUrl: book.simpleThumb,
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  width: 150,
+                  alignment: Alignment.centerLeft,
+                ),
+                IconButton(
+                  onPressed: () => favoriteProvider.removeFromFavorites(book),
+                  icon: const Icon(
+                    Icons.favorite,
+                    color: heartColor,
+                  ),
+                  padding: EdgeInsets.zero,
+                ),
+              ],
             ),
             const SizedBox(height: 10),
             Row(

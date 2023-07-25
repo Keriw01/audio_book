@@ -8,9 +8,20 @@ import 'package:testproject/styles/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.clear();
+  await clearSharedPreferencesWithPrefix(
+      'https://wolnelektury.pl/api/collections');
   runApp(const MyApp());
+}
+
+Future<void> clearSharedPreferencesWithPrefix(String prefix) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  Set<String> keys = prefs.getKeys();
+
+  for (String key in keys) {
+    if (key.contains(prefix)) {
+      await prefs.remove(key);
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {
