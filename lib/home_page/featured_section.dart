@@ -12,11 +12,9 @@ class FeaturedSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favoriteProvider = Provider.of<FavoritesProvider>(context);
-
-    if (favoriteProvider.isFavoriteBookInBooks(books)) {
-      List<Book> booksWithoutFavorite =
-          favoriteProvider.booksWithoutFavorite(books);
-
+    List<Book> notFavoriteBooks = favoriteProvider.booksWithoutFavorite(books);
+    if (notFavoriteBooks.isNotEmpty &&
+        favoriteProvider.isFavoriteBookInBooks(books)) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,14 +28,17 @@ class FeaturedSection extends StatelessWidget {
           ListView.separated(
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: booksWithoutFavorite.length,
+            itemCount: notFavoriteBooks.length,
             padding: const EdgeInsets.only(left: 10),
             separatorBuilder: (context, index) => const CustomDivider(),
             itemBuilder: (_, index) =>
-                FeaturedItem(book: booksWithoutFavorite[index]),
+                FeaturedItem(book: notFavoriteBooks[index]),
           ),
         ],
       );
+    }
+    if (notFavoriteBooks.isEmpty) {
+      return const SizedBox();
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

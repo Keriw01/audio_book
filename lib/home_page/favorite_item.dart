@@ -11,7 +11,7 @@ class FavoriteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteProvider = Provider.of<FavoritesProvider>(context);
+    final favoriteProvider = context.read<FavoritesProvider>();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -31,13 +31,17 @@ class FavoriteItem extends StatelessWidget {
                   width: 150,
                   alignment: Alignment.centerLeft,
                 ),
-                IconButton(
-                  onPressed: () => favoriteProvider.removeFromFavorites(book),
-                  icon: const Icon(
-                    Icons.favorite,
-                    color: heartColor,
+                SizedBox(
+                  width: 48,
+                  height: 48,
+                  child: IconButton(
+                    onPressed: () => favoriteProvider.removeFromFavorites(book),
+                    icon: const Icon(
+                      Icons.favorite,
+                      color: heartColor,
+                    ),
+                    padding: EdgeInsets.zero,
                   ),
-                  padding: EdgeInsets.zero,
                 ),
               ],
             ),

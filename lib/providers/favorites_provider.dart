@@ -25,8 +25,10 @@ class FavoritesProvider with ChangeNotifier {
   }
 
   bool isFavoriteBookInBooks(List<Book> books) {
-    return _favoriteBooks.any((searchBook) =>
-        books.any((mainBook) => mainBook.title == searchBook.title));
+    return _favoriteBooks.any(
+      (searchBook) =>
+          books.any((mainBook) => mainBook.title == searchBook.title),
+    );
   }
 
   List<Book> booksWithoutFavorite(List<Book> books) {
@@ -35,10 +37,10 @@ class FavoritesProvider with ChangeNotifier {
     return booksWithoutFavorite;
   }
 
-  List<Book> booksFavoriteForCollection(List<Book> books) {
-    List<Book> booksFavoriteForCollection =
+  List<Book> booksFavorites(List<Book> books) {
+    List<Book> favorites =
         books.where((book) => _favoriteBooks.contains(book)).toList();
-    return booksFavoriteForCollection;
+    return favorites;
   }
 
   Future<void> _saveFavoriteBooksToCache() async {

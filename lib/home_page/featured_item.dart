@@ -11,8 +11,7 @@ class FeaturedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteProvider = Provider.of<FavoritesProvider>(context);
-
+    final favoriteProvider = context.read<FavoritesProvider>();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -48,10 +47,9 @@ class FeaturedItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                    width: 25,
-                    height: 25,
-                    padding: EdgeInsets.zero,
+                  SizedBox(
+                    height: 48,
+                    width: 48,
                     child: IconButton(
                       onPressed: () => favoriteProvider.addToFavorites(book),
                       icon: const Icon(

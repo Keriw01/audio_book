@@ -11,10 +11,9 @@ class FavoriteSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favoriteProvider = Provider.of<FavoritesProvider>(context);
-    List<Book> booksFavoriteForCollection =
-        favoriteProvider.booksFavoriteForCollection(books);
+    List<Book> favorites = favoriteProvider.booksFavorites(books);
 
-    if (favoriteProvider.isFavoriteBookInBooks(books)) {
+    if (favorites.isNotEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,12 +31,12 @@ class FavoriteSection extends StatelessWidget {
           SizedBox(
             height: 320,
             child: ListView.builder(
-                physics: const ClampingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: booksFavoriteForCollection.length,
-                itemBuilder: (_, index) =>
-                    FavoriteItem(book: booksFavoriteForCollection[index])),
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: favorites.length,
+              itemBuilder: (_, index) => FavoriteItem(book: favorites[index]),
+            ),
           ),
         ],
       );
