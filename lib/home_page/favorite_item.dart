@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
-import 'package:testproject/styles/colors.dart';
+import 'package:testproject/widgets/heart_button.dart';
 
 class FavoriteItem extends StatelessWidget {
   final Book book;
@@ -12,7 +12,6 @@ class FavoriteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favoriteProvider = context.read<FavoritesProvider>();
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: SizedBox(
@@ -31,17 +30,9 @@ class FavoriteItem extends StatelessWidget {
                   width: 150,
                   alignment: Alignment.centerLeft,
                 ),
-                SizedBox(
-                  width: 48,
-                  height: 48,
-                  child: IconButton(
-                    onPressed: () => favoriteProvider.removeFromFavorites(book),
-                    icon: const Icon(
-                      Icons.favorite,
-                      color: heartColor,
-                    ),
-                    padding: EdgeInsets.zero,
-                  ),
+                HeartButton(
+                  onPressed: () => favoriteProvider.removeFromFavorites(book),
+                  iconData: Icons.favorite,
                 ),
               ],
             ),

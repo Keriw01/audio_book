@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
-import 'package:testproject/styles/colors.dart';
+import 'package:testproject/widgets/heart_button.dart';
 
 class FeaturedItem extends StatelessWidget {
   final Book book;
@@ -47,18 +47,10 @@ class FeaturedItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  SizedBox(
-                    height: 48,
-                    width: 48,
-                    child: IconButton(
-                      onPressed: () => favoriteProvider.addToFavorites(book),
-                      icon: const Icon(
-                        Icons.favorite_outline,
-                        color: heartColor,
-                      ),
-                      padding: EdgeInsets.zero,
-                    ),
-                  ),
+                  HeartButton(
+                    onPressed: () => favoriteProvider.addToFavorites(book),
+                    iconData: Icons.favorite_outline,
+                  )
                 ],
               ),
             ],

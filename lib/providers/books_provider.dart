@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/models/books_cached.dart';
 import 'package:testproject/models/collection_detail.dart';
 import 'package:testproject/service/book_api.dart';
 import 'package:dio/dio.dart';
@@ -36,21 +37,17 @@ class BooksProvider with ChangeNotifier {
   Future<void> _saveBookListToCache(List<Book> bookList, String href) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isDataCached$href', true);
-    List<String> jsonList =
-        bookList.map((book) => jsonEncode(book.toJson())).toList();
-    await prefs.setStringList(href, jsonList);
+    BooksCached books = BooksCached(books: bookList);
+    await prefs.setString(href, jsonEncode(books.toJson()));
   }
 
   Future<List<Book>> _loadBookListFromCache(String href) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? jsonStringList = prefs.getStringList(href);
-    if (jsonStringList != null) {
-      List<Book> bookList = jsonStringList.map((jsonString) {
-        Map<String, dynamic> json =
-            jsonDecode(jsonString) as Map<String, dynamic>;
-        return Book.fromJson(json);
-      }).toList();
-      return bookList;
+    String? booksCachedJson = prefs.getString(href);
+    if (booksCachedJson != null) {
+      BooksCached booksCached =
+          BooksCached.fromJson(jsonDecode(booksCachedJson));
+      return booksCached.books;
     } else {
       return [];
     }
