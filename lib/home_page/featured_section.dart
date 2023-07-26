@@ -23,18 +23,20 @@ class FeaturedSection extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
-          FuturedList(books: notFavoriteBooks),
+          FeaturedList(books: notFavoriteBooks),
         ],
       );
     }
+
     if (notFavoriteBooks.isEmpty) {
       return const SizedBox();
     }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 10),
-        FuturedList(books: books),
+        FeaturedList(books: books),
       ],
     );
   }

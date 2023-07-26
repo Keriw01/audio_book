@@ -3,9 +3,9 @@ import 'package:testproject/home_page/featured_item.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/widgets/custom_divider.dart';
 
-class FuturedList extends StatelessWidget {
+class FeaturedList extends StatelessWidget {
   final List<Book> books;
-  const FuturedList({super.key, required this.books});
+  const FeaturedList({super.key, required this.books});
 
   @override
   Widget build(BuildContext context) {

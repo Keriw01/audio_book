@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/models/books_cached.dart';
 import 'package:testproject/models/collection_detail.dart';
 import 'package:testproject/service/book_api.dart';
 import 'package:dio/dio.dart';
+import 'package:testproject/service/books_preferences.dart';
 
 class BooksProvider with ChangeNotifier {
   List<Book> _books = [];
@@ -29,40 +27,17 @@ class BooksProvider with ChangeNotifier {
     await _fetchBookCollections(href);
   }
 
-  Future<bool> _isDataCached(String href) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('isDataCached$href') ?? false;
-  }
-
-  Future<void> _saveBookListToCache(List<Book> bookList, String href) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isDataCached$href', true);
-    BooksCached books = BooksCached(books: bookList);
-    await prefs.setString(href, jsonEncode(books.toJson()));
-  }
-
-  Future<List<Book>> _loadBookListFromCache(String href) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? booksCachedJson = prefs.getString(href);
-    if (booksCachedJson != null) {
-      BooksCached booksCached =
-          BooksCached.fromJson(jsonDecode(booksCachedJson));
-      return booksCached.books;
-    } else {
-      return [];
-    }
-  }
-
   Future<void> _fetchBookCollections(String href) async {
+    final BooksPreferences bookPreferences = BooksPreferences();
     _isLoading = true;
-    bool isDataCached = await _isDataCached(href);
+    bool isDataCached = await bookPreferences.isCached(href);
     if (isDataCached != true) {
       try {
         final dio = Dio();
         final api = BooksApi(dio);
         final CollectionDetail response = await api.getBooks(href);
         _books = response.books;
-        _saveBookListToCache(_books, href);
+        bookPreferences.save(_books, href);
       } catch (error) {
         if (error is DioException) {
           _errorMessage = 'Błąd sieci: ${error.message}';
@@ -71,7 +46,7 @@ class BooksProvider with ChangeNotifier {
         }
       }
     } else {
-      _books = await _loadBookListFromCache(href);
+      _books = await bookPreferences.load(href);
     }
     _isLoading = false;
     notifyListeners();
