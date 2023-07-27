@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/providers/favorites_provider.dart';
+import 'package:testproject/widgets/heart_button.dart';
 
 class FeaturedItem extends StatelessWidget {
   final Book book;
@@ -8,6 +11,8 @@ class FeaturedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = context.read<FavoritesProvider>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -18,8 +23,11 @@ class FeaturedItem extends StatelessWidget {
             children: [
               CachedNetworkImage(
                 imageUrl: book.simpleThumb,
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
+                placeholder: (context, url) => const SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: CircularProgressIndicator(),
+                ),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
                 width: 100,
                 alignment: Alignment.centerLeft,
@@ -28,20 +36,29 @@ class FeaturedItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width - 120,
-                    child: Text(
-                      book.title,
-                      style: Theme.of(context).textTheme.titleMedium,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width - 130,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            book.title,
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          Text(
+                            book.author,
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width - 120,
-                    child: Text(
-                      book.author,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                  ),
+                  HeartButton(
+                    onPressed: () => favoriteProvider.addToFavorites(book),
+                    isFavorite: false,
+                  )
                 ],
               ),
             ],
