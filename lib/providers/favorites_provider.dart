@@ -12,7 +12,9 @@ class FavoritesProvider with ChangeNotifier {
   }
 
   Future<void> _loadFavorites() async {
-    _favoriteBooks = await favoritesPreferences.load();
+    List<Book> loadedFavorites = await favoritesPreferences.load();
+    _favoriteBooks.clear();
+    _favoriteBooks.addAll(loadedFavorites);
     notifyListeners();
   }
 
