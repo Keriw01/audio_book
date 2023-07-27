@@ -12,6 +12,7 @@ class FavoriteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favoriteProvider = context.read<FavoritesProvider>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: SizedBox(

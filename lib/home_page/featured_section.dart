@@ -12,6 +12,7 @@ class FeaturedSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoriteProvider = Provider.of<FavoritesProvider>(context);
     List<Book> notFavoriteBooks = favoriteProvider.booksWithoutFavorite(books);
+
     if (notFavoriteBooks.isNotEmpty && favoriteProvider.isBookFavorite(books)) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
