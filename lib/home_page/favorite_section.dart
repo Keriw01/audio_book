@@ -21,19 +21,20 @@ class FavoriteSection extends StatelessWidget {
             padding: const EdgeInsets.only(
               left: 10,
               top: 15,
+              bottom: 15,
             ),
             child: Text(
               'Twoje ulubione',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
-          const SizedBox(height: 10),
           SizedBox(
-            height: 320,
+            height: 255,
             child: ListView.builder(
               physics: const ClampingScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(horizontal: 5),
               itemCount: favorites.length,
               itemBuilder: (_, index) => FavoriteItem(book: favorites[index]),
             ),

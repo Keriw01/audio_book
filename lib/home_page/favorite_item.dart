@@ -13,30 +13,32 @@ class FavoriteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoriteProvider = context.read<FavoritesProvider>();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: SizedBox(
         width: 150,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              alignment: Alignment.topRight,
-              children: [
-                CachedNetworkImage(
-                  imageUrl: book.simpleThumb,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                  width: 150,
-                  alignment: Alignment.centerLeft,
-                ),
-                HeartButton(
-                  onPressed: () => favoriteProvider.removeFromFavorites(book),
-                  iconData: Icons.favorite,
-                ),
-              ],
+            Expanded(
+              child: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  CachedNetworkImage(
+                    imageUrl: book.simpleThumb,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    width: 150,
+                    alignment: Alignment.centerLeft,
+                  ),
+                  HeartButton(
+                    onPressed: () => favoriteProvider.removeFromFavorites(book),
+                    iconData: Icons.favorite,
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
@@ -44,7 +46,7 @@ class FavoriteItem extends StatelessWidget {
                     book.title,
                     style: Theme.of(context).textTheme.titleSmall,
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
+                    maxLines: 1,
                   ),
                 ),
               ],
@@ -57,7 +59,7 @@ class FavoriteItem extends StatelessWidget {
                     book.author,
                     style: Theme.of(context).textTheme.headlineSmall,
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
+                    maxLines: 1,
                   ),
                 ),
               ],

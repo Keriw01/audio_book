@@ -17,7 +17,11 @@ class FeaturedSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 10, top: 10),
+            padding: const EdgeInsets.only(
+              left: 10,
+              top: 15,
+              bottom: 5,
+            ),
             child: Text(
               'Pozostałe',
               style: Theme.of(context).textTheme.headlineLarge,
@@ -35,7 +39,6 @@ class FeaturedSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 10),
         FeaturedList(books: books),
       ],
     );
