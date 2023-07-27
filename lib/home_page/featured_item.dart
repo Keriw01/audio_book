@@ -38,23 +38,21 @@ class FeaturedItem extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width - 130,
-                          child: Text(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width - 130,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
                             book.title,
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width - 130,
-                          child: Text(
+                          Text(
                             book.author,
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   HeartButton(
