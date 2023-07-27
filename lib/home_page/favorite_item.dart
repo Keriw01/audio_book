@@ -26,11 +26,13 @@ class FavoriteItem extends StatelessWidget {
                 children: [
                   CachedNetworkImage(
                     imageUrl: book.simpleThumb,
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
+                    placeholder: (context, url) => const SizedBox(
+                      height: 180,
+                      width: 180,
+                      child: CircularProgressIndicator(),
+                    ),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
-                    width: 150,
                     alignment: Alignment.centerLeft,
                   ),
                   HeartButton(

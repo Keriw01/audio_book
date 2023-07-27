@@ -21,6 +21,7 @@ class HeartButton extends StatelessWidget {
         icon: Icon(
           iconData,
           color: heartColor,
+          size: 30,
         ),
         padding: EdgeInsets.zero,
       ),
