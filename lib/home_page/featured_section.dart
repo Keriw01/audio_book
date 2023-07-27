@@ -13,7 +13,11 @@ class FeaturedSection extends StatelessWidget {
     final favoriteProvider = Provider.of<FavoritesProvider>(context);
     List<Book> notFavoriteBooks = favoriteProvider.booksWithoutFavorite(books);
 
-    if (notFavoriteBooks.isNotEmpty && favoriteProvider.isBookFavorite(books)) {
+    if (notFavoriteBooks.isEmpty) {
+      return const SizedBox();
+    }
+
+    if (favoriteProvider.isBookFavorite(books)) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,10 +35,6 @@ class FeaturedSection extends StatelessWidget {
           FeaturedList(books: notFavoriteBooks),
         ],
       );
-    }
-
-    if (notFavoriteBooks.isEmpty) {
-      return const SizedBox();
     }
 
     return Column(
