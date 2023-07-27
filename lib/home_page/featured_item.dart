@@ -59,7 +59,7 @@ class FeaturedItem extends StatelessWidget {
                   ),
                   HeartButton(
                     onPressed: () => favoriteProvider.addToFavorites(book),
-                    iconData: Icons.favorite_outline,
+                    isFavorite: false,
                   )
                 ],
               ),

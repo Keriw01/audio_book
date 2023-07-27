@@ -37,7 +37,7 @@ class FavoriteItem extends StatelessWidget {
                   ),
                   HeartButton(
                     onPressed: () => favoriteProvider.removeFromFavorites(book),
-                    iconData: Icons.favorite,
+                    isFavorite: true,
                   ),
                 ],
               ),

@@ -3,12 +3,12 @@ import 'package:testproject/styles/colors.dart';
 
 class HeartButton extends StatelessWidget {
   final VoidCallback onPressed;
-  final IconData iconData;
+  final bool isFavorite;
 
   const HeartButton({
     super.key,
     required this.onPressed,
-    required this.iconData,
+    required this.isFavorite,
   });
 
   @override
@@ -19,7 +19,7 @@ class HeartButton extends StatelessWidget {
       child: IconButton(
         onPressed: onPressed,
         icon: Icon(
-          iconData,
+          isFavorite ? Icons.favorite : Icons.favorite_outline,
           color: heartColor,
           size: 30,
         ),
