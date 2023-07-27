@@ -30,23 +30,21 @@ class BooksProvider with ChangeNotifier {
   Future<void> _fetchBookCollections(String href) async {
     final BooksPreferences bookPreferences = BooksPreferences();
     _isLoading = true;
-    bool isDataCached = await bookPreferences.isCached(href);
-    if (isDataCached != true) {
-      try {
+    try {
+      _books = await bookPreferences.load(href);
+      if (_books.isEmpty) {
         final dio = Dio();
         final api = BooksApi(dio);
         final CollectionDetail response = await api.getBooks(href);
         _books = response.books;
         bookPreferences.save(_books, href);
-      } catch (error) {
-        if (error is DioException) {
-          _errorMessage = 'Błąd sieci: ${error.message}';
-        } else {
-          _errorMessage = 'Inny błąd: $error';
-        }
       }
-    } else {
-      _books = await bookPreferences.load(href);
+    } catch (error) {
+      if (error is DioException) {
+        _errorMessage = 'Błąd sieci: ${error.message}';
+      } else {
+        _errorMessage = 'Inny błąd: $error';
+      }
     }
     _isLoading = false;
     notifyListeners();

@@ -5,11 +5,6 @@ import 'package:testproject/models/book.dart';
 import 'package:testproject/models/books.dart';
 
 class BooksPreferences {
-  Future<bool> isCached(String href) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('isDataCached$href') ?? false;
-  }
-
   Future<void> save(List<Book> bookList, String href) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isDataCached$href', true);
