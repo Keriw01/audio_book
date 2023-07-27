@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
-import 'package:testproject/widgets/custom_list_featured.dart';
+import 'package:testproject/widgets/featured_list.dart';
 
 class FeaturedSection extends StatelessWidget {
   final List<Book> books;
