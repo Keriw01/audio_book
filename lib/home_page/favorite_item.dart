@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/widgets/heart_button.dart';
+import 'package:testproject/widgets/loading_indicator.dart';
 
 class FavoriteItem extends StatelessWidget {
   final Book book;
@@ -16,7 +17,7 @@ class FavoriteItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: SizedBox(
-        width: 150,
+        width: 156,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -26,11 +27,7 @@ class FavoriteItem extends StatelessWidget {
                 children: [
                   CachedNetworkImage(
                     imageUrl: book.simpleThumb,
-                    placeholder: (context, url) => const SizedBox(
-                      height: 180,
-                      width: 180,
-                      child: CircularProgressIndicator(),
-                    ),
+                    placeholder: (context, url) => const LoadingIndicator(),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                     alignment: Alignment.centerLeft,
