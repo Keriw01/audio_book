@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/widgets/featured_list.dart';
@@ -28,7 +29,7 @@ class FeaturedSection extends StatelessWidget {
               bottom: 5,
             ),
             child: Text(
-              'Pozostałe',
+              S.of(context).others,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),

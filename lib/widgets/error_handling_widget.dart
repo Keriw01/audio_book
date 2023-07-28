@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testproject/generated/l10n.dart';
 
 class ErrorHandlingWidget extends StatelessWidget {
   final String textError;
@@ -15,12 +16,12 @@ class ErrorHandlingWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          const Text('Wystąpił błąd:'),
+          Text(S.of(context).errorOccured),
           Text(textError),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () => onRefresh,
-            child: const Text('Odśwież dane'),
+            child: Text(S.of(context).refreshData),
           ),
         ],
       ),
