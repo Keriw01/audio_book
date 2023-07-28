@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:testproject/providers/collections_provider.dart';
 import 'package:testproject/home_page/collection_item.dart';
 import 'package:testproject/widgets/custom_divider.dart';
+import 'package:testproject/widgets/error_handling_widget.dart';
+import 'package:testproject/widgets/loading_indicator.dart';
 
 class HomePageContent extends StatelessWidget {
   const HomePageContent({super.key});
@@ -12,23 +14,12 @@ class HomePageContent extends StatelessWidget {
     return Consumer<CollectionsProvider>(
       builder: (_, provider, __) {
         if (provider.isLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const LoadingIndicator();
         }
         if (provider.errorMessage.isNotEmpty) {
-          return Center(
-            child: Column(
-              children: [
-                const Text('Wystąpił błąd:'),
-                Text(provider.errorMessage),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () => provider.refreshCollection(),
-                  child: const Text('Odśwież dane'),
-                ),
-              ],
-            ),
+          return ErrorHandlingWidget(
+            textError: provider.errorMessage,
+            onRefresh: provider.refreshCollection(),
           );
         }
         return ListView.separated(

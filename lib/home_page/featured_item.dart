@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/widgets/heart_button.dart';
+import 'package:testproject/widgets/loading_indicator.dart';
 
 class FeaturedItem extends StatelessWidget {
   final Book book;
@@ -23,11 +24,7 @@ class FeaturedItem extends StatelessWidget {
             children: [
               CachedNetworkImage(
                 imageUrl: book.simpleThumb,
-                placeholder: (context, url) => const SizedBox(
-                  height: 100,
-                  width: 100,
-                  child: CircularProgressIndicator(),
-                ),
+                placeholder: (context, url) => const LoadingIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
                 width: 100,
                 alignment: Alignment.centerLeft,

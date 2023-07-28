@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/service/favorites_preferences.dart';
+import 'package:testproject/service/locator.dart';
 
 class FavoritesProvider with ChangeNotifier {
   List<Book> _favoriteBooks = [];
   List<Book> get favorite => _favoriteBooks;
-  final FavoritesPreferences favoritesPreferences = FavoritesPreferences();
+  final favoritesPreferences = getIt<FavoritesPreferences>();
 
   FavoritesProvider() {
     _loadFavorites();

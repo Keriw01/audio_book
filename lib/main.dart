@@ -4,12 +4,13 @@ import 'package:testproject/home_page/home_page.dart';
 import 'package:testproject/providers/collections_provider.dart';
 import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/service/books_preferences.dart';
+import 'package:testproject/service/locator.dart';
 import 'package:testproject/styles/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final BooksPreferences bookPreferences = BooksPreferences();
-  await bookPreferences.clear();
+  await setupLocator();
+  await getIt<BooksPreferences>().clear();
   runApp(const MyApp());
 }
 

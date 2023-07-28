@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/models/collection.dart';
 import 'package:testproject/service/collections_api.dart';
+import 'package:testproject/service/locator.dart';
 
 class CollectionsProvider with ChangeNotifier {
   List<Collection> _collections = [];
@@ -29,16 +29,9 @@ class CollectionsProvider with ChangeNotifier {
     _isLoading = true;
 
     try {
-      final dio = Dio();
-      final api = CollectionsApi(dio);
-
-      _collections = await api.getCollections();
+      _collections = await getIt<CollectionsApi>().getCollections();
     } catch (error) {
-      if (error is DioException) {
-        _errorMessage = 'Błąd sieci: ${error.message}';
-      } else {
-        _errorMessage = 'Inny błąd: $error';
-      }
+      _errorMessage = 'Błąd: $error';
     }
 
     _isLoading = false;

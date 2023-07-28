@@ -6,7 +6,10 @@ import 'package:testproject/home_page/books_page.dart';
 class CollectionItem extends StatelessWidget {
   final Collection collection;
 
-  const CollectionItem({super.key, required this.collection});
+  const CollectionItem({
+    super.key,
+    required this.collection,
+  });
 
   Future<Future> navigateToBooksPage(BuildContext context) async {
     return Navigator.push(
