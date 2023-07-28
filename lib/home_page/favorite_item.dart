@@ -17,7 +17,7 @@ class FavoriteItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: SizedBox(
-        width: 150,
+        width: 156,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,10 +27,7 @@ class FavoriteItem extends StatelessWidget {
                 children: [
                   CachedNetworkImage(
                     imageUrl: book.simpleThumb,
-                    placeholder: (context, url) => const LoadingIndicator(
-                      indicatorWidth: 150,
-                      indicatorHeight: 150,
-                    ),
+                    placeholder: (context, url) => const LoadingIndicator(),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                     alignment: Alignment.centerLeft,
