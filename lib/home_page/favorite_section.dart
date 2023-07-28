@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/favorite_item.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
@@ -24,7 +25,7 @@ class FavoriteSection extends StatelessWidget {
               bottom: 15,
             ),
             child: Text(
-              'Twoje ulubione',
+              S.of(context).yourFavorite,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/home_page.dart';
 import 'package:testproject/providers/collections_provider.dart';
 import 'package:testproject/providers/favorites_provider.dart';
@@ -25,6 +27,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FavoritesProvider())
       ],
       child: MaterialApp(
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
         title: 'Utwory',
         theme: customTheme,
         home: const HomePage(),

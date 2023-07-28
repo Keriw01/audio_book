@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/category_page/category_page.dart';
+import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/home_content.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,9 +13,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ValueNotifier<int> _selectedIndexNotifier = ValueNotifier<int>(0);
 
-  static const List<String> _widgetTitle = <String>[
-    'Strona główna',
-    'Kategorie',
+  static final List<String> _widgetTitle = <String>[
+    S.current.homePageTitle,
+    S.current.categoryPageTitle,
   ];
 
   @override
