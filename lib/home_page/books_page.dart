@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:testproject/cubit/books_cubit.dart';
+import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/home_page/favorite_section.dart';
 import 'package:testproject/home_page/featured_section.dart';
 import 'package:testproject/providers/books_provider.dart';
@@ -17,36 +20,33 @@ class BooksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => BooksProvider(collection.href),
-      builder: (context, child) {
-        return Scaffold(
-          appBar: AppBar(title: Text(collection.title)),
-          body: Consumer<BooksProvider>(
-            builder: (_, booksProvider, __) {
-              if (booksProvider.isLoading) {
-                return const LoadingIndicator();
-              }
-              if (booksProvider.errorMessage.isNotEmpty) {
-                return ErrorHandlingWidget(
-                  textError: booksProvider.errorMessage,
-                  onRefresh:
-                      booksProvider.refreshBookCollection(collection.href),
-                );
-              }
+    return BlocProvider(
+      create: (context) => BooksCubit(collection.href),
+      child: Scaffold(
+        appBar: AppBar(title: Text(collection.title)),
+        body: BlocBuilder<BooksCubit, BooksState>(
+          builder: (context, state) {
+            if (state is BooksLoading) {
+              return const LoadingIndicator();
+            }
+            if (state is BooksError) {
+              return Text('Blad ${state.message}');
+            }
+            if (state is BooksLoaded) {
               return SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FavoriteSection(books: booksProvider.books),
-                    FeaturedSection(books: booksProvider.books)
+                    //FavoriteSection(books: state.books),
+                    FeaturedSection(books: state.books)
                   ],
                 ),
               );
-            },
-          ),
-        );
-      },
+            }
+            return const Text('No data avaliable.');
+          },
+        ),
+      ),
     );
   }
 }

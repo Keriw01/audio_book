@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/widgets/heart_button.dart';
@@ -12,7 +13,7 @@ class FavoriteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteProvider = context.read<FavoritesProvider>();
+    final favoritesCubit = context.read<FavoritesCubit>();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -33,7 +34,7 @@ class FavoriteItem extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                   ),
                   HeartButton(
-                    onPressed: () => favoriteProvider.removeFromFavorites(book),
+                    onPressed: () => favoritesCubit.removeFromFavorites(book),
                     isFavorite: true,
                   ),
                 ],

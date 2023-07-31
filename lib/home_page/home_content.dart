@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:testproject/providers/collections_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testproject/cubit/collections_cubit.dart';
 import 'package:testproject/home_page/collection_item.dart';
 import 'package:testproject/widgets/custom_divider.dart';
-import 'package:testproject/widgets/error_handling_widget.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
 class HomePageContent extends StatelessWidget {
@@ -11,22 +10,40 @@ class HomePageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CollectionsProvider>(
-      builder: (_, provider, __) {
-        if (provider.isLoading) {
-          return const LoadingIndicator();
-        }
-        if (provider.errorMessage.isNotEmpty) {
-          return ErrorHandlingWidget(
-            textError: provider.errorMessage,
-            onRefresh: provider.refreshCollection(),
+    return BlocBuilder<CollectionsCubit, CollectionsState>(
+      builder: (context, state) {
+        if (state is CollectionsError) {
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Błąd podczas pobierania danych !'),
+                ),
+              );
+            },
           );
         }
-        return ListView.separated(
-          itemCount: provider.collections.length,
-          separatorBuilder: (context, index) => const CustomDivider(),
-          itemBuilder: (_, index) => CollectionItem(
-            collection: provider.collections[index],
+
+        if (state is CollectionsLoading) {
+          return const LoadingIndicator();
+        }
+
+        if (state is CollectionsLoaded) {
+          return ListView.separated(
+            itemCount: state.collections.length,
+            separatorBuilder: (context, index) => const CustomDivider(),
+            itemBuilder: (_, index) => CollectionItem(
+              collection: state.collections[index],
+            ),
+          );
+        }
+
+        return Center(
+          child: ElevatedButton(
+            onPressed: () {
+              context.read<CollectionsCubit>().refreshCollection();
+            },
+            child: const Text('Odśwież'),
           ),
         );
       },
