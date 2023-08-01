@@ -11,7 +11,7 @@ class FavoriteSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavoritesCubit, FavoritesState>(
+    return BlocConsumer<FavoritesCubit, FavoritesState>(
       builder: (context, state) {
         if (state is FavoritesLoaded) {
           final favoritesCubit = BlocProvider.of<FavoritesCubit>(context);
@@ -49,19 +49,20 @@ class FavoriteSection extends StatelessWidget {
           }
         }
 
+        return const SizedBox.shrink();
+      },
+      listener: (context, state) {
         if (state is FavoritesError) {
           WidgetsBinding.instance.addPostFrameCallback(
             (_) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Błąd podczas ładowania danych z pamięci!'),
+                SnackBar(
+                  content: Text(S.of(context).errorLoadDataCache),
                 ),
               );
             },
           );
         }
-
-        return const SizedBox.shrink();
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/books_cubit.dart';
+import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/favorite_section.dart';
 import 'package:testproject/home_page/featured_section.dart';
 import 'package:testproject/models/collection.dart';
@@ -22,28 +23,18 @@ class BooksPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(collection.title),
         ),
-        body: BlocBuilder<BooksCubit, BooksState>(
+        body: BlocConsumer<BooksCubit, BooksState>(
           builder: (context, state) {
             if (state is BooksLoading) {
               return const LoadingIndicator();
             }
 
             if (state is BooksError) {
-              WidgetsBinding.instance.addPostFrameCallback(
-                (_) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content:
-                          Text('Błąd podczas pobierania danych o książkach!'),
-                    ),
-                  );
-                },
-              );
               return Center(
                 child: ElevatedButton(
                   onPressed: () =>
-                      context.read<BooksCubit>().refreshBooks(collection.href),
-                  child: const Text('Odśwież'),
+                      context.read<BooksCubit>().fetchBooks(collection.href),
+                  child: Text(S.of(context).refreshData),
                 ),
               );
             }
@@ -61,6 +52,19 @@ class BooksPage extends StatelessWidget {
             }
 
             return const SizedBox.shrink();
+          },
+          listener: (context, state) {
+            if (state is BooksError) {
+              WidgetsBinding.instance.addPostFrameCallback(
+                (_) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(S.of(context).errorFetchBooks),
+                    ),
+                  );
+                },
+              );
+            }
           },
         ),
       ),
