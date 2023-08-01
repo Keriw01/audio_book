@@ -4,9 +4,7 @@ import 'package:testproject/cubit/books_cubit.dart';
 import 'package:testproject/home_page/favorite_section.dart';
 import 'package:testproject/home_page/featured_section.dart';
 import 'package:testproject/models/collection.dart';
-import 'package:testproject/widgets/error_snackbar.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
-import 'package:testproject/widgets/refresh_button.dart';
 
 class BooksPage extends StatelessWidget {
   final Collection collection;
@@ -31,8 +29,22 @@ class BooksPage extends StatelessWidget {
             }
 
             if (state is BooksError) {
-              return const ErrorSnackbar(
-                textError: 'Błąd podczas pobierania danych o książkach!',
+              WidgetsBinding.instance.addPostFrameCallback(
+                (_) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content:
+                          Text('Błąd podczas pobierania danych o książkach!'),
+                    ),
+                  );
+                },
+              );
+              return Center(
+                child: ElevatedButton(
+                  onPressed: () =>
+                      context.read<BooksCubit>().refreshBooks(collection.href),
+                  child: const Text('Odśwież'),
+                ),
               );
             }
 
@@ -48,10 +60,7 @@ class BooksPage extends StatelessWidget {
               );
             }
 
-            return RefreshButton(
-              refreshData: () =>
-                  context.read<BooksCubit>().refreshBooks(collection.href),
-            );
+            return const SizedBox.shrink();
           },
         ),
       ),

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/widgets/error_snackbar.dart';
 import 'package:testproject/widgets/featured_list.dart';
 
 class FeaturedSection extends StatelessWidget {
@@ -43,18 +42,25 @@ class FeaturedSection extends StatelessWidget {
               ],
             );
           }
-        }
-        if (state is FavoritesError) {
-          return const ErrorSnackbar(
-            textError: 'Błąd podczas ładowania danych z pamięci!',
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FeaturedList(books: books),
+            ],
           );
         }
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FeaturedList(books: books),
-          ],
-        );
+        if (state is FavoritesError) {
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Błąd podczas ładowania danych z pamięci!'),
+                ),
+              );
+            },
+          );
+        }
+        return const SizedBox.shrink();
       },
     );
   }

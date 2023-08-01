@@ -4,7 +4,6 @@ import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/favorite_item.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/widgets/error_snackbar.dart';
 
 class FavoriteSection extends StatelessWidget {
   final List<Book> books;
@@ -51,12 +50,18 @@ class FavoriteSection extends StatelessWidget {
         }
 
         if (state is FavoritesError) {
-          return const ErrorSnackbar(
-            textError: 'Błąd podczas ładowania danych z pamięci!',
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Błąd podczas ładowania danych z pamięci!'),
+                ),
+              );
+            },
           );
         }
 
-        return const SizedBox();
+        return const SizedBox.shrink();
       },
     );
   }

@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/collections_cubit.dart';
 import 'package:testproject/home_page/collection_item.dart';
 import 'package:testproject/widgets/custom_divider.dart';
-import 'package:testproject/widgets/error_snackbar.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
-import 'package:testproject/widgets/refresh_button.dart';
 
 class HomePageContent extends StatelessWidget {
   const HomePageContent({super.key});
@@ -19,8 +17,21 @@ class HomePageContent extends StatelessWidget {
         }
 
         if (state is CollectionsError) {
-          return const ErrorSnackbar(
-            textError: 'Błąd podczas pobierania danych o kolekcjach!',
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Błąd podczas pobierania danych o kolekcjach!'),
+                ),
+              );
+            },
+          );
+          return Center(
+            child: ElevatedButton(
+              onPressed: () =>
+                  context.read<CollectionsCubit>().refreshCollection(),
+              child: const Text('Odśwież'),
+            ),
           );
         }
 
@@ -34,10 +45,7 @@ class HomePageContent extends StatelessWidget {
           );
         }
 
-        return RefreshButton(
-          refreshData: () =>
-              context.read<CollectionsCubit>().refreshCollection(),
-        );
+        return const SizedBox.shrink();
       },
     );
   }
