@@ -27,8 +27,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas pobierania danych o książkach!"),
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas pobierania danych o kolekcjach!"),
-        "errorLoadDataCache": MessageLookupByLibrary.simpleMessage(
-            "Błąd podczas ładowania danych z pamięci!"),
         "errorOccured": MessageLookupByLibrary.simpleMessage("Wystąpił błąd:"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Strona główna"),
         "others": MessageLookupByLibrary.simpleMessage("Pozostałe"),

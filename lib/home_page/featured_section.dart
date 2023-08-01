@@ -14,7 +14,7 @@ class FeaturedSection extends StatelessWidget {
     return BlocConsumer<FavoritesCubit, FavoritesState>(
       builder: (context, state) {
         if (state is FavoritesLoaded) {
-          final favoritesCubit = BlocProvider.of<FavoritesCubit>(context);
+          final favoritesCubit = context.read<FavoritesCubit>();
           List<Book> notFavoriteBooks =
               favoritesCubit.booksWithoutFavorite(books);
           List<Book> favorites = favoritesCubit.booksFavorites(books);
@@ -59,7 +59,7 @@ class FeaturedSection extends StatelessWidget {
             (_) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(S.of(context).errorLoadDataCache),
+                  content: Text(S.of(context).errorOccured + state.message),
                 ),
               );
             },

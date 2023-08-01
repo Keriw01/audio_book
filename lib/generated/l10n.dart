@@ -129,16 +129,6 @@ class S {
       args: [],
     );
   }
-
-  /// `Błąd podczas ładowania danych z pamięci!`
-  String get errorLoadDataCache {
-    return Intl.message(
-      'Błąd podczas ładowania danych z pamięci!',
-      name: 'errorLoadDataCache',
-      desc: '',
-      args: [],
-    );
-  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -6,6 +6,5 @@
     "refreshData": "Odśwież dane",
     "others": "Pozostałe",
     "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
-    "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
-    "errorLoadDataCache": "Błąd podczas ładowania danych z pamięci!"
+    "errorFetchBooks": "Błąd podczas pobierania danych o książkach!"
 }

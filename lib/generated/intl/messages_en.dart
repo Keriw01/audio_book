@@ -27,8 +27,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error fetching book data!"),
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
             "Error fetching collection data!"),
-        "errorLoadDataCache": MessageLookupByLibrary.simpleMessage(
-            "Error loading data from memory!"),
         "errorOccured":
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
