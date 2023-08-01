@@ -15,15 +15,21 @@ class FeaturedSection extends StatelessWidget {
       builder: (context, state) {
         if (state is FavoritesLoaded) {
           final favoritesCubit = context.read<FavoritesCubit>();
-          List<Book> notFavoriteBooks =
-              favoritesCubit.booksWithoutFavorite(books);
           List<Book> favorites = favoritesCubit.booksFavorites(books);
 
-          if (notFavoriteBooks.isEmpty) {
-            return const SizedBox();
+          if (favorites.isEmpty) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FeaturedList(books: books),
+              ],
+            );
           }
 
-          if (favorites.isNotEmpty) {
+          List<Book> notFavoriteBooks =
+              favoritesCubit.booksWithoutFavorite(books);
+
+          if (notFavoriteBooks.isNotEmpty) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -43,12 +49,7 @@ class FeaturedSection extends StatelessWidget {
             );
           }
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              FeaturedList(books: books),
-            ],
-          );
+          return const SizedBox();
         }
 
         return const SizedBox.shrink();

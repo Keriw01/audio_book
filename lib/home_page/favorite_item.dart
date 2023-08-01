@@ -43,6 +43,7 @@ class FavoriteItem extends StatelessWidget {
               book.title,
               style: Theme.of(context).textTheme.titleSmall,
               overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
             const SizedBox(height: 2),
             Text(
