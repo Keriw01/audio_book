@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/collections_cubit.dart';
 import 'package:testproject/home_page/collection_item.dart';
 import 'package:testproject/widgets/custom_divider.dart';
+import 'package:testproject/widgets/error_snackbar.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
+import 'package:testproject/widgets/refresh_button.dart';
 
 class HomePageContent extends StatelessWidget {
   const HomePageContent({super.key});
@@ -12,20 +14,14 @@ class HomePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CollectionsCubit, CollectionsState>(
       builder: (context, state) {
-        if (state is CollectionsError) {
-          WidgetsBinding.instance.addPostFrameCallback(
-            (_) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Błąd podczas pobierania danych !'),
-                ),
-              );
-            },
-          );
-        }
-
         if (state is CollectionsLoading) {
           return const LoadingIndicator();
+        }
+
+        if (state is CollectionsError) {
+          return const ErrorSnackbar(
+            textError: 'Błąd podczas pobierania danych o kolekcjach!',
+          );
         }
 
         if (state is CollectionsLoaded) {
@@ -38,13 +34,9 @@ class HomePageContent extends StatelessWidget {
           );
         }
 
-        return Center(
-          child: ElevatedButton(
-            onPressed: () {
-              context.read<CollectionsCubit>().refreshCollection();
-            },
-            child: const Text('Odśwież'),
-          ),
+        return RefreshButton(
+          refreshData: () =>
+              context.read<CollectionsCubit>().refreshCollection(),
         );
       },
     );

@@ -8,10 +8,11 @@ part 'collections_state.dart';
 
 class CollectionsCubit extends Cubit<CollectionsState> {
   CollectionsCubit() : super(const CollectionsInitial()) {
-    fetchCollections();
+    _fetchCollections();
   }
 
   Future<void> _fetchCollections() async {
+    emit(const CollectionsLoading());
     try {
       List<Collection> collections =
           await getIt<CollectionsApi>().getCollections();
@@ -19,11 +20,6 @@ class CollectionsCubit extends Cubit<CollectionsState> {
     } catch (error) {
       emit(CollectionsError(error.toString()));
     }
-  }
-
-  void fetchCollections() {
-    emit(const CollectionsLoading());
-    _fetchCollections();
   }
 
   void refreshCollection() {

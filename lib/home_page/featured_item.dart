@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 

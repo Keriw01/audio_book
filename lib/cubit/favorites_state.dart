@@ -9,10 +9,6 @@ class FavoritesInitial extends FavoritesState {
   const FavoritesInitial();
 }
 
-class FavoritesLoading extends FavoritesState {
-  const FavoritesLoading();
-}
-
 class FavoritesLoaded extends FavoritesState {
   final List<Book> favoriteBooks;
   const FavoritesLoaded(this.favoriteBooks);

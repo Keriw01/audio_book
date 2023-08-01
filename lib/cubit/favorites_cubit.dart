@@ -9,11 +9,10 @@ part 'favorites_state.dart';
 class FavoritesCubit extends Cubit<FavoritesState> {
   final favoritesPreferences = getIt<FavoritesPreferences>();
   FavoritesCubit() : super(const FavoritesInitial()) {
-    loadFavorites();
+    _loadFavorites();
   }
 
-  Future<void> loadFavorites() async {
-    emit(const FavoritesLoading());
+  Future<void> _loadFavorites() async {
     try {
       List<Book> favorites = await favoritesPreferences.load();
       emit(FavoritesLoaded(favorites));
@@ -24,7 +23,8 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   void addToFavorites(Book book) {
     try {
-      List<Book> currentFavorites = (state as FavoritesLoaded).favoriteBooks;
+      List<Book> currentFavorites =
+          List.from((state as FavoritesLoaded).favoriteBooks);
       currentFavorites.add(book);
       favoritesPreferences.save(currentFavorites);
       emit(FavoritesLoaded(currentFavorites));
@@ -35,24 +35,14 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   void removeFromFavorites(Book book) {
     try {
-      List<Book> currentFavorites = (state as FavoritesLoaded).favoriteBooks;
+      List<Book> currentFavorites =
+          List.from((state as FavoritesLoaded).favoriteBooks);
       currentFavorites.remove(book);
       favoritesPreferences.save(currentFavorites);
       emit(FavoritesLoaded(currentFavorites));
     } catch (error) {
       emit(FavoritesError(error.toString()));
     }
-  }
-
-  bool isBookFavorite(List<Book> books) {
-    final currentState = state;
-    if (currentState is FavoritesLoaded) {
-      return currentState.favoriteBooks.any(
-        (searchBook) =>
-            books.any((mainBook) => mainBook.title == searchBook.title),
-      );
-    }
-    return false;
   }
 
   List<Book> booksWithoutFavorite(List<Book> books) {

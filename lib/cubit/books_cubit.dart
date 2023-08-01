@@ -11,10 +11,10 @@ part 'books_state.dart';
 class BooksCubit extends Cubit<BooksState> {
   final String href;
   BooksCubit(this.href) : super(const BooksInitial()) {
-    fetchBooks(href);
+    _fetchBooks(href);
   }
 
-  Future<void> fetchBooks(String href) async {
+  Future<void> _fetchBooks(String href) async {
     emit(const BooksLoading());
     try {
       final bookPreferences = getIt<BooksPreferences>();
@@ -31,7 +31,7 @@ class BooksCubit extends Cubit<BooksState> {
     }
   }
 
-  Future<void> refreshBookCollection(String href) async {
-    await fetchBooks(href);
+  Future<void> refreshBooks(String href) async {
+    await _fetchBooks(href);
   }
 }
