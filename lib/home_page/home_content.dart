@@ -41,14 +41,10 @@ class HomePageContent extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is CollectionsError) {
-          WidgetsBinding.instance.addPostFrameCallback(
-            (_) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(S.of(context).errorFetchCollection),
-                ),
-              );
-            },
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(S.of(context).errorFetchCollection),
+            ),
           );
         }
       },

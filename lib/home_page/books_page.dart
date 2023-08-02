@@ -55,14 +55,10 @@ class BooksPage extends StatelessWidget {
           },
           listener: (context, state) {
             if (state is BooksError) {
-              WidgetsBinding.instance.addPostFrameCallback(
-                (_) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(S.of(context).errorFetchBooks),
-                    ),
-                  );
-                },
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(S.of(context).errorFetchBooks),
+                ),
               );
             }
           },

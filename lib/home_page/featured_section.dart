@@ -56,14 +56,10 @@ class FeaturedSection extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is FavoritesError) {
-          WidgetsBinding.instance.addPostFrameCallback(
-            (_) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(S.of(context).errorOccured + state.message),
-                ),
-              );
-            },
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(S.of(context).errorOccured + state.message),
+            ),
           );
         }
       },
