@@ -129,6 +129,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Szczegóły Książki`
+  String get bookDetail {
+    return Intl.message(
+      'Szczegóły Książki',
+      name: 'bookDetail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

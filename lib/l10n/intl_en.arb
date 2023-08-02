@@ -6,5 +6,6 @@
     "refreshData": "Refresh data",
     "others": "Others",
     "errorFetchCollection": "Error fetching collection data!",
-    "errorFetchBooks": "Error fetching book data!"
+    "errorFetchBooks": "Error fetching book data!",
+    "bookDetail": "Book Detail"
 }
