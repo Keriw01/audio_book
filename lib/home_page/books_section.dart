@@ -10,7 +10,7 @@ class BooksSection extends StatelessWidget {
   final List<Book> books;
   const BooksSection({super.key, required this.books});
 
-  void _onStateError(BuildContext context, FavoritesState state) {
+  void _listener(BuildContext context, FavoritesState state) {
     if (state is FavoritesError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -38,7 +38,7 @@ class BooksSection extends StatelessWidget {
 
         return const SizedBox.shrink();
       },
-      listener: _onStateError,
+      listener: _listener,
     );
   }
 }

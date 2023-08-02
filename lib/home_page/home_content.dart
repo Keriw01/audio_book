@@ -9,7 +9,7 @@ import 'package:testproject/widgets/loading_indicator.dart';
 class HomePageContent extends StatelessWidget {
   const HomePageContent({super.key});
 
-  void _onStateError(BuildContext context, CollectionsState state) {
+  void _listener(BuildContext context, CollectionsState state) {
     if (state is CollectionsError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -48,7 +48,7 @@ class HomePageContent extends StatelessWidget {
 
         return const SizedBox.shrink();
       },
-      listener: _onStateError,
+      listener: _listener,
     );
   }
 }

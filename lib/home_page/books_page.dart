@@ -14,7 +14,7 @@ class BooksPage extends StatelessWidget {
     required this.collection,
   });
 
-  void _onStateError(BuildContext context, BooksState state) {
+  void _listener(BuildContext context, BooksState state) {
     if (state is BooksError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -53,7 +53,7 @@ class BooksPage extends StatelessWidget {
 
             return const SizedBox.shrink();
           },
-          listener: _onStateError,
+          listener: _listener,
         ),
       ),
     );
