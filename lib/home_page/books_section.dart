@@ -6,9 +6,9 @@ import 'package:testproject/home_page/favorite_section.dart';
 import 'package:testproject/home_page/featured_section.dart';
 import 'package:testproject/models/book.dart';
 
-class BooksLoadedWidget extends StatelessWidget {
+class BooksSection extends StatelessWidget {
   final List<Book> books;
-  const BooksLoadedWidget({super.key, required this.books});
+  const BooksSection({super.key, required this.books});
 
   void _onStateError(BuildContext context, FavoritesState state) {
     if (state is FavoritesError) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/books_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/books_loaded_widget.dart';
+import 'package:testproject/home_page/books_section.dart';
 import 'package:testproject/models/collection.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
@@ -48,7 +48,7 @@ class BooksPage extends StatelessWidget {
             }
 
             if (state is BooksLoaded) {
-              return BooksLoadedWidget(books: state.books);
+              return BooksSection(books: state.books);
             }
 
             return const SizedBox.shrink();
