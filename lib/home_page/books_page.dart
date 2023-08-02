@@ -20,6 +20,15 @@ class BooksPage extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(S.of(context).errorFetchBooks),
+          actionOverflowThreshold: 1,
+          action: SnackBarAction(
+            label: S.of(context).refreshData,
+            onPressed: () =>
+                context.read<BooksCubit>().fetchBooks(collection.href),
+          ),
+          duration: const Duration(
+            seconds: 30,
+          ),
         ),
       );
     }
@@ -37,16 +46,6 @@ class BooksPage extends StatelessWidget {
           builder: (context, state) {
             if (state is BooksLoading) {
               return const LoadingIndicator();
-            }
-
-            if (state is BooksError) {
-              return Center(
-                child: ElevatedButton(
-                  onPressed: () =>
-                      context.read<BooksCubit>().fetchBooks(collection.href),
-                  child: Text(S.of(context).refreshData),
-                ),
-              );
             }
 
             if (state is BooksLoaded) {

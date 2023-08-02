@@ -14,6 +14,15 @@ class HomePageContent extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(S.of(context).errorFetchCollection),
+          actionOverflowThreshold: 1,
+          action: SnackBarAction(
+            label: S.of(context).refreshData,
+            onPressed: () =>
+                context.read<CollectionsCubit>().fetchCollections(),
+          ),
+          duration: const Duration(
+            seconds: 30,
+          ),
         ),
       );
     }
@@ -25,16 +34,6 @@ class HomePageContent extends StatelessWidget {
       builder: (context, state) {
         if (state is CollectionsLoading) {
           return const LoadingIndicator();
-        }
-
-        if (state is CollectionsError) {
-          return Center(
-            child: ElevatedButton(
-              onPressed: () =>
-                  context.read<CollectionsCubit>().fetchCollections(),
-              child: Text(S.of(context).refreshData),
-            ),
-          );
         }
 
         if (state is CollectionsLoaded) {
