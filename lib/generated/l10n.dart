@@ -139,6 +139,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Fragment`
+  String get fragment {
+    return Intl.message(
+      'Fragment',
+      name: 'fragment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

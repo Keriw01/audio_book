@@ -7,5 +7,6 @@
     "others": "Others",
     "errorFetchCollection": "Error fetching collection data!",
     "errorFetchBooks": "Error fetching book data!",
-    "bookDetail": "Book Detail"
+    "bookDetail": "Book Detail",
+    "fragment": "Excerpt"
 }

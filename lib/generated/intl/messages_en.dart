@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error fetching collection data!"),
         "errorOccured":
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
+        "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Refresh data"),

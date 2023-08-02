@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas pobierania danych o kolekcjach!"),
         "errorOccured": MessageLookupByLibrary.simpleMessage("Wystąpił błąd:"),
+        "fragment": MessageLookupByLibrary.simpleMessage("Fragment"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Strona główna"),
         "others": MessageLookupByLibrary.simpleMessage("Pozostałe"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Odśwież dane"),

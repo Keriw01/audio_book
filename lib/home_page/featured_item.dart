@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:testproject/cubit/favorites_cubit.dart';
-import 'package:testproject/home_page/book_detail.dart';
+import 'package:testproject/home_page/book_detail_page.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
@@ -16,8 +16,9 @@ class FeaturedItem extends StatelessWidget {
     return Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BookDetail(
+        builder: (context) => BookDetailPage(
           href: book.href,
+          book: book,
         ),
       ),
     );
