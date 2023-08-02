@@ -109,6 +109,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Błąd podczas pobierania danych o kolekcjach!`
+  String get errorFetchCollection {
+    return Intl.message(
+      'Błąd podczas pobierania danych o kolekcjach!',
+      name: 'errorFetchCollection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd podczas pobierania danych o książkach!`
+  String get errorFetchBooks {
+    return Intl.message(
+      'Błąd podczas pobierania danych o książkach!',
+      name: 'errorFetchBooks',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

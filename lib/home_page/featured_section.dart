@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/widgets/featured_list.dart';
 
 class FeaturedSection extends StatelessWidget {
@@ -11,14 +11,21 @@ class FeaturedSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteProvider = Provider.of<FavoritesProvider>(context);
-    List<Book> notFavoriteBooks = favoriteProvider.booksWithoutFavorite(books);
+    final favoritesCubit = context.read<FavoritesCubit>();
+    List<Book> favorites = favoritesCubit.booksFavorites(books);
 
-    if (notFavoriteBooks.isEmpty) {
-      return const SizedBox();
+    if (favorites.isEmpty) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FeaturedList(books: books),
+        ],
+      );
     }
 
-    if (favoriteProvider.isBookFavorite(books)) {
+    List<Book> notFavoriteBooks = favoritesCubit.booksWithoutFavorite(books);
+
+    if (notFavoriteBooks.isNotEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -38,11 +45,6 @@ class FeaturedSection extends StatelessWidget {
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        FeaturedList(books: books),
-      ],
-    );
+    return const SizedBox();
   }
 }

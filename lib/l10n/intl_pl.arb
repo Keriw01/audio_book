@@ -4,5 +4,7 @@
     "yourFavorite": "Twoje ulubione",
     "errorOccured": "Wystąpił błąd:",
     "refreshData": "Odśwież dane",
-    "others": "Pozostałe"
+    "others": "Pozostałe",
+    "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
+    "errorFetchBooks": "Błąd podczas pobierania danych o książkach!"
 }

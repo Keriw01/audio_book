@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
+import 'package:testproject/cubit/collections_cubit.dart';
+import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/home_page.dart';
-import 'package:testproject/providers/collections_provider.dart';
-import 'package:testproject/providers/favorites_provider.dart';
 import 'package:testproject/service/books_preferences.dart';
 import 'package:testproject/service/locator.dart';
 import 'package:testproject/styles/theme.dart';
@@ -21,10 +21,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => CollectionsProvider()),
-        ChangeNotifierProvider(create: (_) => FavoritesProvider())
+        BlocProvider<CollectionsCubit>(
+          create: (BuildContext context) => CollectionsCubit(),
+        ),
+        BlocProvider<FavoritesCubit>(
+          create: (BuildContext context) => FavoritesCubit(),
+        ),
       ],
       child: MaterialApp(
         localizationsDelegates: const [

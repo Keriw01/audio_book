@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/favorite_item.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/providers/favorites_provider.dart';
 
 class FavoriteSection extends StatelessWidget {
   final List<Book> books;
@@ -11,8 +11,8 @@ class FavoriteSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteProvider = Provider.of<FavoritesProvider>(context);
-    List<Book> favorites = favoriteProvider.booksFavorites(books);
+    final favoritesCubit = context.read<FavoritesCubit>();
+    List<Book> favorites = favoritesCubit.booksFavorites(books);
 
     if (favorites.isNotEmpty) {
       return Column(
@@ -43,6 +43,7 @@ class FavoriteSection extends StatelessWidget {
         ],
       );
     }
+
     return const SizedBox();
   }
 }

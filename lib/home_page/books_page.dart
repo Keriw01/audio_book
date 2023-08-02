@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:testproject/home_page/favorite_section.dart';
-import 'package:testproject/home_page/featured_section.dart';
-import 'package:testproject/providers/books_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testproject/cubit/books_cubit.dart';
+import 'package:testproject/generated/l10n.dart';
+import 'package:testproject/home_page/books_section.dart';
 import 'package:testproject/models/collection.dart';
-import 'package:testproject/widgets/error_handling_widget.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
 class BooksPage extends StatelessWidget {
@@ -15,38 +14,48 @@ class BooksPage extends StatelessWidget {
     required this.collection,
   });
 
+  void _listener(BuildContext context, BooksState state) {
+    if (state is BooksError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(S.of(context).errorFetchBooks),
+          actionOverflowThreshold: 1,
+          action: SnackBarAction(
+            label: S.of(context).refreshData,
+            onPressed: () =>
+                context.read<BooksCubit>().fetchBooks(collection.href),
+          ),
+          duration: const Duration(
+            seconds: 30,
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => BooksProvider(collection.href),
-      builder: (context, child) {
-        return Scaffold(
-          appBar: AppBar(title: Text(collection.title)),
-          body: Consumer<BooksProvider>(
-            builder: (_, booksProvider, __) {
-              if (booksProvider.isLoading) {
-                return const LoadingIndicator();
-              }
-              if (booksProvider.errorMessage.isNotEmpty) {
-                return ErrorHandlingWidget(
-                  textError: booksProvider.errorMessage,
-                  onRefresh:
-                      booksProvider.refreshBookCollection(collection.href),
-                );
-              }
-              return SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    FavoriteSection(books: booksProvider.books),
-                    FeaturedSection(books: booksProvider.books)
-                  ],
-                ),
-              );
-            },
-          ),
-        );
-      },
+    return BlocProvider(
+      create: (context) => BooksCubit(collection.href),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(collection.title),
+        ),
+        body: BlocConsumer<BooksCubit, BooksState>(
+          builder: (context, state) {
+            if (state is BooksLoading) {
+              return const LoadingIndicator();
+            }
+
+            if (state is BooksLoaded) {
+              return BooksSection(books: state.books);
+            }
+
+            return const SizedBox.shrink();
+          },
+          listener: _listener,
+        ),
+      ),
     );
   }
 }
