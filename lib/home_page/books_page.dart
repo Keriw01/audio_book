@@ -15,6 +15,16 @@ class BooksPage extends StatelessWidget {
     required this.collection,
   });
 
+  void _onStateError(BuildContext context, BooksState state) {
+    if (state is BooksError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(S.of(context).errorFetchBooks),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -53,15 +63,7 @@ class BooksPage extends StatelessWidget {
 
             return const SizedBox.shrink();
           },
-          listener: (context, state) {
-            if (state is BooksError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(S.of(context).errorFetchBooks),
-                ),
-              );
-            }
-          },
+          listener: _onStateError,
         ),
       ),
     );

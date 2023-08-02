@@ -9,6 +9,16 @@ class FavoriteSection extends StatelessWidget {
   final List<Book> books;
   const FavoriteSection({super.key, required this.books});
 
+  void _onStateError(BuildContext context, FavoritesState state) {
+    if (state is FavoritesError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(S.of(context).errorOccured + state.message),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FavoritesCubit, FavoritesState>(
@@ -51,15 +61,7 @@ class FavoriteSection extends StatelessWidget {
 
         return const SizedBox.shrink();
       },
-      listener: (context, state) {
-        if (state is FavoritesError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(S.of(context).errorOccured + state.message),
-            ),
-          );
-        }
-      },
+      listener: _onStateError,
     );
   }
 }
