@@ -6,7 +6,6 @@ part 'book_fragment_data.g.dart';
 @freezed
 class BookFragmentData with _$BookFragmentData {
   const factory BookFragmentData({
-    required String title,
     required String html,
   }) = _BookFragmentData;
 

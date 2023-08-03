@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Szczegóły Książki`
+  /// `Szczegóły książki`
   String get bookDetail {
     return Intl.message(
-      'Szczegóły Książki',
+      'Szczegóły książki',
       name: 'bookDetail',
       desc: '',
       args: [],

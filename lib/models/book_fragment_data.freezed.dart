@@ -20,7 +20,6 @@ BookFragmentData _$BookFragmentDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BookFragmentData {
-  String get title => throw _privateConstructorUsedError;
   String get html => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $BookFragmentDataCopyWith<$Res> {
           BookFragmentData value, $Res Function(BookFragmentData) then) =
       _$BookFragmentDataCopyWithImpl<$Res, BookFragmentData>;
   @useResult
-  $Res call({String title, String html});
+  $Res call({String html});
 }
 
 /// @nodoc
@@ -51,14 +50,9 @@ class _$BookFragmentDataCopyWithImpl<$Res, $Val extends BookFragmentData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
     Object? html = null,
   }) {
     return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       html: null == html
           ? _value.html
           : html // ignore: cast_nullable_to_non_nullable
@@ -75,7 +69,7 @@ abstract class _$$_BookFragmentDataCopyWith<$Res>
       __$$_BookFragmentDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String html});
+  $Res call({String html});
 }
 
 /// @nodoc
@@ -89,14 +83,9 @@ class __$$_BookFragmentDataCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
     Object? html = null,
   }) {
     return _then(_$_BookFragmentData(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       html: null == html
           ? _value.html
           : html // ignore: cast_nullable_to_non_nullable
@@ -108,19 +97,17 @@ class __$$_BookFragmentDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BookFragmentData implements _BookFragmentData {
-  const _$_BookFragmentData({required this.title, required this.html});
+  const _$_BookFragmentData({required this.html});
 
   factory _$_BookFragmentData.fromJson(Map<String, dynamic> json) =>
       _$$_BookFragmentDataFromJson(json);
 
   @override
-  final String title;
-  @override
   final String html;
 
   @override
   String toString() {
-    return 'BookFragmentData(title: $title, html: $html)';
+    return 'BookFragmentData(html: $html)';
   }
 
   @override
@@ -128,13 +115,12 @@ class _$_BookFragmentData implements _BookFragmentData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BookFragmentData &&
-            (identical(other.title, title) || other.title == title) &&
             (identical(other.html, html) || other.html == html));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, html);
+  int get hashCode => Object.hash(runtimeType, html);
 
   @JsonKey(ignore: true)
   @override
@@ -151,15 +137,12 @@ class _$_BookFragmentData implements _BookFragmentData {
 }
 
 abstract class _BookFragmentData implements BookFragmentData {
-  const factory _BookFragmentData(
-      {required final String title,
-      required final String html}) = _$_BookFragmentData;
+  const factory _BookFragmentData({required final String html}) =
+      _$_BookFragmentData;
 
   factory _BookFragmentData.fromJson(Map<String, dynamic> json) =
       _$_BookFragmentData.fromJson;
 
-  @override
-  String get title;
   @override
   String get html;
   @override

@@ -7,7 +7,7 @@
     "others": "Pozostałe",
     "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
     "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
-    "bookDetail": "Szczegóły Książki",
+    "bookDetail": "Szczegóły książki",
     "fragment": "Fragment",
     "readHtml": "Czytaj HTML",
     "readPdf": "Czytaj PDF"

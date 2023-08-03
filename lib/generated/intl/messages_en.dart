@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "bookDetail": MessageLookupByLibrary.simpleMessage("Book Detail"),
+        "bookDetail": MessageLookupByLibrary.simpleMessage("Book detail"),
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Categories"),
         "errorFetchBooks":
             MessageLookupByLibrary.simpleMessage("Error fetching book data!"),
