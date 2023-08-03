@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:testproject/cubit/collections_cubit.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
-import 'package:testproject/cubit/liked_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/home_page.dart';
 import 'package:testproject/service/books_preferences.dart';
@@ -29,9 +28,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<FavoritesCubit>(
           create: (BuildContext context) => FavoritesCubit(),
-        ),
-        BlocProvider<LikedCubit>(
-          create: (BuildContext context) => LikedCubit(),
         ),
       ],
       child: MaterialApp(
