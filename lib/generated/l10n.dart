@@ -149,6 +149,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Czytaj HTML`
+  String get readHtml {
+    return Intl.message(
+      'Czytaj HTML',
+      name: 'readHtml',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Czytaj PDF`
+  String get readPdf {
+    return Intl.message(
+      'Czytaj PDF',
+      name: 'readPdf',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

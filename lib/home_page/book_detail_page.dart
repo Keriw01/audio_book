@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/book_detail_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
+import 'package:testproject/home_page/fragment_section.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/styles/colors.dart';
+import 'package:testproject/widgets/liked_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
+import 'package:testproject/widgets/read_button.dart';
 
 class BookDetailPage extends StatelessWidget {
   final String href;
   final Book book;
   const BookDetailPage({super.key, required this.href, required this.book});
+
   void _listener(BuildContext context, BookDetailState state) {
     if (state is BookDetailError) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -44,9 +47,7 @@ class BookDetailPage extends StatelessWidget {
             if (state is BookDetailLoading) {
               return const LoadingIndicator();
             }
-            if (state is BookDetailError) {
-              return Text(state.message);
-            }
+
             if (state is BookDetailLoaded) {
               return SingleChildScrollView(
                 child: Padding(
@@ -58,7 +59,7 @@ class BookDetailPage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         child: Column(
                           children: [
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 30),
                             CachedNetworkImage(
                               imageUrl: book.simpleThumb,
                               placeholder: (context, url) =>
@@ -72,6 +73,7 @@ class BookDetailPage extends StatelessWidget {
                             Text(
                               book.title,
                               style: Theme.of(context).textTheme.titleMedium,
+                              textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 5),
                             Text(
@@ -81,48 +83,29 @@ class BookDetailPage extends StatelessWidget {
                             const SizedBox(height: 2.5),
                             Text(
                               state.bookDetail.genres[0].name.toString(),
-                              style: Theme.of(context).textTheme.headlineMedium,
+                              style: Theme.of(context).textTheme.labelSmall,
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
+                      const SizedBox(height: 15),
+                      FragmentSection(bookDetail: state.bookDetail),
+                      const SizedBox(height: 10),
                       Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Container(
-                            width: 5,
-                            height: 25,
-                            color: seedColor,
+                          ReadButton(
+                            url: state.bookDetail.html,
+                            text: S.of(context).readHtml,
                           ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            S.of(context).fragment,
-                            style: Theme.of(context).textTheme.headlineLarge,
+                          ReadButton(
+                            url: state.bookDetail.pdf,
+                            text: S.of(context).readPdf,
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        state.bookDetail.fragmentData.html,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                        textAlign: TextAlign.justify,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Center(
-                        child: ElevatedButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(Icons.thumb_up),
-                          label: const Text('0'),
-                        ),
-                      ),
+                      const SizedBox(height: 10),
+                      LikedButton(book: book),
                     ],
                   ),
                 ),

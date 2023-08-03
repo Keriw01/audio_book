@@ -11,9 +11,12 @@ _$_BookDetail _$$_BookDetailFromJson(Map<String, dynamic> json) =>
       genres: (json['genres'] as List<dynamic>)
           .map((e) => BookGenres.fromJson(e as Map<String, dynamic>))
           .toList(),
-      fragmentData: BookFragmentData.fromJson(
-          json['fragment_data'] as Map<String, dynamic>),
+      fragmentData: json['fragment_data'] == null
+          ? null
+          : BookFragmentData.fromJson(
+              json['fragment_data'] as Map<String, dynamic>),
       pdf: json['pdf'] as String,
+      html: json['html'] as String,
     );
 
 Map<String, dynamic> _$$_BookDetailToJson(_$_BookDetail instance) =>
@@ -21,4 +24,5 @@ Map<String, dynamic> _$$_BookDetailToJson(_$_BookDetail instance) =>
       'genres': instance.genres,
       'fragment_data': instance.fragmentData,
       'pdf': instance.pdf,
+      'html': instance.html,
     };

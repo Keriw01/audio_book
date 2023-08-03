@@ -35,6 +35,11 @@ ThemeData customTheme = ThemeData(
       fontSize: 18,
       fontWeight: FontWeight.bold,
     ), // tekst naglowek Dla ciebie
+    labelSmall: GoogleFonts.getFont(
+      'Lato',
+      fontSize: 14,
+      color: lightGreyColor,
+    ), // gatunek
   ),
   appBarTheme: AppBarTheme(
     shape: const RoundedRectangleBorder(

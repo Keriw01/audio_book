@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fragment": MessageLookupByLibrary.simpleMessage("Fragment"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Strona główna"),
         "others": MessageLookupByLibrary.simpleMessage("Pozostałe"),
+        "readHtml": MessageLookupByLibrary.simpleMessage("Czytaj HTML"),
+        "readPdf": MessageLookupByLibrary.simpleMessage("Czytaj PDF"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Odśwież dane"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Twoje ulubione")
       };

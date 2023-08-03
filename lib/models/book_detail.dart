@@ -9,8 +9,9 @@ part 'book_detail.g.dart';
 class BookDetail with _$BookDetail {
   const factory BookDetail({
     required List<BookGenres> genres,
-    @JsonKey(name: 'fragment_data') required BookFragmentData fragmentData,
+    @JsonKey(name: 'fragment_data') required BookFragmentData? fragmentData,
     required String pdf,
+    required String html,
   }) = _BookDetail;
 
   factory BookDetail.fromJson(Map<String, dynamic> json) =>

@@ -8,5 +8,7 @@
     "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
     "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
     "bookDetail": "Szczegóły Książki",
-    "fragment": "Fragment"
+    "fragment": "Fragment",
+    "readHtml": "Czytaj HTML",
+    "readPdf": "Czytaj PDF"
 }

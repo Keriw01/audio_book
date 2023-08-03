@@ -22,8 +22,9 @@ BookDetail _$BookDetailFromJson(Map<String, dynamic> json) {
 mixin _$BookDetail {
   List<BookGenres> get genres => throw _privateConstructorUsedError;
   @JsonKey(name: 'fragment_data')
-  BookFragmentData get fragmentData => throw _privateConstructorUsedError;
+  BookFragmentData? get fragmentData => throw _privateConstructorUsedError;
   String get pdf => throw _privateConstructorUsedError;
+  String get html => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,10 +40,11 @@ abstract class $BookDetailCopyWith<$Res> {
   @useResult
   $Res call(
       {List<BookGenres> genres,
-      @JsonKey(name: 'fragment_data') BookFragmentData fragmentData,
-      String pdf});
+      @JsonKey(name: 'fragment_data') BookFragmentData? fragmentData,
+      String pdf,
+      String html});
 
-  $BookFragmentDataCopyWith<$Res> get fragmentData;
+  $BookFragmentDataCopyWith<$Res>? get fragmentData;
 }
 
 /// @nodoc
@@ -59,29 +61,38 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
   @override
   $Res call({
     Object? genres = null,
-    Object? fragmentData = null,
+    Object? fragmentData = freezed,
     Object? pdf = null,
+    Object? html = null,
   }) {
     return _then(_value.copyWith(
       genres: null == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
               as List<BookGenres>,
-      fragmentData: null == fragmentData
+      fragmentData: freezed == fragmentData
           ? _value.fragmentData
           : fragmentData // ignore: cast_nullable_to_non_nullable
-              as BookFragmentData,
+              as BookFragmentData?,
       pdf: null == pdf
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
+              as String,
+      html: null == html
+          ? _value.html
+          : html // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $BookFragmentDataCopyWith<$Res> get fragmentData {
-    return $BookFragmentDataCopyWith<$Res>(_value.fragmentData, (value) {
+  $BookFragmentDataCopyWith<$Res>? get fragmentData {
+    if (_value.fragmentData == null) {
+      return null;
+    }
+
+    return $BookFragmentDataCopyWith<$Res>(_value.fragmentData!, (value) {
       return _then(_value.copyWith(fragmentData: value) as $Val);
     });
   }
@@ -97,11 +108,12 @@ abstract class _$$_BookDetailCopyWith<$Res>
   @useResult
   $Res call(
       {List<BookGenres> genres,
-      @JsonKey(name: 'fragment_data') BookFragmentData fragmentData,
-      String pdf});
+      @JsonKey(name: 'fragment_data') BookFragmentData? fragmentData,
+      String pdf,
+      String html});
 
   @override
-  $BookFragmentDataCopyWith<$Res> get fragmentData;
+  $BookFragmentDataCopyWith<$Res>? get fragmentData;
 }
 
 /// @nodoc
@@ -116,21 +128,26 @@ class __$$_BookDetailCopyWithImpl<$Res>
   @override
   $Res call({
     Object? genres = null,
-    Object? fragmentData = null,
+    Object? fragmentData = freezed,
     Object? pdf = null,
+    Object? html = null,
   }) {
     return _then(_$_BookDetail(
       genres: null == genres
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
               as List<BookGenres>,
-      fragmentData: null == fragmentData
+      fragmentData: freezed == fragmentData
           ? _value.fragmentData
           : fragmentData // ignore: cast_nullable_to_non_nullable
-              as BookFragmentData,
+              as BookFragmentData?,
       pdf: null == pdf
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
+              as String,
+      html: null == html
+          ? _value.html
+          : html // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -142,7 +159,8 @@ class _$_BookDetail implements _BookDetail {
   const _$_BookDetail(
       {required final List<BookGenres> genres,
       @JsonKey(name: 'fragment_data') required this.fragmentData,
-      required this.pdf})
+      required this.pdf,
+      required this.html})
       : _genres = genres;
 
   factory _$_BookDetail.fromJson(Map<String, dynamic> json) =>
@@ -158,13 +176,15 @@ class _$_BookDetail implements _BookDetail {
 
   @override
   @JsonKey(name: 'fragment_data')
-  final BookFragmentData fragmentData;
+  final BookFragmentData? fragmentData;
   @override
   final String pdf;
+  @override
+  final String html;
 
   @override
   String toString() {
-    return 'BookDetail(genres: $genres, fragmentData: $fragmentData, pdf: $pdf)';
+    return 'BookDetail(genres: $genres, fragmentData: $fragmentData, pdf: $pdf, html: $html)';
   }
 
   @override
@@ -175,13 +195,14 @@ class _$_BookDetail implements _BookDetail {
             const DeepCollectionEquality().equals(other._genres, _genres) &&
             (identical(other.fragmentData, fragmentData) ||
                 other.fragmentData == fragmentData) &&
-            (identical(other.pdf, pdf) || other.pdf == pdf));
+            (identical(other.pdf, pdf) || other.pdf == pdf) &&
+            (identical(other.html, html) || other.html == html));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_genres), fragmentData, pdf);
+      const DeepCollectionEquality().hash(_genres), fragmentData, pdf, html);
 
   @JsonKey(ignore: true)
   @override
@@ -201,8 +222,9 @@ abstract class _BookDetail implements BookDetail {
   const factory _BookDetail(
       {required final List<BookGenres> genres,
       @JsonKey(name: 'fragment_data')
-      required final BookFragmentData fragmentData,
-      required final String pdf}) = _$_BookDetail;
+      required final BookFragmentData? fragmentData,
+      required final String pdf,
+      required final String html}) = _$_BookDetail;
 
   factory _BookDetail.fromJson(Map<String, dynamic> json) =
       _$_BookDetail.fromJson;
@@ -211,9 +233,11 @@ abstract class _BookDetail implements BookDetail {
   List<BookGenres> get genres;
   @override
   @JsonKey(name: 'fragment_data')
-  BookFragmentData get fragmentData;
+  BookFragmentData? get fragmentData;
   @override
   String get pdf;
+  @override
+  String get html;
   @override
   @JsonKey(ignore: true)
   _$$_BookDetailCopyWith<_$_BookDetail> get copyWith =>

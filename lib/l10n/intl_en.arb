@@ -8,5 +8,7 @@
     "errorFetchCollection": "Error fetching collection data!",
     "errorFetchBooks": "Error fetching book data!",
     "bookDetail": "Book Detail",
-    "fragment": "Excerpt"
+    "fragment": "Excerpt",
+    "readHtml": "Read HTML",
+    "readPdf": "Read PDF"
 }
