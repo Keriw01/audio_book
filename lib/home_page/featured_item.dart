@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:testproject/cubit/favorites_cubit.dart';
-import 'package:testproject/home_page/book_detail_page.dart';
+import 'package:testproject/functions/navigate_book_detail.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
@@ -12,24 +12,16 @@ class FeaturedItem extends StatelessWidget {
   final Book book;
   const FeaturedItem({super.key, required this.book});
 
-  Future<Future> _navigateToBookDetail(BuildContext context) async {
-    return Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BookDetailPage(
-          href: book.href,
-          book: book,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final favoritesCubit = context.read<FavoritesCubit>();
 
     return GestureDetector(
-      onTap: () => _navigateToBookDetail(context),
+      onTap: () => navigateToBookDetail(
+        context: context,
+        href: book.href,
+        book: book,
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Column(
