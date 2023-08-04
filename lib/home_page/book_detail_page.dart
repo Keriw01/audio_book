@@ -89,22 +89,22 @@ class BookDetailPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 15),
                       FragmentSection(bookDetail: state.bookDetail),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 30),
                       Row(
-                        mainAxisSize: MainAxisSize.min,
                         children: [
                           ReadButton(
                             url: state.bookDetail.html,
                             text: S.of(context).readHtml,
                           ),
+                          const SizedBox(width: 15),
                           ReadButton(
                             url: state.bookDetail.pdf,
                             text: S.of(context).readPdf,
                           ),
+                          const Spacer(),
+                          LikedButton(book: book),
                         ],
                       ),
-                      const SizedBox(height: 10),
-                      LikedButton(book: book),
                     ],
                   ),
                 ),

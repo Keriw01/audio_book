@@ -40,6 +40,12 @@ ThemeData customTheme = ThemeData(
       fontSize: 14,
       color: lightGreyColor,
     ), // gatunek
+    labelMedium: GoogleFonts.getFont(
+      'Roboto',
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: whiteColor,
+    ), // gatunek
   ),
   appBarTheme: AppBarTheme(
     shape: const RoundedRectangleBorder(

@@ -17,35 +17,37 @@ class LikedButton extends StatelessWidget {
         BlocProvider.of<FavoritesCubit>(context, listen: true);
     bool isLiked = favoritesCubit.isFavorited(book);
 
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Stack(
-        children: [
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              height: 24,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: shadowColor,
-                    blurRadius: 10,
-                  ),
-                ],
+    return Stack(
+      children: [
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Container(
+            height: 24,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: shadowColor,
+                  blurRadius: 10,
+                ),
+              ],
             ),
           ),
-          ElevatedButton(
+        ),
+        SizedBox(
+          width: 54,
+          height: 48,
+          child: ElevatedButton(
             onPressed: () => isLiked
                 ? favoritesCubit.removeFromFavorites(book)
                 : favoritesCubit.addToFavorites(book),
             style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(0),
               shadowColor: shadowColor,
               elevation: 0,
               surfaceTintColor: whiteColor,
@@ -54,14 +56,14 @@ class LikedButton extends StatelessWidget {
               ),
             ),
             child: isLiked
-                ? const Icon(Icons.thumb_up)
+                ? const Icon(Icons.favorite)
                 : const Icon(
-                    Icons.thumb_up_outlined,
+                    Icons.favorite_outline,
                     color: lightGreyColor,
                   ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testproject/styles/colors.dart';
 
 class ReadButton extends StatelessWidget {
   final String url;
@@ -11,7 +12,15 @@ class ReadButton extends StatelessWidget {
     return url.isNotEmpty
         ? TextButton(
             onPressed: () {},
-            child: Text(text),
+            style: TextButton.styleFrom(
+              backgroundColor: seedColor,
+              foregroundColor: whiteColor,
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+            ),
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
           )
         : const SizedBox.shrink();
   }
