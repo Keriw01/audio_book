@@ -44,7 +44,7 @@ ThemeData customTheme = ThemeData(
       'Roboto',
       fontSize: 14,
       fontWeight: FontWeight.w500,
-      color: whiteColor,
+      color: lightGreyColor,
     ), // przycisk czytaj
   ),
   appBarTheme: AppBarTheme(

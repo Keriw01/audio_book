@@ -92,7 +92,7 @@ class BookDetailPage extends StatelessWidget {
                             url: state.bookDetail.html,
                             text: S.of(context).readHtml,
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 30),
                           ReadButton(
                             url: state.bookDetail.pdf,
                             text: S.of(context).readPdf,
