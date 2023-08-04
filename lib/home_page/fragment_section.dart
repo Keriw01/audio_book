@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/models/book_detail.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
 class FragmentSection extends StatelessWidget {
-  final BookDetail bookDetail;
-  const FragmentSection({super.key, required this.bookDetail});
+  final String htmlFragment;
+  const FragmentSection({super.key, required this.htmlFragment});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class FragmentSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 10),
           child: HtmlWidget(
-            bookDetail.fragmentData!.html,
+            htmlFragment,
             onErrorBuilder: (context, element, error) =>
                 Text('$element${S.of(context).errorOccured}$error'),
             onLoadingBuilder: (context, element, loadingProgress) =>
