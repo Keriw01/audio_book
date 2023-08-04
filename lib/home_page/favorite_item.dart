@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
-import 'package:testproject/functions/navigate_book_detail.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
+import 'package:testproject/home_page/book_detail_page.dart';
 
 class FavoriteItem extends StatelessWidget {
   final Book book;
@@ -18,7 +18,6 @@ class FavoriteItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => navigateToBookDetail(
         context: context,
-        href: book.href,
         book: book,
       ),
       child: Padding(

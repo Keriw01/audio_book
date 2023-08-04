@@ -10,9 +10,8 @@ import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:testproject/widgets/read_button.dart';
 
 class BookDetailPage extends StatelessWidget {
-  final String href;
   final Book book;
-  const BookDetailPage({super.key, required this.href, required this.book});
+  const BookDetailPage({super.key, required this.book});
 
   void _listener(BuildContext context, BookDetailState state) {
     if (state is BookDetailError) {
@@ -23,7 +22,7 @@ class BookDetailPage extends StatelessWidget {
           action: SnackBarAction(
             label: S.of(context).refreshData,
             onPressed: () =>
-                context.read<BookDetailCubit>().fetchBookDetail(href),
+                context.read<BookDetailCubit>().fetchBookDetail(book.href),
           ),
           duration: const Duration(
             seconds: 30,
@@ -36,7 +35,7 @@ class BookDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BookDetailCubit(href),
+      create: (context) => BookDetailCubit(book.href),
       child: Scaffold(
         appBar: AppBar(
           title: Text(S.of(context).bookDetail),
@@ -118,4 +117,18 @@ class BookDetailPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> navigateToBookDetail({
+  required BuildContext context,
+  required Book book,
+}) async {
+  await Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => BookDetailPage(
+        book: book,
+      ),
+    ),
+  );
 }
