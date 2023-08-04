@@ -82,7 +82,9 @@ class BookDetailPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 15),
-                      FragmentSection(bookDetail: state.bookDetail),
+                      state.bookDetail.fragmentData?.html != null
+                          ? FragmentSection(bookDetail: state.bookDetail)
+                          : const SizedBox.shrink(),
                       const SizedBox(height: 30),
                       Row(
                         children: [
