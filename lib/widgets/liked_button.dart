@@ -13,9 +13,8 @@ class LikedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoritesCubit =
-        BlocProvider.of<FavoritesCubit>(context, listen: true);
-    bool isLiked = favoritesCubit.isFavorited(book);
+    final isLiked =
+        context.select((FavoritesCubit cubit) => cubit.isFavorited(book));
 
     return Stack(
       children: [
@@ -43,9 +42,12 @@ class LikedButton extends StatelessWidget {
           width: 54,
           height: 48,
           child: ElevatedButton(
-            onPressed: () => isLiked
-                ? favoritesCubit.removeFromFavorites(book)
-                : favoritesCubit.addToFavorites(book),
+            onPressed: () {
+              final favoritesCubit = context.read<FavoritesCubit>();
+              isLiked
+                  ? favoritesCubit.removeFromFavorites(book)
+                  : favoritesCubit.addToFavorites(book);
+            },
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(0),
               shadowColor: shadowColor,
