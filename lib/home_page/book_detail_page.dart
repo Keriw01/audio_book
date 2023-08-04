@@ -5,6 +5,7 @@ import 'package:testproject/cubit/book_detail_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/fragment_section.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/widgets/authors_list.dart';
 import 'package:testproject/widgets/genres_list.dart';
 import 'package:testproject/widgets/liked_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
@@ -25,9 +26,7 @@ class BookDetailPage extends StatelessWidget {
             onPressed: () =>
                 context.read<BookDetailCubit>().fetchBookDetail(book.href),
           ),
-          duration: const Duration(
-            seconds: 30,
-          ),
+          duration: const Duration(seconds: 30),
         ),
       );
     }
@@ -76,10 +75,7 @@ class BookDetailPage extends StatelessWidget {
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 5),
-                            Text(
-                              book.author,
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
+                            AuthorsList(bookDetail: state.bookDetail),
                             const SizedBox(height: 2.5),
                             GenresList(bookDetail: state.bookDetail),
                           ],

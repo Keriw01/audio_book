@@ -20,7 +20,8 @@ BookDetail _$BookDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BookDetail {
-  List<BookGenres> get genres => throw _privateConstructorUsedError;
+  List<BookMetadata> get genres => throw _privateConstructorUsedError;
+  List<BookMetadata> get authors => throw _privateConstructorUsedError;
   @JsonKey(name: 'fragment_data')
   BookFragmentData? get fragmentData => throw _privateConstructorUsedError;
   String get pdf => throw _privateConstructorUsedError;
@@ -39,7 +40,8 @@ abstract class $BookDetailCopyWith<$Res> {
       _$BookDetailCopyWithImpl<$Res, BookDetail>;
   @useResult
   $Res call(
-      {List<BookGenres> genres,
+      {List<BookMetadata> genres,
+      List<BookMetadata> authors,
       @JsonKey(name: 'fragment_data') BookFragmentData? fragmentData,
       String pdf,
       String html});
@@ -61,6 +63,7 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
   @override
   $Res call({
     Object? genres = null,
+    Object? authors = null,
     Object? fragmentData = freezed,
     Object? pdf = null,
     Object? html = null,
@@ -69,7 +72,11 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
       genres: null == genres
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<BookGenres>,
+              as List<BookMetadata>,
+      authors: null == authors
+          ? _value.authors
+          : authors // ignore: cast_nullable_to_non_nullable
+              as List<BookMetadata>,
       fragmentData: freezed == fragmentData
           ? _value.fragmentData
           : fragmentData // ignore: cast_nullable_to_non_nullable
@@ -107,7 +114,8 @@ abstract class _$$_BookDetailCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<BookGenres> genres,
+      {List<BookMetadata> genres,
+      List<BookMetadata> authors,
       @JsonKey(name: 'fragment_data') BookFragmentData? fragmentData,
       String pdf,
       String html});
@@ -128,6 +136,7 @@ class __$$_BookDetailCopyWithImpl<$Res>
   @override
   $Res call({
     Object? genres = null,
+    Object? authors = null,
     Object? fragmentData = freezed,
     Object? pdf = null,
     Object? html = null,
@@ -136,7 +145,11 @@ class __$$_BookDetailCopyWithImpl<$Res>
       genres: null == genres
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<BookGenres>,
+              as List<BookMetadata>,
+      authors: null == authors
+          ? _value._authors
+          : authors // ignore: cast_nullable_to_non_nullable
+              as List<BookMetadata>,
       fragmentData: freezed == fragmentData
           ? _value.fragmentData
           : fragmentData // ignore: cast_nullable_to_non_nullable
@@ -157,21 +170,31 @@ class __$$_BookDetailCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BookDetail implements _BookDetail {
   const _$_BookDetail(
-      {required final List<BookGenres> genres,
+      {required final List<BookMetadata> genres,
+      required final List<BookMetadata> authors,
       @JsonKey(name: 'fragment_data') required this.fragmentData,
       required this.pdf,
       required this.html})
-      : _genres = genres;
+      : _genres = genres,
+        _authors = authors;
 
   factory _$_BookDetail.fromJson(Map<String, dynamic> json) =>
       _$$_BookDetailFromJson(json);
 
-  final List<BookGenres> _genres;
+  final List<BookMetadata> _genres;
   @override
-  List<BookGenres> get genres {
+  List<BookMetadata> get genres {
     if (_genres is EqualUnmodifiableListView) return _genres;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_genres);
+  }
+
+  final List<BookMetadata> _authors;
+  @override
+  List<BookMetadata> get authors {
+    if (_authors is EqualUnmodifiableListView) return _authors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_authors);
   }
 
   @override
@@ -184,7 +207,7 @@ class _$_BookDetail implements _BookDetail {
 
   @override
   String toString() {
-    return 'BookDetail(genres: $genres, fragmentData: $fragmentData, pdf: $pdf, html: $html)';
+    return 'BookDetail(genres: $genres, authors: $authors, fragmentData: $fragmentData, pdf: $pdf, html: $html)';
   }
 
   @override
@@ -193,6 +216,7 @@ class _$_BookDetail implements _BookDetail {
         (other.runtimeType == runtimeType &&
             other is _$_BookDetail &&
             const DeepCollectionEquality().equals(other._genres, _genres) &&
+            const DeepCollectionEquality().equals(other._authors, _authors) &&
             (identical(other.fragmentData, fragmentData) ||
                 other.fragmentData == fragmentData) &&
             (identical(other.pdf, pdf) || other.pdf == pdf) &&
@@ -201,8 +225,13 @@ class _$_BookDetail implements _BookDetail {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_genres), fragmentData, pdf, html);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_genres),
+      const DeepCollectionEquality().hash(_authors),
+      fragmentData,
+      pdf,
+      html);
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +249,8 @@ class _$_BookDetail implements _BookDetail {
 
 abstract class _BookDetail implements BookDetail {
   const factory _BookDetail(
-      {required final List<BookGenres> genres,
+      {required final List<BookMetadata> genres,
+      required final List<BookMetadata> authors,
       @JsonKey(name: 'fragment_data')
       required final BookFragmentData? fragmentData,
       required final String pdf,
@@ -230,7 +260,9 @@ abstract class _BookDetail implements BookDetail {
       _$_BookDetail.fromJson;
 
   @override
-  List<BookGenres> get genres;
+  List<BookMetadata> get genres;
+  @override
+  List<BookMetadata> get authors;
   @override
   @JsonKey(name: 'fragment_data')
   BookFragmentData? get fragmentData;

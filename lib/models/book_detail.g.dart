@@ -9,7 +9,10 @@ part of 'book_detail.dart';
 _$_BookDetail _$$_BookDetailFromJson(Map<String, dynamic> json) =>
     _$_BookDetail(
       genres: (json['genres'] as List<dynamic>)
-          .map((e) => BookGenres.fromJson(e as Map<String, dynamic>))
+          .map((e) => BookMetadata.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      authors: (json['authors'] as List<dynamic>)
+          .map((e) => BookMetadata.fromJson(e as Map<String, dynamic>))
           .toList(),
       fragmentData: json['fragment_data'] == null
           ? null
@@ -22,6 +25,7 @@ _$_BookDetail _$$_BookDetailFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_BookDetailToJson(_$_BookDetail instance) =>
     <String, dynamic>{
       'genres': instance.genres,
+      'authors': instance.authors,
       'fragment_data': instance.fragmentData,
       'pdf': instance.pdf,
       'html': instance.html,
