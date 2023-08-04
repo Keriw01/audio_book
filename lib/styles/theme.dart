@@ -45,7 +45,7 @@ ThemeData customTheme = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.w500,
       color: whiteColor,
-    ), // gatunek
+    ), // przycisk czytaj
   ),
   appBarTheme: AppBarTheme(
     shape: const RoundedRectangleBorder(

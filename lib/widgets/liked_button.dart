@@ -6,10 +6,7 @@ import 'package:testproject/styles/colors.dart';
 
 class LikedButton extends StatelessWidget {
   final Book book;
-  const LikedButton({
-    super.key,
-    required this.book,
-  });
+  const LikedButton({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {

@@ -122,9 +122,7 @@ Future<void> navigateToBookDetail({
   await Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => BookDetailPage(
-        book: book,
-      ),
+      builder: (context) => BookDetailPage(book: book),
     ),
   );
 }

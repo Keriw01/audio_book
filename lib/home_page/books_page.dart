@@ -9,10 +9,7 @@ import 'package:testproject/widgets/loading_indicator.dart';
 class BooksPage extends StatelessWidget {
   final Collection collection;
 
-  const BooksPage({
-    super.key,
-    required this.collection,
-  });
+  const BooksPage({super.key, required this.collection});
 
   void _listener(BuildContext context, BooksState state) {
     if (state is BooksError) {
@@ -25,9 +22,7 @@ class BooksPage extends StatelessWidget {
             onPressed: () =>
                 context.read<BooksCubit>().fetchBooks(collection.href),
           ),
-          duration: const Duration(
-            seconds: 30,
-          ),
+          duration: const Duration(seconds: 30),
         ),
       );
     }

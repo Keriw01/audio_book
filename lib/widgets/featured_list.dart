@@ -5,10 +5,7 @@ import 'package:testproject/widgets/custom_divider.dart';
 
 class FeaturedList extends StatelessWidget {
   final List<Book> books;
-  const FeaturedList({
-    super.key,
-    required this.books,
-  });
+  const FeaturedList({super.key, required this.books});
 
   @override
   Widget build(BuildContext context) {
