@@ -15,13 +15,13 @@ class FeaturedItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoritesCubit = context.read<FavoritesCubit>();
 
-    return GestureDetector(
-      onTap: () => navigateToBookDetail(
+    return RawMaterialButton(
+      onPressed: () => navigateToBookDetail(
         context: context,
         book: book,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -15,50 +15,47 @@ class FavoriteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoritesCubit = context.read<FavoritesCubit>();
 
-    return GestureDetector(
-      onTap: () => navigateToBookDetail(
+    return RawMaterialButton(
+      onPressed: () => navigateToBookDetail(
         context: context,
         book: book,
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: SizedBox(
-          width: 156,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    CachedNetworkImage(
-                      imageUrl: book.simpleThumb,
-                      placeholder: (context, url) => const LoadingIndicator(),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                      alignment: Alignment.centerLeft,
-                    ),
-                    HeartButton(
-                      onPressed: () => favoritesCubit.removeFromFavorites(book),
-                      isFavorite: true,
-                    ),
-                  ],
-                ),
+      child: SizedBox(
+        width: 156,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  CachedNetworkImage(
+                    imageUrl: book.simpleThumb,
+                    placeholder: (context, url) => const LoadingIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    alignment: Alignment.centerLeft,
+                  ),
+                  HeartButton(
+                    onPressed: () => favoritesCubit.removeFromFavorites(book),
+                    isFavorite: true,
+                  ),
+                ],
               ),
-              Text(
-                book.title,
-                style: Theme.of(context).textTheme.titleSmall,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-              const SizedBox(height: 2),
-              Text(
-                book.author,
-                style: Theme.of(context).textTheme.headlineSmall,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-          ),
+            ),
+            Text(
+              book.title,
+              style: Theme.of(context).textTheme.titleSmall,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+            const SizedBox(height: 2),
+            Text(
+              book.author,
+              style: Theme.of(context).textTheme.headlineSmall,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         ),
       ),
     );

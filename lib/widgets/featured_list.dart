@@ -16,8 +16,10 @@ class FeaturedList extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       itemCount: books.length,
-      padding: const EdgeInsets.only(left: 10),
-      separatorBuilder: (context, index) => const CustomDivider(),
+      separatorBuilder: (context, index) => const Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: CustomDivider(),
+      ),
       itemBuilder: (_, index) => FeaturedItem(book: books[index]),
     );
   }
