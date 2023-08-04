@@ -6,7 +6,6 @@ import 'package:testproject/service/books_preferences.dart';
 import 'package:testproject/service/collections_api.dart';
 import 'package:testproject/service/favorites_preferences.dart';
 import 'package:dio/dio.dart';
-import 'package:testproject/service/liked_preferences.dart';
 
 final getIt = GetIt.instance;
 
@@ -22,5 +21,4 @@ Future<void> setupLocator() async {
 
   getIt.registerFactory<BooksPreferences>(() => BooksPreferences());
   getIt.registerFactory<FavoritesPreferences>(() => FavoritesPreferences());
-  getIt.registerFactory<LikedPreferences>(() => LikedPreferences());
 }
