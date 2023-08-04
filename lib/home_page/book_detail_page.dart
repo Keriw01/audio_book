@@ -5,6 +5,7 @@ import 'package:testproject/cubit/book_detail_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/fragment_section.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/widgets/genres_list.dart';
 import 'package:testproject/widgets/liked_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:testproject/widgets/read_button.dart';
@@ -80,10 +81,7 @@ class BookDetailPage extends StatelessWidget {
                               style: Theme.of(context).textTheme.headlineMedium,
                             ),
                             const SizedBox(height: 2.5),
-                            Text(
-                              state.bookDetail.genres[0].name.toString(),
-                              style: Theme.of(context).textTheme.labelSmall,
-                            ),
+                            GenresList(bookDetail: state.bookDetail),
                           ],
                         ),
                       ),
