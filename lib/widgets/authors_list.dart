@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/models/book_detail.dart';
+import 'package:testproject/models/book_metadata.dart';
 
 class AuthorsList extends StatelessWidget {
-  final BookDetail bookDetail;
-  const AuthorsList({super.key, required this.bookDetail});
+  final List<BookMetadata> authors;
+  const AuthorsList({super.key, required this.authors});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: bookDetail.authors.length,
+      itemCount: authors.length,
       itemBuilder: (context, index) {
         return Text(
-          bookDetail.authors[index].name,
+          authors[index].name,
           style: Theme.of(context).textTheme.headlineMedium,
           textAlign: TextAlign.center,
         );

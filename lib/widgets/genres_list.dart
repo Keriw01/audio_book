@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/models/book_detail.dart';
+import 'package:testproject/models/book_metadata.dart';
 
 class GenresList extends StatelessWidget {
-  final BookDetail bookDetail;
-  const GenresList({super.key, required this.bookDetail});
+  final List<BookMetadata> genres;
+  const GenresList({super.key, required this.genres});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: bookDetail.genres.length,
+      itemCount: genres.length,
       itemBuilder: (context, index) {
         return Text(
-          bookDetail.genres[index].name,
+          genres[index].name,
           style: Theme.of(context).textTheme.labelSmall,
           textAlign: TextAlign.center,
         );
