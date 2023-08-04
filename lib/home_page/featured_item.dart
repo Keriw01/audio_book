@@ -21,48 +21,43 @@ class FeaturedItem extends StatelessWidget {
         book: book,
       ),
       padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          CachedNetworkImage(
+            imageUrl: book.simpleThumb,
+            placeholder: (context, url) => const LoadingIndicator(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+            width: 100,
+            alignment: Alignment.centerLeft,
+          ),
+          const SizedBox(width: 10),
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CachedNetworkImage(
-                imageUrl: book.simpleThumb,
-                placeholder: (context, url) => const LoadingIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-                width: 100,
-                alignment: Alignment.centerLeft,
-              ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width - 130,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            book.title,
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          Text(
-                            book.author,
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                        ],
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width - 130,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        book.title,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
-                    ),
+                      Text(
+                        book.author,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                    ],
                   ),
-                  HeartButton(
-                    onPressed: () => favoritesCubit.addToFavorites(book),
-                    isFavorite: false,
-                  )
-                ],
+                ),
               ),
+              HeartButton(
+                onPressed: () => favoritesCubit.addToFavorites(book),
+                isFavorite: false,
+              )
             ],
           ),
         ],
