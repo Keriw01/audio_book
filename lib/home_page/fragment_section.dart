@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/models/book_detail.dart';
 import 'package:testproject/styles/colors.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:testproject/widgets/loading_indicator.dart';
 
 class FragmentSection extends StatelessWidget {
   final BookDetail bookDetail;
@@ -30,12 +31,14 @@ class FragmentSection extends StatelessWidget {
         const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.only(left: 10),
-          child: Text(
-            Bidi.stripHtmlIfNeeded(
-              bookDetail.fragmentData!.html,
-            ),
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.justify,
+          child: HtmlWidget(
+            bookDetail.fragmentData!.html,
+            onErrorBuilder: (context, element, error) =>
+                Text('$element${S.of(context).errorOccured}$error'),
+            onLoadingBuilder: (context, element, loadingProgress) =>
+                const LoadingIndicator(),
+            renderMode: RenderMode.column,
+            textStyle: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
       ],
