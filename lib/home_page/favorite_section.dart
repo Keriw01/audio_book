@@ -4,7 +4,6 @@ import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/favorite_item.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/styles/colors.dart';
 
 class FavoriteSection extends StatelessWidget {
   final List<Book> books;
@@ -32,17 +31,13 @@ class FavoriteSection extends StatelessWidget {
           ),
           SizedBox(
             height: 255,
-            child: ListView.separated(
+            child: ListView.builder(
               physics: const ClampingScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               itemCount: favorites.length,
               itemBuilder: (_, index) => FavoriteItem(book: favorites[index]),
-              separatorBuilder: (context, index) => const VerticalDivider(
-                width: 10,
-                color: whiteColor,
-              ),
             ),
           ),
         ],

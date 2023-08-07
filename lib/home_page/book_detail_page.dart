@@ -15,6 +15,18 @@ class BookDetailPage extends StatelessWidget {
   final Book book;
   const BookDetailPage({super.key, required this.book});
 
+  static Future<void> navigate(
+    BuildContext context,
+    Book book,
+  ) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BookDetailPage(book: book),
+      ),
+    );
+  }
+
   void _listener(BuildContext context, BookDetailState state) {
     if (state is BookDetailError) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -58,7 +70,7 @@ class BookDetailPage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         child: Column(
                           children: [
-                            const SizedBox(height: 30),
+                            const SizedBox(height: 15),
                             CachedNetworkImage(
                               imageUrl: book.simpleThumb,
                               placeholder: (context, url) =>
@@ -81,24 +93,26 @@ class BookDetailPage extends StatelessWidget {
                           ],
                         ),
                       ),
+                      if (state.bookDetail.fragmentData?.html != null)
+                        FragmentSection(
+                          htmlFragment: state.bookDetail.fragmentData!.html,
+                        ),
                       const SizedBox(height: 15),
-                      state.bookDetail.fragmentData?.html != null
-                          ? FragmentSection(
-                              htmlFragment: state.bookDetail.fragmentData!.html,
-                            )
-                          : const SizedBox.shrink(),
-                      const SizedBox(height: 30),
                       Row(
                         children: [
-                          ReadButton(
-                            url: state.bookDetail.html,
-                            text: S.of(context).readHtml,
-                          ),
-                          const SizedBox(width: 30),
-                          ReadButton(
-                            url: state.bookDetail.pdf,
-                            text: S.of(context).readPdf,
-                          ),
+                          if (state.bookDetail.html.isNotEmpty)
+                            Padding(
+                              padding: const EdgeInsets.only(right: 30),
+                              child: ReadButton(
+                                url: state.bookDetail.html,
+                                text: S.of(context).readHtml,
+                              ),
+                            ),
+                          if (state.bookDetail.pdf.isNotEmpty)
+                            ReadButton(
+                              url: state.bookDetail.pdf,
+                              text: S.of(context).readPdf,
+                            ),
                           const Spacer(),
                           LikedButton(book: book),
                         ],
@@ -115,16 +129,4 @@ class BookDetailPage extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<void> navigateToBookDetail({
-  required BuildContext context,
-  required Book book,
-}) async {
-  await Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => BookDetailPage(book: book),
-    ),
-  );
 }

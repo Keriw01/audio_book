@@ -16,10 +16,7 @@ class FeaturedItem extends StatelessWidget {
     final favoritesCubit = context.read<FavoritesCubit>();
 
     return RawMaterialButton(
-      onPressed: () => navigateToBookDetail(
-        context: context,
-        book: book,
-      ),
+      onPressed: () => BookDetailPage.navigate(context, book),
       padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

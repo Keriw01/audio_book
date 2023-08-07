@@ -16,12 +16,10 @@ class FavoriteItem extends StatelessWidget {
     final favoritesCubit = context.read<FavoritesCubit>();
 
     return RawMaterialButton(
-      onPressed: () => navigateToBookDetail(
-        context: context,
-        book: book,
-      ),
+      onPressed: () => BookDetailPage.navigate(context, book),
+      padding: const EdgeInsets.all(5),
       child: SizedBox(
-        width: 156,
+        width: 148,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,7 +32,6 @@ class FavoriteItem extends StatelessWidget {
                     placeholder: (context, url) => const LoadingIndicator(),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
-                    alignment: Alignment.centerLeft,
                   ),
                   HeartButton(
                     onPressed: () => favoritesCubit.removeFromFavorites(book),
@@ -43,6 +40,7 @@ class FavoriteItem extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 2),
             Text(
               book.title,
               style: Theme.of(context).textTheme.titleSmall,

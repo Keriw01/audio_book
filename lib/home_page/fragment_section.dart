@@ -13,6 +13,7 @@ class FragmentSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 15),
         Row(
           children: [
             Container(
