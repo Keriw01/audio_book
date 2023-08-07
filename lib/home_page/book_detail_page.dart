@@ -98,24 +98,25 @@ class BookDetailPage extends StatelessWidget {
                           htmlFragment: state.bookDetail.fragmentData!.html,
                         ),
                       const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          if (state.bookDetail.html.isNotEmpty)
-                            Padding(
-                              padding: const EdgeInsets.only(right: 30),
-                              child: ReadButton(
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 20,
+                        child: Wrap(
+                          alignment: WrapAlignment.spaceBetween,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            if (state.bookDetail.html.isNotEmpty)
+                              ReadButton(
                                 url: state.bookDetail.html,
                                 text: S.of(context).readHtml,
                               ),
-                            ),
-                          if (state.bookDetail.pdf.isNotEmpty)
-                            ReadButton(
-                              url: state.bookDetail.pdf,
-                              text: S.of(context).readPdf,
-                            ),
-                          const Spacer(),
-                          LikedButton(book: book),
-                        ],
+                            if (state.bookDetail.pdf.isNotEmpty)
+                              ReadButton(
+                                url: state.bookDetail.pdf,
+                                text: S.of(context).readPdf,
+                              ),
+                            LikedButton(book: book),
+                          ],
+                        ),
                       ),
                     ],
                   ),

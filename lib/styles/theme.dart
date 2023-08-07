@@ -16,8 +16,9 @@ ThemeData customTheme = ThemeData(
     ), // tytul ksiazki Dla ciebie
     titleMedium: GoogleFonts.getFont(
       'Lato',
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: FontWeight.bold,
+      height: 1.1,
     ), // tytul ksiazki w Wybrane
     headlineSmall: GoogleFonts.getFont(
       'Lato',

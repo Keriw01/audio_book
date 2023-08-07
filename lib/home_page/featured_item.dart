@@ -26,7 +26,6 @@ class FeaturedItem extends StatelessWidget {
             placeholder: (context, url) => const LoadingIndicator(),
             errorWidget: (context, url, error) => const Icon(Icons.error),
             width: 100,
-            alignment: Alignment.centerLeft,
           ),
           const SizedBox(width: 10),
           Column(
@@ -42,6 +41,8 @@ class FeaturedItem extends StatelessWidget {
                       Text(
                         book.title,
                         style: Theme.of(context).textTheme.titleMedium,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
                       Text(
                         book.author,
