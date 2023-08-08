@@ -22,7 +22,7 @@ class FavoriteSection extends StatelessWidget {
             padding: const EdgeInsets.only(
               left: 10,
               top: 15,
-              bottom: 15,
+              bottom: 10,
             ),
             child: Text(
               S.of(context).yourFavorite,

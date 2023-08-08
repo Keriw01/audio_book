@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "bookDetail": MessageLookupByLibrary.simpleMessage("Book detail"),
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Categories"),
         "errorFetchBooks":
             MessageLookupByLibrary.simpleMessage("Error fetching book data!"),
@@ -29,8 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error fetching collection data!"),
         "errorOccured":
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
+        "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
+        "readHtml": MessageLookupByLibrary.simpleMessage("Read HTML"),
+        "readPdf": MessageLookupByLibrary.simpleMessage("Read PDF"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Refresh data"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Your favorite")
       };

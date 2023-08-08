@@ -32,7 +32,7 @@ class FeaturedSection extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(
               left: 10,
-              top: 15,
+              top: 10,
               bottom: 5,
             ),
             child: Text(

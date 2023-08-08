@@ -22,6 +22,7 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 mixin _$Book {
   String get title => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
+  String get href => throw _privateConstructorUsedError;
   @JsonKey(name: 'simple_thumb')
   String get simpleThumb => throw _privateConstructorUsedError;
 
@@ -38,6 +39,7 @@ abstract class $BookCopyWith<$Res> {
   $Res call(
       {String title,
       String author,
+      String href,
       @JsonKey(name: 'simple_thumb') String simpleThumb});
 }
 
@@ -56,6 +58,7 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
   $Res call({
     Object? title = null,
     Object? author = null,
+    Object? href = null,
     Object? simpleThumb = null,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +69,10 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      href: null == href
+          ? _value.href
+          : href // ignore: cast_nullable_to_non_nullable
               as String,
       simpleThumb: null == simpleThumb
           ? _value.simpleThumb
@@ -84,6 +91,7 @@ abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
   $Res call(
       {String title,
       String author,
+      String href,
       @JsonKey(name: 'simple_thumb') String simpleThumb});
 }
 
@@ -98,6 +106,7 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
   $Res call({
     Object? title = null,
     Object? author = null,
+    Object? href = null,
     Object? simpleThumb = null,
   }) {
     return _then(_$_Book(
@@ -108,6 +117,10 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
       author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      href: null == href
+          ? _value.href
+          : href // ignore: cast_nullable_to_non_nullable
               as String,
       simpleThumb: null == simpleThumb
           ? _value.simpleThumb
@@ -123,6 +136,7 @@ class _$_Book implements _Book {
   const _$_Book(
       {required this.title,
       required this.author,
+      required this.href,
       @JsonKey(name: 'simple_thumb') required this.simpleThumb});
 
   factory _$_Book.fromJson(Map<String, dynamic> json) => _$$_BookFromJson(json);
@@ -132,12 +146,14 @@ class _$_Book implements _Book {
   @override
   final String author;
   @override
+  final String href;
+  @override
   @JsonKey(name: 'simple_thumb')
   final String simpleThumb;
 
   @override
   String toString() {
-    return 'Book(title: $title, author: $author, simpleThumb: $simpleThumb)';
+    return 'Book(title: $title, author: $author, href: $href, simpleThumb: $simpleThumb)';
   }
 
   @override
@@ -147,13 +163,15 @@ class _$_Book implements _Book {
             other is _$_Book &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.author, author) || other.author == author) &&
+            (identical(other.href, href) || other.href == href) &&
             (identical(other.simpleThumb, simpleThumb) ||
                 other.simpleThumb == simpleThumb));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, author, simpleThumb);
+  int get hashCode =>
+      Object.hash(runtimeType, title, author, href, simpleThumb);
 
   @JsonKey(ignore: true)
   @override
@@ -173,6 +191,7 @@ abstract class _Book implements Book {
   const factory _Book(
           {required final String title,
           required final String author,
+          required final String href,
           @JsonKey(name: 'simple_thumb') required final String simpleThumb}) =
       _$_Book;
 
@@ -182,6 +201,8 @@ abstract class _Book implements Book {
   String get title;
   @override
   String get author;
+  @override
+  String get href;
   @override
   @JsonKey(name: 'simple_thumb')
   String get simpleThumb;

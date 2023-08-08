@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
           builder: (context, selectedIndex, child) =>
               Text(_widgetTitle.elementAt(selectedIndex)),
         ),
-        titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {},

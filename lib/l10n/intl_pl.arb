@@ -6,5 +6,9 @@
     "refreshData": "Odśwież dane",
     "others": "Pozostałe",
     "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
-    "errorFetchBooks": "Błąd podczas pobierania danych o książkach!"
+    "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
+    "bookDetail": "Szczegóły książki",
+    "fragment": "Fragment",
+    "readHtml": "Czytaj HTML",
+    "readPdf": "Czytaj PDF"
 }

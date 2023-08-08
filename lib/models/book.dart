@@ -8,6 +8,7 @@ class Book with _$Book {
   const factory Book({
     required String title,
     required String author,
+    required String href,
     @JsonKey(name: 'simple_thumb') required String simpleThumb,
   }) = _Book;
 

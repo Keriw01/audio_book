@@ -67,4 +67,10 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
     return favorites;
   }
+
+  bool isFavorited(Book book) {
+    List<Book> currentFavorites =
+        List.from((state as FavoritesLoaded).favoriteBooks);
+    return currentFavorites.contains(book);
+  }
 }

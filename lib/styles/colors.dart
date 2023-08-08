@@ -8,3 +8,4 @@ const Color darkGreyColor = Color(0xFF5E5E5E);
 const Color whiteColor = Color(0xFFFFFFFF);
 const Color dividerColor = Color(0xFFDCDCDC);
 const Color heartColor = Color(0xFFED5D53);
+const Color shadowColor = Color(0xFFDDDDDD);

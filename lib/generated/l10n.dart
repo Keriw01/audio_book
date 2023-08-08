@@ -129,6 +129,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Szczegóły książki`
+  String get bookDetail {
+    return Intl.message(
+      'Szczegóły książki',
+      name: 'bookDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fragment`
+  String get fragment {
+    return Intl.message(
+      'Fragment',
+      name: 'fragment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Czytaj HTML`
+  String get readHtml {
+    return Intl.message(
+      'Czytaj HTML',
+      name: 'readHtml',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Czytaj PDF`
+  String get readPdf {
+    return Intl.message(
+      'Czytaj PDF',
+      name: 'readPdf',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

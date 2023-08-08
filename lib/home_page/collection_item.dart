@@ -30,7 +30,10 @@ class CollectionItem extends StatelessWidget {
       splashColor: seedColor.withOpacity(0.8),
       onTap: () => navigateToBooksPage(context),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 15, 0, 15),
+        padding: const EdgeInsets.symmetric(
+          vertical: 15,
+          horizontal: 10,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
