@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Książka`
+  String get pdfPageTitle {
+    return Intl.message(
+      'Książka',
+      name: 'pdfPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Twoje ulubione`
   String get yourFavorite {
     return Intl.message(
@@ -125,6 +135,16 @@ class S {
     return Intl.message(
       'Błąd podczas pobierania danych o książkach!',
       name: 'errorFetchBooks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd podczas pobierania pliku pdf!`
+  String get errorFetchPdf {
+    return Intl.message(
+      'Błąd podczas pobierania pliku pdf!',
+      name: 'errorFetchPdf',
       desc: '',
       args: [],
     );

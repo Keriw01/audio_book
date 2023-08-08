@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:testproject/styles/colors.dart';
 
 class ReadButton extends StatelessWidget {
-  final String url;
   final String text;
+  final VoidCallback navigate;
 
-  const ReadButton({super.key, required this.url, required this.text});
+  const ReadButton({
+    super.key,
+    required this.text,
+    required this.navigate,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class ReadButton extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: navigate,
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.all(15),
             shadowColor: shadowColor,

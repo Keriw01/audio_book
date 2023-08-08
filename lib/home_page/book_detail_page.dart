@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/book_detail_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/fragment_section.dart';
+import 'package:testproject/home_page/pdf_page.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/widgets/authors_list.dart';
 import 'package:testproject/widgets/genres_list.dart';
@@ -104,15 +105,18 @@ class BookDetailPage extends StatelessWidget {
                           alignment: WrapAlignment.spaceBetween,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            if (state.bookDetail.html.isNotEmpty)
-                              ReadButton(
-                                url: state.bookDetail.html,
-                                text: S.of(context).readHtml,
-                              ),
+                            // if (state.bookDetail.html.isNotEmpty)
+                            //   ReadButton(
+                            //     url: state.bookDetail.html,
+                            //     text: S.of(context).readHtml,
+                            //   ),
                             if (state.bookDetail.pdf.isNotEmpty)
                               ReadButton(
-                                url: state.bookDetail.pdf,
                                 text: S.of(context).readPdf,
+                                navigate: () => PdfPage.navigate(
+                                  context,
+                                  state.bookDetail.pdf,
+                                ),
                               ),
                             LikedButton(book: book),
                           ],
