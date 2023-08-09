@@ -22,6 +22,7 @@ Pdf _$PdfFromJson(Map<String, dynamic> json) {
 mixin _$Pdf {
   String get pdfPath => throw _privateConstructorUsedError;
   String get currentPage => throw _privateConstructorUsedError;
+  int? get totalPages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ abstract class $PdfCopyWith<$Res> {
   factory $PdfCopyWith(Pdf value, $Res Function(Pdf) then) =
       _$PdfCopyWithImpl<$Res, Pdf>;
   @useResult
-  $Res call({String pdfPath, String currentPage});
+  $Res call({String pdfPath, String currentPage, int? totalPages});
 }
 
 /// @nodoc
@@ -50,6 +51,7 @@ class _$PdfCopyWithImpl<$Res, $Val extends Pdf> implements $PdfCopyWith<$Res> {
   $Res call({
     Object? pdfPath = null,
     Object? currentPage = null,
+    Object? totalPages = freezed,
   }) {
     return _then(_value.copyWith(
       pdfPath: null == pdfPath
@@ -60,6 +62,10 @@ class _$PdfCopyWithImpl<$Res, $Val extends Pdf> implements $PdfCopyWith<$Res> {
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as String,
+      totalPages: freezed == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$_PdfCopyWith<$Res> implements $PdfCopyWith<$Res> {
       __$$_PdfCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String pdfPath, String currentPage});
+  $Res call({String pdfPath, String currentPage, int? totalPages});
 }
 
 /// @nodoc
@@ -84,6 +90,7 @@ class __$$_PdfCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$_Pdf>
   $Res call({
     Object? pdfPath = null,
     Object? currentPage = null,
+    Object? totalPages = freezed,
   }) {
     return _then(_$_Pdf(
       pdfPath: null == pdfPath
@@ -94,6 +101,10 @@ class __$$_PdfCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$_Pdf>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as String,
+      totalPages: freezed == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -101,7 +112,8 @@ class __$$_PdfCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$_Pdf>
 /// @nodoc
 @JsonSerializable()
 class _$_Pdf implements _Pdf {
-  const _$_Pdf({required this.pdfPath, required this.currentPage});
+  const _$_Pdf(
+      {required this.pdfPath, required this.currentPage, this.totalPages});
 
   factory _$_Pdf.fromJson(Map<String, dynamic> json) => _$$_PdfFromJson(json);
 
@@ -109,10 +121,12 @@ class _$_Pdf implements _Pdf {
   final String pdfPath;
   @override
   final String currentPage;
+  @override
+  final int? totalPages;
 
   @override
   String toString() {
-    return 'Pdf(pdfPath: $pdfPath, currentPage: $currentPage)';
+    return 'Pdf(pdfPath: $pdfPath, currentPage: $currentPage, totalPages: $totalPages)';
   }
 
   @override
@@ -122,12 +136,15 @@ class _$_Pdf implements _Pdf {
             other is _$_Pdf &&
             (identical(other.pdfPath, pdfPath) || other.pdfPath == pdfPath) &&
             (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage));
+                other.currentPage == currentPage) &&
+            (identical(other.totalPages, totalPages) ||
+                other.totalPages == totalPages));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, pdfPath, currentPage);
+  int get hashCode =>
+      Object.hash(runtimeType, pdfPath, currentPage, totalPages);
 
   @JsonKey(ignore: true)
   @override
@@ -146,7 +163,8 @@ class _$_Pdf implements _Pdf {
 abstract class _Pdf implements Pdf {
   const factory _Pdf(
       {required final String pdfPath,
-      required final String currentPage}) = _$_Pdf;
+      required final String currentPage,
+      final int? totalPages}) = _$_Pdf;
 
   factory _Pdf.fromJson(Map<String, dynamic> json) = _$_Pdf.fromJson;
 
@@ -154,6 +172,8 @@ abstract class _Pdf implements Pdf {
   String get pdfPath;
   @override
   String get currentPage;
+  @override
+  int? get totalPages;
   @override
   @JsonKey(ignore: true)
   _$$_PdfCopyWith<_$_Pdf> get copyWith => throw _privateConstructorUsedError;

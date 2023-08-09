@@ -1,15 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:testproject/cubit/pdf_cubit.dart';
 import 'package:testproject/models/pdf.dart';
-import 'package:testproject/service/locator.dart';
-import 'package:testproject/service/pdf_preferences.dart';
-import 'package:testproject/widgets/loading_indicator.dart';
 
-class PdfViewSection extends StatefulWidget {
+class PdfViewSection extends StatelessWidget {
   final String pdfUrl;
   final Pdf pdf;
+
   const PdfViewSection({
     super.key,
     required this.pdfUrl,
@@ -17,69 +17,32 @@ class PdfViewSection extends StatefulWidget {
   });
 
   @override
-  State<PdfViewSection> createState() => _PdfViewSectionState();
-}
-
-class _PdfViewSectionState extends State<PdfViewSection> {
-  final pdfPreferences = getIt<PdfPreferences>();
-  final Completer<PDFViewController> _controller =
-      Completer<PDFViewController>();
-  int? pages = 0;
-  int currentPage = 0;
-  bool isReady = false;
-  String errorMessage = '';
-
-  @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        PDFView(
-          filePath: widget.pdf.pdfPath,
-          swipeHorizontal: true,
-          autoSpacing: false,
-          defaultPage: int.parse(widget.pdf.currentPage),
-          fitPolicy: FitPolicy.BOTH,
-          onRender: (_pages) {
-            setState(() {
-              pages = _pages;
-              isReady = true;
-            });
-          },
-          onError: (error) {
-            setState(() {
-              errorMessage = error.toString();
-            });
-          },
-          onPageError: (page, error) {
-            setState(() {
-              errorMessage = '$page: ${error.toString()}';
-            });
-          },
-          onViewCreated: (PDFViewController pdfViewController) {
-            _controller.complete(pdfViewController);
-          },
-          onLinkHandler: (String? uri) {},
-          onPageChanged: (int? page, int? total) {
-            setState(() {
-              currentPage = page!;
-              pdfPreferences.save(
-                widget.pdfUrl,
-                widget.pdf.pdfPath,
-                currentPage.toString(),
-              );
-            });
-          },
-        ),
-        errorMessage.isEmpty
-            ? !isReady
-                ? const Center(
-                    child: LoadingIndicator(),
-                  )
-                : Container()
-            : Center(
-                child: Text(errorMessage),
-              )
-      ],
+    final Completer<PDFViewController> _controller =
+        Completer<PDFViewController>();
+    final pdfCubit = context.read<PdfCubit>();
+
+    return PDFView(
+      filePath: pdf.pdfPath,
+      swipeHorizontal: true,
+      autoSpacing: false,
+      defaultPage: int.parse(pdf.currentPage),
+      fitPolicy: FitPolicy.BOTH,
+      onRender: (pages) {
+        pdfCubit.setPdfReadyAndPages(pages!);
+      },
+      onError: (error) {
+        pdfCubit.setPdfError(error.toString());
+      },
+      onPageError: (page, error) {
+        pdfCubit.setPdfError('$page: ${error.toString()}');
+      },
+      onViewCreated: (PDFViewController pdfViewController) {
+        _controller.complete(pdfViewController);
+      },
+      onPageChanged: (int? page, int? total) {
+        pdfCubit.updateCurrentPage(page!);
+      },
     );
   }
 }

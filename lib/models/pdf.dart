@@ -8,6 +8,7 @@ class Pdf with _$Pdf {
   const factory Pdf({
     required String pdfPath,
     required String currentPage,
+    int? totalPages,
   }) = _Pdf;
 
   factory Pdf.fromJson(Map<String, dynamic> json) => _$PdfFromJson(json);
