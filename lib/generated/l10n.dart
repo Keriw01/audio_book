@@ -140,16 +140,6 @@ class S {
     );
   }
 
-  /// `Błąd podczas pobierania pliku pdf!`
-  String get errorFetchPdf {
-    return Intl.message(
-      'Błąd podczas pobierania pliku pdf!',
-      name: 'errorFetchPdf',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Szczegóły książki`
   String get bookDetail {
     return Intl.message(

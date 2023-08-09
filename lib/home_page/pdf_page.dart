@@ -23,7 +23,7 @@ class PdfPage extends StatelessWidget {
     if (state is PdfError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(S.of(context).errorFetchPdf),
+          content: Text(S.of(context).errorOccured + state.message),
         ),
       );
     }

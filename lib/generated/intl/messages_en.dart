@@ -28,8 +28,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error fetching book data!"),
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
             "Error fetching collection data!"),
-        "errorFetchPdf":
-            MessageLookupByLibrary.simpleMessage("Error fetching pdf file!"),
         "errorOccured":
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
         "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),

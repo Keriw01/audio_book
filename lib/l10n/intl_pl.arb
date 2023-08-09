@@ -8,7 +8,6 @@
     "others": "Pozostałe",
     "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
     "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
-    "errorFetchPdf": "Błąd podczas pobierania pliku pdf!",
     "bookDetail": "Szczegóły książki",
     "fragment": "Fragment",
     "readHtml": "Czytaj HTML",

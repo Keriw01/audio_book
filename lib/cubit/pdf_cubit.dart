@@ -25,12 +25,12 @@ class PdfCubit extends Cubit<PdfState> {
       if (cachedPdf != null) {
         emit(PdfLoaded(cachedPdf));
       } else {
-        final filename = pdfUrl.substring(pdfUrl.lastIndexOf("/") + 1);
+        final filename = pdfUrl.substring(pdfUrl.lastIndexOf('/') + 1);
         final request = await HttpClient().getUrl(Uri.parse(pdfUrl));
         final response = await request.close();
         final bytes = await consolidateHttpClientResponseBytes(response);
         final dir = await getApplicationDocumentsDirectory();
-        final file = File("${dir.path}/$filename");
+        final file = File('${dir.path}/$filename');
 
         await file.writeAsBytes(bytes, flush: true);
         await pdfPreferences.save(pdfUrl, file.path, '0');
