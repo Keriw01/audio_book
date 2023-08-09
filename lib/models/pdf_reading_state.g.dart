@@ -9,7 +9,7 @@ part of 'pdf_reading_state.dart';
 _$_PdfReadingState _$$_PdfReadingStateFromJson(Map<String, dynamic> json) =>
     _$_PdfReadingState(
       pdfPath: json['pdfPath'] as String,
-      currentPage: json['currentPage'] as String,
+      currentPage: json['currentPage'] as int,
       totalPages: json['totalPages'] as int?,
     );
 

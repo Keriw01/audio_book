@@ -11,7 +11,7 @@ class PdfPreferences {
   Future<void> save(
     String pdfUrlKey,
     String pdfPath,
-    String currentPage,
+    int currentPage,
   ) async {
     PdfReadingState pdf =
         PdfReadingState(pdfPath: pdfPath, currentPage: currentPage);

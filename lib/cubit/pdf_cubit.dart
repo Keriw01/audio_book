@@ -34,8 +34,8 @@ class PdfCubit extends Cubit<PdfState> {
         final file = File('${dir.path}/$filename');
 
         await file.writeAsBytes(bytes, flush: true);
-        await pdfPreferences.save(pdfUrl, file.path, '0');
-        emit(PdfLoaded(PdfReadingState(pdfPath: file.path, currentPage: '0')));
+        await pdfPreferences.save(pdfUrl, file.path, 0);
+        emit(PdfLoaded(PdfReadingState(pdfPath: file.path, currentPage: 0)));
       }
     } catch (error) {
       emit(PdfError(error.toString()));
@@ -46,7 +46,7 @@ class PdfCubit extends Cubit<PdfState> {
     if (state is PdfLoaded) {
       PdfLoaded currentState = state as PdfLoaded;
       PdfReadingState updatedPdf =
-          currentState.pdf.copyWith(currentPage: newPage.toString());
+          currentState.pdf.copyWith(currentPage: newPage);
       await pdfPreferences.save(
         pdfUrl,
         updatedPdf.pdfPath,

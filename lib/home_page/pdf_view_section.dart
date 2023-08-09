@@ -26,7 +26,7 @@ class PdfViewSection extends StatelessWidget {
       filePath: pdf.pdfPath,
       swipeHorizontal: true,
       autoSpacing: false,
-      defaultPage: int.parse(pdf.currentPage),
+      defaultPage: pdf.currentPage,
       fitPolicy: FitPolicy.BOTH,
       onRender: (pages) {
         pdfCubit.setPdfReadyAndPages(pages!);

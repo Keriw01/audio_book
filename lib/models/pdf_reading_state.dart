@@ -7,7 +7,7 @@ part 'pdf_reading_state.g.dart';
 class PdfReadingState with _$PdfReadingState {
   const factory PdfReadingState({
     required String pdfPath,
-    required String currentPage,
+    required int currentPage,
     int? totalPages,
   }) = _PdfReadingState;
 

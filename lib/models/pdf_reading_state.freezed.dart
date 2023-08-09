@@ -21,7 +21,7 @@ PdfReadingState _$PdfReadingStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PdfReadingState {
   String get pdfPath => throw _privateConstructorUsedError;
-  String get currentPage => throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
   int? get totalPages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $PdfReadingStateCopyWith<$Res> {
           PdfReadingState value, $Res Function(PdfReadingState) then) =
       _$PdfReadingStateCopyWithImpl<$Res, PdfReadingState>;
   @useResult
-  $Res call({String pdfPath, String currentPage, int? totalPages});
+  $Res call({String pdfPath, int currentPage, int? totalPages});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$PdfReadingStateCopyWithImpl<$Res, $Val extends PdfReadingState>
       currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       totalPages: freezed == totalPages
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
@@ -81,7 +81,7 @@ abstract class _$$_PdfReadingStateCopyWith<$Res>
       __$$_PdfReadingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String pdfPath, String currentPage, int? totalPages});
+  $Res call({String pdfPath, int currentPage, int? totalPages});
 }
 
 /// @nodoc
@@ -107,7 +107,7 @@ class __$$_PdfReadingStateCopyWithImpl<$Res>
       currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       totalPages: freezed == totalPages
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ class _$_PdfReadingState implements _PdfReadingState {
   @override
   final String pdfPath;
   @override
-  final String currentPage;
+  final int currentPage;
   @override
   final int? totalPages;
 
@@ -171,7 +171,7 @@ class _$_PdfReadingState implements _PdfReadingState {
 abstract class _PdfReadingState implements PdfReadingState {
   const factory _PdfReadingState(
       {required final String pdfPath,
-      required final String currentPage,
+      required final int currentPage,
       final int? totalPages}) = _$_PdfReadingState;
 
   factory _PdfReadingState.fromJson(Map<String, dynamic> json) =
@@ -180,7 +180,7 @@ abstract class _PdfReadingState implements PdfReadingState {
   @override
   String get pdfPath;
   @override
-  String get currentPage;
+  int get currentPage;
   @override
   int? get totalPages;
   @override
