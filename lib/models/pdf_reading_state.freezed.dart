@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'pdf.dart';
+part of 'pdf_reading_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,32 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Pdf _$PdfFromJson(Map<String, dynamic> json) {
-  return _Pdf.fromJson(json);
+PdfReadingState _$PdfReadingStateFromJson(Map<String, dynamic> json) {
+  return _PdfReadingState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Pdf {
+mixin _$PdfReadingState {
   String get pdfPath => throw _privateConstructorUsedError;
   String get currentPage => throw _privateConstructorUsedError;
   int? get totalPages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PdfCopyWith<Pdf> get copyWith => throw _privateConstructorUsedError;
+  $PdfReadingStateCopyWith<PdfReadingState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PdfCopyWith<$Res> {
-  factory $PdfCopyWith(Pdf value, $Res Function(Pdf) then) =
-      _$PdfCopyWithImpl<$Res, Pdf>;
+abstract class $PdfReadingStateCopyWith<$Res> {
+  factory $PdfReadingStateCopyWith(
+          PdfReadingState value, $Res Function(PdfReadingState) then) =
+      _$PdfReadingStateCopyWithImpl<$Res, PdfReadingState>;
   @useResult
   $Res call({String pdfPath, String currentPage, int? totalPages});
 }
 
 /// @nodoc
-class _$PdfCopyWithImpl<$Res, $Val extends Pdf> implements $PdfCopyWith<$Res> {
-  _$PdfCopyWithImpl(this._value, this._then);
+class _$PdfReadingStateCopyWithImpl<$Res, $Val extends PdfReadingState>
+    implements $PdfReadingStateCopyWith<$Res> {
+  _$PdfReadingStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -71,18 +74,22 @@ class _$PdfCopyWithImpl<$Res, $Val extends Pdf> implements $PdfCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_PdfCopyWith<$Res> implements $PdfCopyWith<$Res> {
-  factory _$$_PdfCopyWith(_$_Pdf value, $Res Function(_$_Pdf) then) =
-      __$$_PdfCopyWithImpl<$Res>;
+abstract class _$$_PdfReadingStateCopyWith<$Res>
+    implements $PdfReadingStateCopyWith<$Res> {
+  factory _$$_PdfReadingStateCopyWith(
+          _$_PdfReadingState value, $Res Function(_$_PdfReadingState) then) =
+      __$$_PdfReadingStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String pdfPath, String currentPage, int? totalPages});
 }
 
 /// @nodoc
-class __$$_PdfCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$_Pdf>
-    implements _$$_PdfCopyWith<$Res> {
-  __$$_PdfCopyWithImpl(_$_Pdf _value, $Res Function(_$_Pdf) _then)
+class __$$_PdfReadingStateCopyWithImpl<$Res>
+    extends _$PdfReadingStateCopyWithImpl<$Res, _$_PdfReadingState>
+    implements _$$_PdfReadingStateCopyWith<$Res> {
+  __$$_PdfReadingStateCopyWithImpl(
+      _$_PdfReadingState _value, $Res Function(_$_PdfReadingState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +99,7 @@ class __$$_PdfCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$_Pdf>
     Object? currentPage = null,
     Object? totalPages = freezed,
   }) {
-    return _then(_$_Pdf(
+    return _then(_$_PdfReadingState(
       pdfPath: null == pdfPath
           ? _value.pdfPath
           : pdfPath // ignore: cast_nullable_to_non_nullable
@@ -111,11 +118,12 @@ class __$$_PdfCopyWithImpl<$Res> extends _$PdfCopyWithImpl<$Res, _$_Pdf>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Pdf implements _Pdf {
-  const _$_Pdf(
+class _$_PdfReadingState implements _PdfReadingState {
+  const _$_PdfReadingState(
       {required this.pdfPath, required this.currentPage, this.totalPages});
 
-  factory _$_Pdf.fromJson(Map<String, dynamic> json) => _$$_PdfFromJson(json);
+  factory _$_PdfReadingState.fromJson(Map<String, dynamic> json) =>
+      _$$_PdfReadingStateFromJson(json);
 
   @override
   final String pdfPath;
@@ -126,14 +134,14 @@ class _$_Pdf implements _Pdf {
 
   @override
   String toString() {
-    return 'Pdf(pdfPath: $pdfPath, currentPage: $currentPage, totalPages: $totalPages)';
+    return 'PdfReadingState(pdfPath: $pdfPath, currentPage: $currentPage, totalPages: $totalPages)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Pdf &&
+            other is _$_PdfReadingState &&
             (identical(other.pdfPath, pdfPath) || other.pdfPath == pdfPath) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
@@ -149,24 +157,25 @@ class _$_Pdf implements _Pdf {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PdfCopyWith<_$_Pdf> get copyWith =>
-      __$$_PdfCopyWithImpl<_$_Pdf>(this, _$identity);
+  _$$_PdfReadingStateCopyWith<_$_PdfReadingState> get copyWith =>
+      __$$_PdfReadingStateCopyWithImpl<_$_PdfReadingState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PdfToJson(
+    return _$$_PdfReadingStateToJson(
       this,
     );
   }
 }
 
-abstract class _Pdf implements Pdf {
-  const factory _Pdf(
+abstract class _PdfReadingState implements PdfReadingState {
+  const factory _PdfReadingState(
       {required final String pdfPath,
       required final String currentPage,
-      final int? totalPages}) = _$_Pdf;
+      final int? totalPages}) = _$_PdfReadingState;
 
-  factory _Pdf.fromJson(Map<String, dynamic> json) = _$_Pdf.fromJson;
+  factory _PdfReadingState.fromJson(Map<String, dynamic> json) =
+      _$_PdfReadingState.fromJson;
 
   @override
   String get pdfPath;
@@ -176,5 +185,6 @@ abstract class _Pdf implements Pdf {
   int? get totalPages;
   @override
   @JsonKey(ignore: true)
-  _$$_PdfCopyWith<_$_Pdf> get copyWith => throw _privateConstructorUsedError;
+  _$$_PdfReadingStateCopyWith<_$_PdfReadingState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

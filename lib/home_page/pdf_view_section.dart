@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:testproject/cubit/pdf_cubit.dart';
-import 'package:testproject/models/pdf.dart';
+import 'package:testproject/models/pdf_reading_state.dart';
 
 class PdfViewSection extends StatelessWidget {
   final String pdfUrl;
-  final Pdf pdf;
+  final PdfReadingState pdf;
 
   const PdfViewSection({
     super.key,

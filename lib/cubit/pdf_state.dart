@@ -14,7 +14,7 @@ class PdfLoading extends PdfState {
 }
 
 class PdfLoaded extends PdfState {
-  final Pdf pdf;
+  final PdfReadingState pdf;
   const PdfLoaded(this.pdf);
 }
 
