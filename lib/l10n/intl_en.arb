@@ -1,7 +1,6 @@
 {
     "homePageTitle": "Home",
     "categoryPageTitle": "Categories",
-    "pdfPageTitle": "Book",
     "yourFavorite": "Your favorite",
     "errorOccured": "An error occurred:",
     "refreshData": "Refresh data",

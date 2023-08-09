@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/generated/l10n.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
+  final String title;
   final String url;
-  const WebViewPage({super.key, required this.url});
+  const WebViewPage({super.key, required this.url, required this.title});
 
   static Future<void> navigate(
     BuildContext context,
+    String title,
     String url,
   ) {
     return Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => WebViewPage(
+          title: title,
           url: url,
         ),
       ),
@@ -40,7 +42,7 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).pdfPageTitle)),
+      appBar: AppBar(title: Text(widget.title)),
       body: WebViewWidget(controller: controller),
     );
   }

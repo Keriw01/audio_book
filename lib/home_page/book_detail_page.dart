@@ -111,6 +111,7 @@ class BookDetailPage extends StatelessWidget {
                                 text: S.of(context).readHtml,
                                 navigate: () => WebViewPage.navigate(
                                   context,
+                                  book.title,
                                   state.bookDetail.html,
                                 ),
                               ),
@@ -119,6 +120,7 @@ class BookDetailPage extends StatelessWidget {
                                 text: S.of(context).readPdf,
                                 navigate: () => PdfPage.navigate(
                                   context,
+                                  book.title,
                                   state.bookDetail.pdf,
                                 ),
                               ),

@@ -6,15 +6,21 @@ import 'package:testproject/home_page/pdf_view_section.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
 class PdfPage extends StatelessWidget {
+  final String title;
   final String pdfUrl;
 
-  const PdfPage({Key? key, required this.pdfUrl}) : super(key: key);
+  const PdfPage({Key? key, required this.title, required this.pdfUrl})
+      : super(key: key);
 
-  static Future<void> navigate(BuildContext context, String url) async {
+  static Future<void> navigate(
+    BuildContext context,
+    String title,
+    String url,
+  ) async {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PdfPage(pdfUrl: url),
+        builder: (context) => PdfPage(title: title, pdfUrl: url),
       ),
     );
   }
@@ -35,7 +41,7 @@ class PdfPage extends StatelessWidget {
       create: (context) => PdfCubit(pdfUrl),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(S.of(context).pdfPageTitle),
+          title: Text(title),
         ),
         body: BlocConsumer<PdfCubit, PdfState>(
           builder: (context, state) {

@@ -70,16 +70,6 @@ class S {
     );
   }
 
-  /// `Książka`
-  String get pdfPageTitle {
-    return Intl.message(
-      'Książka',
-      name: 'pdfPageTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Twoje ulubione`
   String get yourFavorite {
     return Intl.message(
