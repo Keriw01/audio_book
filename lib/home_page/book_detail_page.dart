@@ -1,33 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/book_detail_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/fragment_section.dart';
-import 'package:testproject/home_page/pdf_page.dart';
-import 'package:testproject/home_page/web_view_page.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/routes/app_router.dart';
 import 'package:testproject/widgets/authors_list.dart';
 import 'package:testproject/widgets/genres_list.dart';
 import 'package:testproject/widgets/liked_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:testproject/widgets/read_button.dart';
 
+@RoutePage()
 class BookDetailPage extends StatelessWidget {
   final Book book;
   const BookDetailPage({super.key, required this.book});
-
-  static Future<void> navigate(
-    BuildContext context,
-    Book book,
-  ) async {
-    await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BookDetailPage(book: book),
-      ),
-    );
-  }
 
   void _listener(BuildContext context, BookDetailState state) {
     if (state is BookDetailError) {
@@ -109,19 +98,21 @@ class BookDetailPage extends StatelessWidget {
                             if (state.bookDetail.html.isNotEmpty)
                               ReadButton(
                                 text: S.of(context).readHtml,
-                                navigate: () => WebViewPage.navigate(
-                                  context,
-                                  book.title,
-                                  state.bookDetail.html,
+                                navigate: () => context.router.push(
+                                  WebViewRoute(
+                                    title: book.title,
+                                    url: state.bookDetail.html,
+                                  ),
                                 ),
                               ),
                             if (state.bookDetail.pdf.isNotEmpty)
                               ReadButton(
                                 text: S.of(context).readPdf,
-                                navigate: () => PdfPage.navigate(
-                                  context,
-                                  book.title,
-                                  state.bookDetail.pdf,
+                                navigate: () => context.router.push(
+                                  PdfRoute(
+                                    title: book.title,
+                                    pdfUrl: state.bookDetail.pdf,
+                                  ),
                                 ),
                               ),
                             LikedButton(book: book),

@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:testproject/cubit/collections_cubit.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/home_page.dart';
+import 'package:testproject/routes/app_router.dart';
 import 'package:testproject/service/books_preferences.dart';
 import 'package:testproject/service/locator.dart';
 import 'package:testproject/styles/theme.dart';
@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppRouter appRouter = AppRouter();
     return MultiBlocProvider(
       providers: [
         BlocProvider<CollectionsCubit>(
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => FavoritesCubit(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: appRouter.config(),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -40,7 +42,6 @@ class MyApp extends StatelessWidget {
         supportedLocales: S.delegate.supportedLocales,
         title: 'Utwory',
         theme: customTheme,
-        home: const HomePage(),
       ),
     );
   }

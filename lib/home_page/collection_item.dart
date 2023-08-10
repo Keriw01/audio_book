@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/models/collection.dart';
+import 'package:testproject/routes/app_router.dart';
 import 'package:testproject/styles/colors.dart';
-import 'package:testproject/home_page/books_page.dart';
 
 class CollectionItem extends StatelessWidget {
   final Collection collection;
@@ -11,24 +12,13 @@ class CollectionItem extends StatelessWidget {
     required this.collection,
   });
 
-  Future<Future> navigateToBooksPage(BuildContext context) async {
-    return Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BooksPage(
-          collection: collection,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       radius: 100,
       highlightColor: deepOrange.withOpacity(0.1),
       splashColor: seedColor.withOpacity(0.8),
-      onTap: () => navigateToBooksPage(context),
+      onTap: () => context.router.push(BooksRoute(collection: collection)),
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 15,

@@ -1,26 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+@RoutePage()
 class WebViewPage extends StatefulWidget {
   final String title;
   final String url;
-  const WebViewPage({super.key, required this.url, required this.title});
-
-  static Future<void> navigate(
-    BuildContext context,
-    String title,
-    String url,
-  ) {
-    return Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => WebViewPage(
-          title: title,
-          url: url,
-        ),
-      ),
-    );
-  }
+  const WebViewPage({super.key, required this.title, required this.url});
 
   @override
   State<WebViewPage> createState() => _WebViewPageState();

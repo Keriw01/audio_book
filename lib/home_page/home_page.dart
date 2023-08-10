@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/category_page/category_page.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/home_content.dart';
 
+@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
