@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/collections_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:testproject/home_page/collection_item.dart';
 import 'package:testproject/widgets/custom_divider.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
+@RoutePage()
 class HomePageContent extends StatelessWidget {
   const HomePageContent({super.key});
 

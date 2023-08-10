@@ -1,59 +1,27 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:testproject/category_page/category_page.dart';
-import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/home_content.dart';
+import 'package:testproject/routes/app_router.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final ValueNotifier<int> _selectedIndexNotifier = ValueNotifier<int>(0);
-
-  static final List<String> _widgetTitle = <String>[
-    S.current.homePageTitle,
-    S.current.categoryPageTitle,
-  ];
-
-  @override
-  void dispose() {
-    _selectedIndexNotifier.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: ValueListenableBuilder(
-          valueListenable: _selectedIndexNotifier,
-          builder: (context, selectedIndex, child) =>
-              Text(_widgetTitle.elementAt(selectedIndex)),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
+    return AutoTabsRouter.pageView(
+      routes: const [
+        HomeRouteContent(),
+        CategoryRoute(),
+      ],
+      builder: (context, child, pageController) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(context.tabsRouter.current.title(context)),
           ),
-        ],
-      ),
-      body: PageView(
-        scrollDirection: Axis.horizontal,
-        onPageChanged: (index) => _selectedIndexNotifier.value = index,
-        children: const [
-          HomePageContent(),
-          CategoryPage(),
-        ],
-      ),
+          body: child,
+        );
+      },
+      scrollDirection: Axis.horizontal,
     );
   }
 }

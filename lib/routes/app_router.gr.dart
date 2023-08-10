@@ -35,10 +35,22 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    CategoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CategoryPage(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomePage(),
+      );
+    },
+    HomeRouteContent.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomePageContent(),
       );
     },
     PdfRoute.name: (routeData) {
@@ -142,6 +154,20 @@ class BooksRouteArgs {
 }
 
 /// generated route for
+/// [CategoryPage]
+class CategoryRoute extends PageRouteInfo<void> {
+  const CategoryRoute({List<PageRouteInfo>? children})
+      : super(
+          CategoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoryRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -151,6 +177,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HomePageContent]
+class HomeRouteContent extends PageRouteInfo<void> {
+  const HomeRouteContent({List<PageRouteInfo>? children})
+      : super(
+          HomeRouteContent.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeRouteContent';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
