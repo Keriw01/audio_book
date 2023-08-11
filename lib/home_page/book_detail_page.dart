@@ -6,14 +6,14 @@ import 'package:testproject/cubit/book_detail_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/fragment_section.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/routes/app_router.dart';
+import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/widgets/authors_list.dart';
 import 'package:testproject/widgets/genres_list.dart';
 import 'package:testproject/widgets/liked_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:testproject/widgets/read_button.dart';
 
-@RoutePage()
+@AutoRoute()
 class BookDetailPage extends StatelessWidget {
   final Book book;
   const BookDetailPage({super.key, required this.book});

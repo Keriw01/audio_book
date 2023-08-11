@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/models/collection.dart';
-import 'package:testproject/routes/app_router.dart';
+import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 
 class CollectionItem extends StatelessWidget {

@@ -7,7 +7,7 @@ import 'package:testproject/home_page/books_section.dart';
 import 'package:testproject/models/collection.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
-@RoutePage()
+@AutoRoute()
 class BooksPage extends StatelessWidget {
   final Collection collection;
 

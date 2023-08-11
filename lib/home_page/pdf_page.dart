@@ -6,7 +6,7 @@ import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/home_page/pdf_view_section.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
-@RoutePage()
+@AutoRoute()
 class PdfPage extends StatelessWidget {
   final String title;
   final String pdfUrl;

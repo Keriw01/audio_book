@@ -7,7 +7,7 @@ import 'package:testproject/home_page/collection_item.dart';
 import 'package:testproject/widgets/custom_divider.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
-@RoutePage()
+@AutoRoute()
 class HomePageContent extends StatelessWidget {
   const HomePageContent({super.key});
 

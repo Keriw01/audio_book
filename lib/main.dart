@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:testproject/cubit/collections_cubit.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/routes/app_router.dart';
+import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/service/books_preferences.dart';
 import 'package:testproject/service/locator.dart';
 import 'package:testproject/styles/theme.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppRouter appRouter = AppRouter();
+    final appRouter = AppRouter();
     return MultiBlocProvider(
       providers: [
         BlocProvider<CollectionsCubit>(
@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        routerConfig: appRouter.config(),
+        routerDelegate: appRouter.delegate(),
+        routeInformationParser: appRouter.defaultRouteParser(),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

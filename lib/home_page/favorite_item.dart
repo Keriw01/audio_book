@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/routes/app_router.dart';
+import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
