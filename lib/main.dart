@@ -13,15 +13,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
   await getIt<BooksPreferences>().clear();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    final appRouter = AppRouter();
     return MultiBlocProvider(
       providers: [
         BlocProvider<CollectionsCubit>(
