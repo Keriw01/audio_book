@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:testproject/cubit/collections_cubit.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/home_page.dart';
+import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/service/books_preferences.dart';
 import 'package:testproject/service/locator.dart';
 import 'package:testproject/styles/theme.dart';
@@ -13,12 +13,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
   await getIt<BooksPreferences>().clear();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => FavoritesCubit(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerDelegate: appRouter.delegate(),
+        routeInformationParser: appRouter.defaultRouteParser(),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -40,7 +42,6 @@ class MyApp extends StatelessWidget {
         supportedLocales: S.delegate.supportedLocales,
         title: 'Utwory',
         theme: customTheme,
-        home: const HomePage(),
       ),
     );
   }

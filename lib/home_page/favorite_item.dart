@@ -1,11 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/cubit/favorites_cubit.dart';
 import 'package:testproject/models/book.dart';
+import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
-import 'package:testproject/home_page/book_detail_page.dart';
 
 class FavoriteItem extends StatelessWidget {
   final Book book;
@@ -16,7 +17,7 @@ class FavoriteItem extends StatelessWidget {
     final favoritesCubit = context.read<FavoritesCubit>();
 
     return RawMaterialButton(
-      onPressed: () => BookDetailPage.navigate(context, book),
+      onPressed: () => context.router.push(BookDetailRoute(book: book)),
       padding: const EdgeInsets.all(5),
       child: SizedBox(
         width: 148,
