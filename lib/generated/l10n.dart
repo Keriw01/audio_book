@@ -169,6 +169,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Posłuchaj`
+  String get listen {
+    return Intl.message(
+      'Posłuchaj',
+      name: 'listen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Teraz odtwarzane`
+  String get nowPlaying {
+    return Intl.message(
+      'Teraz odtwarzane',
+      name: 'nowPlaying',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

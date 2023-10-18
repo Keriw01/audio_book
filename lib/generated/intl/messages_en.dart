@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
         "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
+        "listen": MessageLookupByLibrary.simpleMessage("Listen"),
+        "nowPlaying": MessageLookupByLibrary.simpleMessage("Now playing"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
         "readHtml": MessageLookupByLibrary.simpleMessage("Read HTML"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Read PDF"),

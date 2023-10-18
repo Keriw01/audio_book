@@ -4,6 +4,7 @@ import 'package:testproject/home_page/book_detail_page.dart';
 import 'package:testproject/home_page/books_page.dart';
 import 'package:testproject/home_page/home_content.dart';
 import 'package:testproject/home_page/home_page.dart';
+import 'package:testproject/home_page/listen_page.dart';
 import 'package:testproject/home_page/pdf_page.dart';
 import 'package:testproject/home_page/web_view_page.dart';
 
@@ -21,6 +22,7 @@ import 'package:testproject/home_page/web_view_page.dart';
     AutoRoute(page: BooksPage),
     AutoRoute(page: WebViewPage),
     AutoRoute(page: PdfPage),
+    AutoRoute(page: ListenPage),
   ],
   replaceInRouteName: 'Page,Route',
 )

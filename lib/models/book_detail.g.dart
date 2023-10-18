@@ -20,6 +20,9 @@ _$_BookDetail _$$_BookDetailFromJson(Map<String, dynamic> json) =>
               json['fragment_data'] as Map<String, dynamic>),
       pdf: json['pdf'] as String,
       html: json['html'] as String,
+      media: (json['media'] as List<dynamic>)
+          .map((e) => BookMedia.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_BookDetailToJson(_$_BookDetail instance) =>
@@ -29,4 +32,5 @@ Map<String, dynamic> _$$_BookDetailToJson(_$_BookDetail instance) =>
       'fragment_data': instance.fragmentData,
       'pdf': instance.pdf,
       'html': instance.html,
+      'media': instance.media,
     };

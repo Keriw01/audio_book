@@ -10,6 +10,7 @@ import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/widgets/authors_list.dart';
 import 'package:testproject/widgets/genres_list.dart';
 import 'package:testproject/widgets/liked_button.dart';
+import 'package:testproject/widgets/listen_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:testproject/widgets/read_button.dart';
 
@@ -62,14 +63,26 @@ class BookDetailPage extends StatelessWidget {
                         child: Column(
                           children: [
                             const SizedBox(height: 15),
-                            CachedNetworkImage(
-                              imageUrl: book.simpleThumb,
-                              placeholder: (context, url) =>
-                                  const LoadingIndicator(),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
-                              alignment: Alignment.centerLeft,
-                              width: 150,
+                            Stack(
+                              alignment: Alignment.bottomCenter,
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: book.simpleThumb,
+                                  placeholder: (context, url) =>
+                                      const LoadingIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                  alignment: Alignment.centerLeft,
+                                  width: 150,
+                                ),
+                                if (book.hasAudio)
+                                  ListenButton(
+                                    text: S.of(context).listen.toString(),
+                                    navigate: () => context.router.push(
+                                      ListenRoute(bookDetail: state.bookDetail),
+                                    ),
+                                  )
+                              ],
                             ),
                             const SizedBox(height: 10),
                             Text(

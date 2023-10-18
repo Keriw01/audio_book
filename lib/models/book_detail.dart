@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:testproject/models/book_fragment_data.dart';
+import 'package:testproject/models/book_media.dart';
 import 'package:testproject/models/book_metadata.dart';
 
 part 'book_detail.freezed.dart';
@@ -13,6 +14,7 @@ class BookDetail with _$BookDetail {
     @JsonKey(name: 'fragment_data') required BookFragmentData? fragmentData,
     required String pdf,
     required String html,
+    required List<BookMedia> media,
   }) = _BookDetail;
 
   factory BookDetail.fromJson(Map<String, dynamic> json) =>

@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorOccured": MessageLookupByLibrary.simpleMessage("Wystąpił błąd:"),
         "fragment": MessageLookupByLibrary.simpleMessage("Fragment"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Strona główna"),
+        "listen": MessageLookupByLibrary.simpleMessage("Posłuchaj"),
+        "nowPlaying": MessageLookupByLibrary.simpleMessage("Teraz odtwarzane"),
         "others": MessageLookupByLibrary.simpleMessage("Pozostałe"),
         "readHtml": MessageLookupByLibrary.simpleMessage("Czytaj HTML"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Czytaj PDF"),

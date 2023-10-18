@@ -11,6 +11,7 @@ _$_Book _$$_BookFromJson(Map<String, dynamic> json) => _$_Book(
       author: json['author'] as String,
       href: json['href'] as String,
       simpleThumb: json['simple_thumb'] as String,
+      hasAudio: json['has_audio'] as bool,
     );
 
 Map<String, dynamic> _$$_BookToJson(_$_Book instance) => <String, dynamic>{
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$_BookToJson(_$_Book instance) => <String, dynamic>{
       'author': instance.author,
       'href': instance.href,
       'simple_thumb': instance.simpleThumb,
+      'has_audio': instance.hasAudio,
     };
