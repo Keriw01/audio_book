@@ -10,6 +10,7 @@ class Book with _$Book {
     required String author,
     required String href,
     @JsonKey(name: 'simple_thumb') required String simpleThumb,
+    @JsonKey(name: 'has_audio') required bool hasAudio,
   }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);

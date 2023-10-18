@@ -10,5 +10,7 @@
     "bookDetail": "Book detail",
     "fragment": "Excerpt",
     "readHtml": "Read HTML",
-    "readPdf": "Read PDF"
+    "readPdf": "Read PDF",
+    "listen": "Listen",
+    "nowPlaying": "Now playing"
 }
