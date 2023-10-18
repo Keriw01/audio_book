@@ -8,13 +8,8 @@ class CategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(S.current.categoryPageTitle),
-      ),
-      body: Center(
-        child: Text(S.of(context).categoryPageTitle),
-      ),
+    return Center(
+      child: Text(S.of(context).categoryPageTitle),
     );
   }
 }
