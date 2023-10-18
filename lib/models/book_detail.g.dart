@@ -23,6 +23,7 @@ _$_BookDetail _$$_BookDetailFromJson(Map<String, dynamic> json) =>
       media: (json['media'] as List<dynamic>)
           .map((e) => BookMedia.fromJson(e as Map<String, dynamic>))
           .toList(),
+      cover: json['cover'] as String,
     );
 
 Map<String, dynamic> _$$_BookDetailToJson(_$_BookDetail instance) =>
@@ -33,4 +34,5 @@ Map<String, dynamic> _$$_BookDetailToJson(_$_BookDetail instance) =>
       'pdf': instance.pdf,
       'html': instance.html,
       'media': instance.media,
+      'cover': instance.cover,
     };

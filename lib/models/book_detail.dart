@@ -15,6 +15,7 @@ class BookDetail with _$BookDetail {
     required String pdf,
     required String html,
     required List<BookMedia> media,
+    required String cover,
   }) = _BookDetail;
 
   factory BookDetail.fromJson(Map<String, dynamic> json) =>
