@@ -9,6 +9,7 @@ class BookMedia with _$BookMedia {
     required String url,
     required String? director,
     required String type,
+    required String name,
     required String artist,
   }) = _BookMedia;
 

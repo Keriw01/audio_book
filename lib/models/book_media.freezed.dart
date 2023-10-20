@@ -23,6 +23,7 @@ mixin _$BookMedia {
   String get url => throw _privateConstructorUsedError;
   String? get director => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get artist => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,8 @@ abstract class $BookMediaCopyWith<$Res> {
   factory $BookMediaCopyWith(BookMedia value, $Res Function(BookMedia) then) =
       _$BookMediaCopyWithImpl<$Res, BookMedia>;
   @useResult
-  $Res call({String url, String? director, String type, String artist});
+  $Res call(
+      {String url, String? director, String type, String name, String artist});
 }
 
 /// @nodoc
@@ -55,6 +57,7 @@ class _$BookMediaCopyWithImpl<$Res, $Val extends BookMedia>
     Object? url = null,
     Object? director = freezed,
     Object? type = null,
+    Object? name = null,
     Object? artist = null,
   }) {
     return _then(_value.copyWith(
@@ -69,6 +72,10 @@ class _$BookMediaCopyWithImpl<$Res, $Val extends BookMedia>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       artist: null == artist
           ? _value.artist
@@ -85,7 +92,8 @@ abstract class _$$_BookMediaCopyWith<$Res> implements $BookMediaCopyWith<$Res> {
       __$$_BookMediaCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String url, String? director, String type, String artist});
+  $Res call(
+      {String url, String? director, String type, String name, String artist});
 }
 
 /// @nodoc
@@ -102,6 +110,7 @@ class __$$_BookMediaCopyWithImpl<$Res>
     Object? url = null,
     Object? director = freezed,
     Object? type = null,
+    Object? name = null,
     Object? artist = null,
   }) {
     return _then(_$_BookMedia(
@@ -116,6 +125,10 @@ class __$$_BookMediaCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       artist: null == artist
           ? _value.artist
@@ -132,6 +145,7 @@ class _$_BookMedia implements _BookMedia {
       {required this.url,
       required this.director,
       required this.type,
+      required this.name,
       required this.artist});
 
   factory _$_BookMedia.fromJson(Map<String, dynamic> json) =>
@@ -144,11 +158,13 @@ class _$_BookMedia implements _BookMedia {
   @override
   final String type;
   @override
+  final String name;
+  @override
   final String artist;
 
   @override
   String toString() {
-    return 'BookMedia(url: $url, director: $director, type: $type, artist: $artist)';
+    return 'BookMedia(url: $url, director: $director, type: $type, name: $name, artist: $artist)';
   }
 
   @override
@@ -160,12 +176,14 @@ class _$_BookMedia implements _BookMedia {
             (identical(other.director, director) ||
                 other.director == director) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.artist, artist) || other.artist == artist));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, url, director, type, artist);
+  int get hashCode =>
+      Object.hash(runtimeType, url, director, type, name, artist);
 
   @JsonKey(ignore: true)
   @override
@@ -186,6 +204,7 @@ abstract class _BookMedia implements BookMedia {
       {required final String url,
       required final String? director,
       required final String type,
+      required final String name,
       required final String artist}) = _$_BookMedia;
 
   factory _BookMedia.fromJson(Map<String, dynamic> json) =
@@ -197,6 +216,8 @@ abstract class _BookMedia implements BookMedia {
   String? get director;
   @override
   String get type;
+  @override
+  String get name;
   @override
   String get artist;
   @override
