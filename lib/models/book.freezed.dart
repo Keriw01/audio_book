@@ -25,6 +25,8 @@ mixin _$Book {
   String get href => throw _privateConstructorUsedError;
   @JsonKey(name: 'simple_thumb')
   String get simpleThumb => throw _privateConstructorUsedError;
+  @JsonKey(name: 'has_audio')
+  bool get hasAudio => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,8 @@ abstract class $BookCopyWith<$Res> {
       {String title,
       String author,
       String href,
-      @JsonKey(name: 'simple_thumb') String simpleThumb});
+      @JsonKey(name: 'simple_thumb') String simpleThumb,
+      @JsonKey(name: 'has_audio') bool hasAudio});
 }
 
 /// @nodoc
@@ -60,6 +63,7 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
     Object? author = null,
     Object? href = null,
     Object? simpleThumb = null,
+    Object? hasAudio = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -78,6 +82,10 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
           ? _value.simpleThumb
           : simpleThumb // ignore: cast_nullable_to_non_nullable
               as String,
+      hasAudio: null == hasAudio
+          ? _value.hasAudio
+          : hasAudio // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -92,7 +100,8 @@ abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
       {String title,
       String author,
       String href,
-      @JsonKey(name: 'simple_thumb') String simpleThumb});
+      @JsonKey(name: 'simple_thumb') String simpleThumb,
+      @JsonKey(name: 'has_audio') bool hasAudio});
 }
 
 /// @nodoc
@@ -108,6 +117,7 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
     Object? author = null,
     Object? href = null,
     Object? simpleThumb = null,
+    Object? hasAudio = null,
   }) {
     return _then(_$_Book(
       title: null == title
@@ -126,6 +136,10 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
           ? _value.simpleThumb
           : simpleThumb // ignore: cast_nullable_to_non_nullable
               as String,
+      hasAudio: null == hasAudio
+          ? _value.hasAudio
+          : hasAudio // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -137,7 +151,8 @@ class _$_Book implements _Book {
       {required this.title,
       required this.author,
       required this.href,
-      @JsonKey(name: 'simple_thumb') required this.simpleThumb});
+      @JsonKey(name: 'simple_thumb') required this.simpleThumb,
+      @JsonKey(name: 'has_audio') required this.hasAudio});
 
   factory _$_Book.fromJson(Map<String, dynamic> json) => _$$_BookFromJson(json);
 
@@ -150,10 +165,13 @@ class _$_Book implements _Book {
   @override
   @JsonKey(name: 'simple_thumb')
   final String simpleThumb;
+  @override
+  @JsonKey(name: 'has_audio')
+  final bool hasAudio;
 
   @override
   String toString() {
-    return 'Book(title: $title, author: $author, href: $href, simpleThumb: $simpleThumb)';
+    return 'Book(title: $title, author: $author, href: $href, simpleThumb: $simpleThumb, hasAudio: $hasAudio)';
   }
 
   @override
@@ -165,13 +183,15 @@ class _$_Book implements _Book {
             (identical(other.author, author) || other.author == author) &&
             (identical(other.href, href) || other.href == href) &&
             (identical(other.simpleThumb, simpleThumb) ||
-                other.simpleThumb == simpleThumb));
+                other.simpleThumb == simpleThumb) &&
+            (identical(other.hasAudio, hasAudio) ||
+                other.hasAudio == hasAudio));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, title, author, href, simpleThumb);
+      Object.hash(runtimeType, title, author, href, simpleThumb, hasAudio);
 
   @JsonKey(ignore: true)
   @override
@@ -189,11 +209,11 @@ class _$_Book implements _Book {
 
 abstract class _Book implements Book {
   const factory _Book(
-          {required final String title,
-          required final String author,
-          required final String href,
-          @JsonKey(name: 'simple_thumb') required final String simpleThumb}) =
-      _$_Book;
+      {required final String title,
+      required final String author,
+      required final String href,
+      @JsonKey(name: 'simple_thumb') required final String simpleThumb,
+      @JsonKey(name: 'has_audio') required final bool hasAudio}) = _$_Book;
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$_Book.fromJson;
 
@@ -206,6 +226,9 @@ abstract class _Book implements Book {
   @override
   @JsonKey(name: 'simple_thumb')
   String get simpleThumb;
+  @override
+  @JsonKey(name: 'has_audio')
+  bool get hasAudio;
   @override
   @JsonKey(ignore: true)
   _$$_BookCopyWith<_$_Book> get copyWith => throw _privateConstructorUsedError;

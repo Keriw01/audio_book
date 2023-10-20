@@ -11,33 +11,35 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i9;
-import 'package:testproject/category_page/category_page.dart' as _i7;
+import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
+import 'package:testproject/category_page/category_page.dart' as _i8;
 import 'package:testproject/home_page/book_detail_page.dart' as _i2;
 import 'package:testproject/home_page/books_page.dart' as _i3;
-import 'package:testproject/home_page/home_content.dart' as _i6;
+import 'package:testproject/home_page/home_content.dart' as _i7;
 import 'package:testproject/home_page/home_page.dart' as _i1;
+import 'package:testproject/home_page/listen_page.dart' as _i6;
 import 'package:testproject/home_page/pdf_page.dart' as _i5;
 import 'package:testproject/home_page/web_view_page.dart' as _i4;
-import 'package:testproject/models/book.dart' as _i10;
-import 'package:testproject/models/collection.dart' as _i11;
+import 'package:testproject/models/book.dart' as _i11;
+import 'package:testproject/models/book_detail.dart' as _i13;
+import 'package:testproject/models/collection.dart' as _i12;
 
-class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+class AppRouter extends _i9.RootStackRouter {
+  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i9.PageFactory> pagesMap = {
     HomeRoute.name: (routeData) {
-      return _i8.AdaptivePage<dynamic>(
+      return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.HomePage(),
       );
     },
     BookDetailRoute.name: (routeData) {
       final args = routeData.argsAs<BookDetailRouteArgs>();
-      return _i8.AdaptivePage<dynamic>(
+      return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i2.BookDetailPage(
           key: args.key,
@@ -47,7 +49,7 @@ class AppRouter extends _i8.RootStackRouter {
     },
     BooksRoute.name: (routeData) {
       final args = routeData.argsAs<BooksRouteArgs>();
-      return _i8.AdaptivePage<dynamic>(
+      return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i3.BooksPage(
           key: args.key,
@@ -57,7 +59,7 @@ class AppRouter extends _i8.RootStackRouter {
     },
     WebViewRoute.name: (routeData) {
       final args = routeData.argsAs<WebViewRouteArgs>();
-      return _i8.AdaptivePage<dynamic>(
+      return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i4.WebViewPage(
           key: args.key,
@@ -68,7 +70,7 @@ class AppRouter extends _i8.RootStackRouter {
     },
     PdfRoute.name: (routeData) {
       final args = routeData.argsAs<PdfRouteArgs>();
-      return _i8.AdaptivePage<dynamic>(
+      return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i5.PdfPage(
           key: args.key,
@@ -77,61 +79,75 @@ class AppRouter extends _i8.RootStackRouter {
         ),
       );
     },
-    HomeRouteContent.name: (routeData) {
-      return _i8.AdaptivePage<dynamic>(
+    ListenRoute.name: (routeData) {
+      final args = routeData.argsAs<ListenRouteArgs>();
+      return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i6.HomePageContent(),
+        child: _i6.ListenPage(
+          key: args.key,
+          bookDetail: args.bookDetail,
+        ),
+      );
+    },
+    HomeRouteContent.name: (routeData) {
+      return _i9.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.HomePageContent(),
       );
     },
     CategoryRoute.name: (routeData) {
-      return _i8.AdaptivePage<dynamic>(
+      return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i7.CategoryPage(),
+        child: const _i8.CategoryPage(),
       );
     },
   };
 
   @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(
+  List<_i9.RouteConfig> get routes => [
+        _i9.RouteConfig(
           HomeRoute.name,
           path: '/',
           children: [
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               HomeRouteContent.name,
               path: 'home-page-content',
               parent: HomeRoute.name,
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               CategoryRoute.name,
               path: 'category-page',
               parent: HomeRoute.name,
             ),
           ],
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           BookDetailRoute.name,
           path: '/book-detail-page',
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           BooksRoute.name,
           path: '/books-page',
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           WebViewRoute.name,
           path: '/web-view-page',
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           PdfRoute.name,
           path: '/pdf-page',
+        ),
+        _i9.RouteConfig(
+          ListenRoute.name,
+          path: '/listen-page',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.HomePage]
-class HomeRoute extends _i8.PageRouteInfo<void> {
-  const HomeRoute({List<_i8.PageRouteInfo>? children})
+class HomeRoute extends _i9.PageRouteInfo<void> {
+  const HomeRoute({List<_i9.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           path: '/',
@@ -143,10 +159,10 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.BookDetailPage]
-class BookDetailRoute extends _i8.PageRouteInfo<BookDetailRouteArgs> {
+class BookDetailRoute extends _i9.PageRouteInfo<BookDetailRouteArgs> {
   BookDetailRoute({
-    _i9.Key? key,
-    required _i10.Book book,
+    _i10.Key? key,
+    required _i11.Book book,
   }) : super(
           BookDetailRoute.name,
           path: '/book-detail-page',
@@ -165,9 +181,9 @@ class BookDetailRouteArgs {
     required this.book,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i10.Book book;
+  final _i11.Book book;
 
   @override
   String toString() {
@@ -177,10 +193,10 @@ class BookDetailRouteArgs {
 
 /// generated route for
 /// [_i3.BooksPage]
-class BooksRoute extends _i8.PageRouteInfo<BooksRouteArgs> {
+class BooksRoute extends _i9.PageRouteInfo<BooksRouteArgs> {
   BooksRoute({
-    _i9.Key? key,
-    required _i11.Collection collection,
+    _i10.Key? key,
+    required _i12.Collection collection,
   }) : super(
           BooksRoute.name,
           path: '/books-page',
@@ -199,9 +215,9 @@ class BooksRouteArgs {
     required this.collection,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i11.Collection collection;
+  final _i12.Collection collection;
 
   @override
   String toString() {
@@ -211,9 +227,9 @@ class BooksRouteArgs {
 
 /// generated route for
 /// [_i4.WebViewPage]
-class WebViewRoute extends _i8.PageRouteInfo<WebViewRouteArgs> {
+class WebViewRoute extends _i9.PageRouteInfo<WebViewRouteArgs> {
   WebViewRoute({
-    _i9.Key? key,
+    _i10.Key? key,
     required String title,
     required String url,
   }) : super(
@@ -236,7 +252,7 @@ class WebViewRouteArgs {
     required this.url,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
   final String title;
 
@@ -250,9 +266,9 @@ class WebViewRouteArgs {
 
 /// generated route for
 /// [_i5.PdfPage]
-class PdfRoute extends _i8.PageRouteInfo<PdfRouteArgs> {
+class PdfRoute extends _i9.PageRouteInfo<PdfRouteArgs> {
   PdfRoute({
-    _i9.Key? key,
+    _i10.Key? key,
     required String title,
     required String pdfUrl,
   }) : super(
@@ -275,7 +291,7 @@ class PdfRouteArgs {
     required this.pdfUrl,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
   final String title;
 
@@ -288,8 +304,42 @@ class PdfRouteArgs {
 }
 
 /// generated route for
-/// [_i6.HomePageContent]
-class HomeRouteContent extends _i8.PageRouteInfo<void> {
+/// [_i6.ListenPage]
+class ListenRoute extends _i9.PageRouteInfo<ListenRouteArgs> {
+  ListenRoute({
+    _i10.Key? key,
+    required _i13.BookDetail bookDetail,
+  }) : super(
+          ListenRoute.name,
+          path: '/listen-page',
+          args: ListenRouteArgs(
+            key: key,
+            bookDetail: bookDetail,
+          ),
+        );
+
+  static const String name = 'ListenRoute';
+}
+
+class ListenRouteArgs {
+  const ListenRouteArgs({
+    this.key,
+    required this.bookDetail,
+  });
+
+  final _i10.Key? key;
+
+  final _i13.BookDetail bookDetail;
+
+  @override
+  String toString() {
+    return 'ListenRouteArgs{key: $key, bookDetail: $bookDetail}';
+  }
+}
+
+/// generated route for
+/// [_i7.HomePageContent]
+class HomeRouteContent extends _i9.PageRouteInfo<void> {
   const HomeRouteContent()
       : super(
           HomeRouteContent.name,
@@ -300,8 +350,8 @@ class HomeRouteContent extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.CategoryPage]
-class CategoryRoute extends _i8.PageRouteInfo<void> {
+/// [_i8.CategoryPage]
+class CategoryRoute extends _i9.PageRouteInfo<void> {
   const CategoryRoute()
       : super(
           CategoryRoute.name,
