@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testproject/cubit/favorites_cubit.dart';
+import 'package:testproject/pages/books/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/favorite_item.dart';
+import 'package:testproject/pages/books/widgets/favorite_item.dart';
 import 'package:testproject/models/book.dart';
 
 class FavoriteSection extends StatelessWidget {

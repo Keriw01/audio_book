@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testproject/cubit/books_cubit.dart';
+import 'package:testproject/pages/books/cubit/books_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/books_section.dart';
+import 'package:testproject/pages/books/widgets/books_section.dart';
 import 'package:testproject/models/collection.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 

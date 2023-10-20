@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/controls.dart';
+import 'package:testproject/pages/listen/widgets/controls.dart';
 import 'package:testproject/models/book_detail.dart';
 import 'package:testproject/models/book_media.dart';
 import 'package:testproject/models/position_data.dart';
