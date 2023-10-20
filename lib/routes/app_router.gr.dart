@@ -13,17 +13,17 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
-import 'package:testproject/category_page/category_page.dart' as _i8;
-import 'package:testproject/home_page/book_detail_page.dart' as _i2;
-import 'package:testproject/home_page/books_page.dart' as _i3;
-import 'package:testproject/home_page/home_content.dart' as _i7;
-import 'package:testproject/home_page/home_page.dart' as _i1;
-import 'package:testproject/home_page/listen_page.dart' as _i6;
-import 'package:testproject/home_page/pdf_page.dart' as _i5;
-import 'package:testproject/home_page/web_view_page.dart' as _i4;
 import 'package:testproject/models/book.dart' as _i11;
 import 'package:testproject/models/book_detail.dart' as _i13;
 import 'package:testproject/models/collection.dart' as _i12;
+import 'package:testproject/pages/book_detail/book_detail_page.dart' as _i2;
+import 'package:testproject/pages/books/books_page.dart' as _i3;
+import 'package:testproject/pages/category/category_page.dart' as _i8;
+import 'package:testproject/pages/collections/collections_page.dart' as _i7;
+import 'package:testproject/pages/home_page_view/home_page_view.dart' as _i1;
+import 'package:testproject/pages/listen/listen_page.dart' as _i6;
+import 'package:testproject/pages/pdf_view/pdf_page.dart' as _i5;
+import 'package:testproject/pages/web_view/web_view_page.dart' as _i4;
 
 class AppRouter extends _i9.RootStackRouter {
   AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
@@ -31,10 +31,10 @@ class AppRouter extends _i9.RootStackRouter {
 
   @override
   final Map<String, _i9.PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
+    HomeRouteView.name: (routeData) {
       return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomePage(),
+        child: const _i1.HomePageView(),
       );
     },
     BookDetailRoute.name: (routeData) {
@@ -89,10 +89,10 @@ class AppRouter extends _i9.RootStackRouter {
         ),
       );
     },
-    HomeRouteContent.name: (routeData) {
+    CollectionsRoute.name: (routeData) {
       return _i9.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i7.HomePageContent(),
+        child: const _i7.CollectionsPage(),
       );
     },
     CategoryRoute.name: (routeData) {
@@ -106,18 +106,18 @@ class AppRouter extends _i9.RootStackRouter {
   @override
   List<_i9.RouteConfig> get routes => [
         _i9.RouteConfig(
-          HomeRoute.name,
+          HomeRouteView.name,
           path: '/',
           children: [
             _i9.RouteConfig(
-              HomeRouteContent.name,
-              path: 'home-page-content',
-              parent: HomeRoute.name,
+              CollectionsRoute.name,
+              path: 'collections-page',
+              parent: HomeRouteView.name,
             ),
             _i9.RouteConfig(
               CategoryRoute.name,
               path: 'category-page',
-              parent: HomeRoute.name,
+              parent: HomeRouteView.name,
             ),
           ],
         ),
@@ -145,16 +145,16 @@ class AppRouter extends _i9.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeRoute extends _i9.PageRouteInfo<void> {
-  const HomeRoute({List<_i9.PageRouteInfo>? children})
+/// [_i1.HomePageView]
+class HomeRouteView extends _i9.PageRouteInfo<void> {
+  const HomeRouteView({List<_i9.PageRouteInfo>? children})
       : super(
-          HomeRoute.name,
+          HomeRouteView.name,
           path: '/',
           initialChildren: children,
         );
 
-  static const String name = 'HomeRoute';
+  static const String name = 'HomeRouteView';
 }
 
 /// generated route for
@@ -338,15 +338,15 @@ class ListenRouteArgs {
 }
 
 /// generated route for
-/// [_i7.HomePageContent]
-class HomeRouteContent extends _i9.PageRouteInfo<void> {
-  const HomeRouteContent()
+/// [_i7.CollectionsPage]
+class CollectionsRoute extends _i9.PageRouteInfo<void> {
+  const CollectionsRoute()
       : super(
-          HomeRouteContent.name,
-          path: 'home-page-content',
+          CollectionsRoute.name,
+          path: 'collections-page',
         );
 
-  static const String name = 'HomeRouteContent';
+  static const String name = 'CollectionsRoute';
 }
 
 /// generated route for

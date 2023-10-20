@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 
 @AutoRoute()
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePageView extends StatelessWidget {
+  const HomePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter.pageView(
-      routes: [
-        HomeRouteContent(),
-        const CategoryRoute(),
+      routes: const [
+        CollectionsRoute(),
+        CategoryRoute(),
       ],
       builder: (context, child, _) {
         return child;

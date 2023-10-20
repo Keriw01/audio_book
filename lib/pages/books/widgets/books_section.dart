@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testproject/cubit/favorites_cubit.dart';
+import 'package:testproject/pages/books/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/home_page/favorite_section.dart';
-import 'package:testproject/home_page/featured_section.dart';
+import 'package:testproject/pages/books/widgets/favorite_section.dart';
+import 'package:testproject/pages/books/widgets/featured_section.dart';
 import 'package:testproject/models/book.dart';
 
 class BooksSection extends StatelessWidget {

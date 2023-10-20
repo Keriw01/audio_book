@@ -1,20 +1,20 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:testproject/category_page/category_page.dart';
-import 'package:testproject/home_page/book_detail_page.dart';
-import 'package:testproject/home_page/books_page.dart';
-import 'package:testproject/home_page/home_content.dart';
-import 'package:testproject/home_page/home_page.dart';
-import 'package:testproject/home_page/listen_page.dart';
-import 'package:testproject/home_page/pdf_page.dart';
-import 'package:testproject/home_page/web_view_page.dart';
+import 'package:testproject/pages/category/category_page.dart';
+import 'package:testproject/pages/book_detail/book_detail_page.dart';
+import 'package:testproject/pages/books/books_page.dart';
+import 'package:testproject/pages/collections/collections_page.dart';
+import 'package:testproject/pages/home_page_view/home_page_view.dart';
+import 'package:testproject/pages/listen/listen_page.dart';
+import 'package:testproject/pages/pdf_view/pdf_page.dart';
+import 'package:testproject/pages/web_view/web_view_page.dart';
 
 @AdaptiveAutoRouter(
   routes: <AutoRoute>[
     AutoRoute(
-      page: HomePage,
+      page: HomePageView,
       initial: true,
       children: [
-        AutoRoute(page: HomePageContent),
+        AutoRoute(page: CollectionsPage),
         AutoRoute(page: CategoryPage),
       ],
     ),

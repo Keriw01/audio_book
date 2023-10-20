@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testproject/cubit/favorites_cubit.dart';
+import 'package:testproject/pages/books/cubit/favorites_cubit.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/styles/colors.dart';
 
