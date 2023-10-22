@@ -9,44 +9,73 @@ ThemeData customTheme = ThemeData(
   ),
   useMaterial3: true,
   textTheme: TextTheme(
+    /// nazwa aplikacji
+    displayLarge: GoogleFonts.getFont(
+      'Open Sans',
+      fontSize: 30,
+      color: primaryColor,
+      fontWeight: FontWeight.bold,
+    ),
+
+    /// przycisk Login
+    displayMedium: GoogleFonts.getFont(
+      'Open Sans',
+      fontSize: 20,
+      color: whiteColor,
+      fontWeight: FontWeight.bold,
+    ),
+
+    // tytul ksiazki Dla ciebie
     titleSmall: GoogleFonts.getFont(
       'Lato',
       fontSize: 14,
       fontWeight: FontWeight.bold,
-    ), // tytul ksiazki Dla ciebie
+    ),
+
+    // tytul ksiazki w Wybrane
     titleMedium: GoogleFonts.getFont(
       'Lato',
       fontSize: 16,
       fontWeight: FontWeight.bold,
       height: 1.1,
-    ), // tytul ksiazki w Wybrane
+    ),
+
+    // autor ksiazki w Dla ciebie
     headlineSmall: GoogleFonts.getFont(
       'Lato',
       fontSize: 12,
       color: lightGreyColor,
-    ), // autor ksiazki w Dla ciebie
+    ),
+
+    // nazwa kolekcji Strona glowna
     headlineMedium: GoogleFonts.getFont(
       'Lato',
       fontSize: 14,
       color: darkGreyColor,
       fontWeight: FontWeight.bold,
-    ), // nazwa kolekcji Strona glowna
+    ),
+
+    // tekst naglowek Dla ciebie
     headlineLarge: GoogleFonts.getFont(
       'Lato',
       fontSize: 18,
       fontWeight: FontWeight.bold,
-    ), // tekst naglowek Dla ciebie
+    ),
+
+    // gatunek
     labelSmall: GoogleFonts.getFont(
       'Lato',
       fontSize: 14,
       color: lightGreyColor,
-    ), // gatunek
+    ),
+
+    // przycisk czytaj
     labelMedium: GoogleFonts.getFont(
       'Roboto',
       fontSize: 14,
       fontWeight: FontWeight.w500,
       color: lightGreyColor,
-    ), // przycisk czytaj
+    ),
   ),
   appBarTheme: AppBarTheme(
     shape: const RoundedRectangleBorder(

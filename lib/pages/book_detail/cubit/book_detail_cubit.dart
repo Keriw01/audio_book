@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:testproject/models/book_detail.dart';
-import 'package:testproject/service/book_api.dart';
+import 'package:testproject/repositories/api_external/book_api.dart';
 import 'package:testproject/service/locator.dart';
 
 part 'book_detail_state.dart';

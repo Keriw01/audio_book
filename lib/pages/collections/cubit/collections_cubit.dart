@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:testproject/models/collection.dart';
-import 'package:testproject/service/collections_api.dart';
+import 'package:testproject/repositories/api_external/collections_api.dart';
 import 'package:testproject/service/locator.dart';
 
 part 'collections_state.dart';
