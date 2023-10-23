@@ -7,6 +7,7 @@ import 'package:testproject/pages/home_page_view/home_page_view.dart';
 import 'package:testproject/pages/listen/listen_page.dart';
 import 'package:testproject/pages/login/login_page.dart';
 import 'package:testproject/pages/pdf_view/pdf_page.dart';
+import 'package:testproject/pages/registration/register_page.dart';
 import 'package:testproject/pages/web_view/web_view_page.dart';
 
 @AdaptiveAutoRouter(
@@ -15,6 +16,7 @@ import 'package:testproject/pages/web_view/web_view_page.dart';
       page: LoginPage,
       initial: true,
     ),
+    AutoRoute(page: RegistrationPage),
     AutoRoute(
       page: HomePageView,
       children: [

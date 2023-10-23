@@ -6,14 +6,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:dio/dio.dart';
 
 @AutoRoute()
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
 const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
@@ -24,7 +23,7 @@ const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
   ),
 );
 
-class _LoginPageState extends State<LoginPage> {
+class _RegistrationPageState extends State<RegistrationPage> {
   var formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
@@ -146,17 +145,16 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(top: 10),
                       child: ElevatedButton(
                         onPressed: () async {
-                          // context.router.replace(const HomeRouteView());
-                          // if (formKey.currentState!.validate()) {
-
-                          final token = await AuthRepository().login(
-                            'tom@o2.pl',
-                            '12345678',
-                          );
-                          print(
-                            token.accessToken + '\n' + token.refreshToken,
-                          );
-                          // }
+                          if (formKey.currentState!.validate()) {
+                            final token = await AuthRepository().register(
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                            );
+                            print(
+                              token.accessToken + '\n' + token.refreshToken,
+                            );
+                            context.router.replace(const HomeRouteView());
+                          }
                         },
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all<EdgeInsets>(
@@ -172,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         child: Text(
-                          S.of(context).login,
+                          S.of(context).register,
                           style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
@@ -187,9 +185,9 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(top: 10),
                     child: TextButton(
                       onPressed: () =>
-                          context.router.replace(const RegistrationRoute()),
+                          context.router.replace(const LoginRoute()),
                       child: Text(
-                        S.of(context).createAccount,
+                        S.of(context).loginWhenHadAccount,
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall

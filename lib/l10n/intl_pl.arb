@@ -12,5 +12,16 @@
     "readHtml": "Czytaj HTML",
     "readPdf": "Czytaj PDF",
     "listen": "Posłuchaj",
-    "nowPlaying": "Teraz odtwarzane"
+    "nowPlaying": "Teraz odtwarzane",
+    "audioBook": "Audio Book",
+    "enterValidEmail": "Wprowadź poprawny adres e-mail",
+    "enterEmail": "Wpisz swój e-mail",
+    "requiredPassword": "Hasło jest wymagane",
+    "enterValidPassword": "Hasło musi mieć co najmniej 8 znaków",
+    "enterPassword": "Wpisz swoje hasło",
+    "login": "Zaloguj",
+    "createAccount": "Utwórz konto",
+    "other": "lub",
+    "register": "Zarejestruj",
+    "loginWhenHadAccount": "Masz juz konto ? Zaloguj się"
 }
