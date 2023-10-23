@@ -150,9 +150,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               emailController.text.trim(),
                               passwordController.text.trim(),
                             );
-                            print(
-                              token.accessToken + '\n' + token.refreshToken,
-                            );
                             context.router.replace(const HomeRouteView());
                           }
                         },

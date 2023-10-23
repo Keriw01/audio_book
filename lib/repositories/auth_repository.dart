@@ -25,14 +25,12 @@ class AuthRepository {
 
   Future<TokenModel> register(String email, String password) async {
     try {
-      print('1');
       TokenModel tokens = await getIt<ApiClient>()
           .registration(email: email, password: password);
 
       return tokens;
     } on DioException catch (error) {
       if (error.response?.statusCode == 401) {
-        print('error');
         return Future.error("Invalid Credentail");
       } else {
         return Future.error("Invalid server error");

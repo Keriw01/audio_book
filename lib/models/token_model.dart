@@ -10,13 +10,6 @@ class TokenModel with _$TokenModel {
     required String refreshToken,
   }) = _TokenModel;
 
-  factory TokenModel.fromJson(Map<String, dynamic> json) => TokenModel(
-        accessToken: json["accessToken"] as String,
-        refreshToken: json["refreshToken"] as String,
-      );
-
-  Map<String, dynamic> toJson() => {
-        "accessToken": accessToken,
-        "refreshToken": refreshToken,
-      };
+  factory TokenModel.fromJson(Map<String, dynamic> json) =>
+      _$TokenModelFromJson(json);
 }

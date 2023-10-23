@@ -35,6 +35,7 @@ class _ApiClient implements ApiClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
             .compose(
               _dio.options,
@@ -68,6 +69,7 @@ class _ApiClient implements ApiClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
             .compose(
               _dio.options,
@@ -95,6 +97,7 @@ class _ApiClient implements ApiClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/x-www-form-urlencoded',
     )
             .compose(
               _dio.options,

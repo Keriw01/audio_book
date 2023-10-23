@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:dio/dio.dart';
 
 @AutoRoute()
 class LoginPage extends StatefulWidget {
@@ -146,17 +145,13 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(top: 10),
                       child: ElevatedButton(
                         onPressed: () async {
-                          // context.router.replace(const HomeRouteView());
-                          // if (formKey.currentState!.validate()) {
-
-                          final token = await AuthRepository().login(
-                            'tom@o2.pl',
-                            '12345678',
-                          );
-                          print(
-                            token.accessToken + '\n' + token.refreshToken,
-                          );
-                          // }
+                          if (formKey.currentState!.validate()) {
+                            final token = await AuthRepository().login(
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                            );
+                            context.router.replace(const HomeRouteView());
+                          }
                         },
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all<EdgeInsets>(
