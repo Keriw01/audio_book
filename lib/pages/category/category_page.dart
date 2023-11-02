@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/generated/l10n.dart';
+import 'package:testproject/routes/app_router.gr.dart';
+import 'package:testproject/styles/colors.dart';
 
 @AutoRoute()
 class CategoryPage extends StatelessWidget {
@@ -13,7 +15,28 @@ class CategoryPage extends StatelessWidget {
         title: Text(S.current.categoryPageTitle),
       ),
       body: Center(
-        child: Text(S.of(context).categoryPageTitle),
+        child: ElevatedButton(
+          onPressed: () async {
+            context.router.replace(const LoginRoute());
+          },
+          style: ButtonStyle(
+            padding: MaterialStateProperty.all<EdgeInsets>(
+              const EdgeInsets.fromLTRB(75, 10, 75, 10),
+            ),
+            backgroundColor: MaterialStateProperty.all(seedColor),
+            shape: MaterialStateProperty.all(
+              const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.0),
+                ),
+              ),
+            ),
+          ),
+          child: Text(
+            S.of(context).logOut,
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+        ),
       ),
     );
   }

@@ -23,5 +23,6 @@
     "createAccount": "Create account",
     "other": "other",
     "register": "Register",
-    "loginWhenHadAccount": "You already had account ? Login now"
+    "loginWhenHadAccount": "You already had account ? Login now",
+    "logOut": "Log out"
 }

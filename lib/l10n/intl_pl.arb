@@ -23,5 +23,6 @@
     "createAccount": "Utwórz konto",
     "other": "lub",
     "register": "Zarejestruj",
-    "loginWhenHadAccount": "Masz juz konto ? Zaloguj się"
+    "loginWhenHadAccount": "Masz juz konto ? Zaloguj się",
+    "logOut": "Wyloguj"
 }

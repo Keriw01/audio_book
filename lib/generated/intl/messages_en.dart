@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "listen": MessageLookupByLibrary.simpleMessage("Listen"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginWhenHadAccount": MessageLookupByLibrary.simpleMessage(
             "You already had account ? Login now"),
