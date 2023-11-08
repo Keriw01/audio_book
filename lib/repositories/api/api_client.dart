@@ -1,6 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:testproject/models/token_model.dart';
+import 'package:testproject/models/user.dart';
 
 part 'api_client.g.dart';
 
@@ -29,5 +30,10 @@ abstract class ApiClient {
   @FormUrlEncoded()
   Future<TokenModel> refreshToken({
     @Field("refresh_token") required String refreshToken,
+  });
+
+  @GET('$baseUrl/user')
+  Future<User> getUserId({
+    @Header("Authorization") required String accessToken,
   });
 }

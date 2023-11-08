@@ -23,9 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "audioBook": MessageLookupByLibrary.simpleMessage("Audio Book"),
+        "badAuthorization":
+            MessageLookupByLibrary.simpleMessage("Bad authorization"),
         "bookDetail": MessageLookupByLibrary.simpleMessage("Book detail"),
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Categories"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
+        "defaultError": MessageLookupByLibrary.simpleMessage("Default error"),
+        "emailAlreadyExist":
+            MessageLookupByLibrary.simpleMessage("Email already exist"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter e-mail"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
@@ -55,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "requiredPassword":
             MessageLookupByLibrary.simpleMessage("Password is required"),
+        "userAlreadyExist":
+            MessageLookupByLibrary.simpleMessage("User already exist"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Your favorite")
       };
 }

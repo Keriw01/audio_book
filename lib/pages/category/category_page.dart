@@ -1,7 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testproject/blocs/auth/auth_bloc.dart';
 import 'package:testproject/generated/l10n.dart';
+import 'package:testproject/models/user.dart';
+import 'package:testproject/repositories/api/api_client.dart';
 import 'package:testproject/routes/app_router.gr.dart';
+import 'package:testproject/service/locator.dart';
 import 'package:testproject/styles/colors.dart';
 
 @AutoRoute()
@@ -17,7 +23,14 @@ class CategoryPage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            context.router.replace(const LoginRoute());
+            final authBloc = context.read<AuthBloc>();
+            authBloc.logOut();
+            // authBloc.refreshTokenIfNeeded();
+            // print(authBloc.state.tokens!.accessToken);
+            // User user = await getIt<ApiClient>()
+            //     .getUserId(accessToken: authBloc.state.tokens!.accessToken);
+            // print(user.userId);
+            // context.router.replace(LoginRoute());
           },
           style: ButtonStyle(
             padding: MaterialStateProperty.all<EdgeInsets>(

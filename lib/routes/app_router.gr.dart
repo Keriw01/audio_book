@@ -34,9 +34,11 @@ class AppRouter extends _i11.RootStackRouter {
   @override
   final Map<String, _i11.PageFactory> pagesMap = {
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i1.LoginPage(),
+        child: _i1.LoginPage(key: args.key),
       );
     },
     RegistrationRoute.name: (routeData) {
@@ -168,14 +170,26 @@ class AppRouter extends _i11.RootStackRouter {
 
 /// generated route for
 /// [_i1.LoginPage]
-class LoginRoute extends _i11.PageRouteInfo<void> {
-  const LoginRoute()
+class LoginRoute extends _i11.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i12.Key? key})
       : super(
           LoginRoute.name,
           path: '/',
+          args: LoginRouteArgs(key: key),
         );
 
   static const String name = 'LoginRoute';
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key});
+
+  final _i12.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

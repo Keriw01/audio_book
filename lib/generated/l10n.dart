@@ -309,6 +309,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Użytkownik istnieje`
+  String get userAlreadyExist {
+    return Intl.message(
+      'Użytkownik istnieje',
+      name: 'userAlreadyExist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd autoryzacji`
+  String get badAuthorization {
+    return Intl.message(
+      'Błąd autoryzacji',
+      name: 'badAuthorization',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email już istnieje`
+  String get emailAlreadyExist {
+    return Intl.message(
+      'Email już istnieje',
+      name: 'emailAlreadyExist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd`
+  String get defaultError {
+    return Intl.message(
+      'Błąd',
+      name: 'defaultError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

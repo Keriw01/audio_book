@@ -24,5 +24,9 @@
     "other": "other",
     "register": "Register",
     "loginWhenHadAccount": "You already had account ? Login now",
-    "logOut": "Log out"
+    "logOut": "Log out",
+    "userAlreadyExist": "User already exist",
+    "badAuthorization": "Bad authorization",
+    "emailAlreadyExist": "Email already exist",
+    "defaultError": "Default error"
 }

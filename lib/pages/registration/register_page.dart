@@ -34,6 +34,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          reverse: true,
           child: Column(
             children: <Widget>[
               const SizedBox(height: 20),
@@ -181,8 +182,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: TextButton(
-                      onPressed: () =>
-                          context.router.replace(const LoginRoute()),
+                      onPressed: () => context.router.replace(LoginRoute()),
                       child: Text(
                         S.of(context).loginWhenHadAccount,
                         style: Theme.of(context)
