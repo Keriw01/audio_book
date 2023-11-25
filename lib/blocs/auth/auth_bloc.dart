@@ -20,8 +20,10 @@ class AuthBloc extends BaseCubit<AuthState> {
       : _authRepository = AuthRepository(),
         super(
           appRouter,
-          AuthState(),
-        );
+          AuthState(isLoggedIn: false),
+        ) {
+    isLoggedIn();
+  }
 
   Future<void> login(String email, String password) async {
     emit(
@@ -42,6 +44,7 @@ class AuthBloc extends BaseCubit<AuthState> {
       emit(
         state.copyWith(
           tokens: response,
+          isLoggedIn: true,
         ),
       );
 
@@ -77,7 +80,14 @@ class AuthBloc extends BaseCubit<AuthState> {
 
   Future<void> logOut() async {
     await _deleteTokens();
-    emit(state.copyWith(email: null, password: null, tokens: null));
+    emit(
+      state.copyWith(
+        email: null,
+        password: null,
+        tokens: null,
+        isLoggedIn: false,
+      ),
+    );
     appRouter.replaceNamed(LoginRoute().path);
   }
 
@@ -89,6 +99,24 @@ class AuthBloc extends BaseCubit<AuthState> {
   Future<void> _deleteTokens() async {
     emit(state.copyWith(tokens: null));
     await _secureStorage.deleteTokens();
+  }
+
+  Future<void> isLoggedIn() async {
+    TokenModel? tokenModel = await _secureStorage.readTokens();
+    if (tokenModel == null) {
+      await _deleteTokens();
+      emit(
+        state.copyWith(
+          email: null,
+          password: null,
+          tokens: null,
+          isLoggedIn: false,
+        ),
+      );
+    } else {
+      emit(state.copyWith(isLoggedIn: true));
+      appRouter.replaceNamed(const HomeRouteView().path);
+    }
   }
 
   // void clear() {

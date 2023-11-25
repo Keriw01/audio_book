@@ -5,11 +5,13 @@ class AuthState with EquatableMixin {
   final String? email;
   final String? password;
   final TokenModel? tokens;
+  bool isLoggedIn = false;
 
   AuthState({
     this.email,
     this.password,
     this.tokens,
+    required this.isLoggedIn,
   });
 
   @override
@@ -17,5 +19,6 @@ class AuthState with EquatableMixin {
         email,
         password,
         tokens,
+        isLoggedIn,
       ];
 }

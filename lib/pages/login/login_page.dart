@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:testproject/widgets/loading_indicator.dart';
 
 @AutoRoute()
 class LoginPage extends StatelessWidget {
@@ -23,6 +24,16 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
+        if (state.isLoggedIn) {
+          return const Scaffold(
+            backgroundColor: Colors.white,
+            body: SafeArea(
+              child: Center(
+                child: LoadingIndicator(),
+              ),
+            ),
+          );
+        }
         return Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
