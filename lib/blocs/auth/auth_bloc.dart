@@ -3,6 +3,7 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:testproject/blocs/base_cubit.dart';
 import 'package:testproject/exceptions/exception.dart';
+import 'package:testproject/models/user.dart';
 import 'package:testproject/repositories/auth_repository.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 
@@ -34,16 +35,21 @@ class AuthBloc extends BaseCubit<AuthState> {
     );
 
     try {
-      TokenModel response = await _authRepository.login(
+      TokenModel tokenResponse = await _authRepository.login(
         email,
         password,
       );
+      await _saveTokens(tokenResponse);
 
-      await _saveTokens(response);
+      User userRespone =
+          await _authRepository.getUserId(tokenResponse.accessToken);
+
+      await _saveCurrentUser(userRespone);
 
       emit(
         state.copyWith(
-          tokens: response,
+          tokens: tokenResponse,
+          currentUser: userRespone,
           isLoggedIn: true,
         ),
       );
@@ -73,18 +79,55 @@ class AuthBloc extends BaseCubit<AuthState> {
       await logOut();
     } catch (e) {
       print(e);
-      emit(state.copyWith(tokens: null));
+      emit(state.copyWith(tokens: null, currentUser: null));
       return;
+    }
+  }
+
+  Future<void> register(String email, String password) async {
+    emit(
+      state.copyWith(
+        email: email,
+        password: password,
+      ),
+    );
+
+    try {
+      TokenModel tokenResponse = await _authRepository.register(
+        email,
+        password,
+      );
+
+      await _saveTokens(tokenResponse);
+
+      User userRespone =
+          await _authRepository.getUserId(tokenResponse.accessToken);
+
+      await _saveCurrentUser(userRespone);
+
+      emit(
+        state.copyWith(
+          tokens: tokenResponse,
+          currentUser: userRespone,
+          isLoggedIn: true,
+        ),
+      );
+
+      appRouter.replaceNamed(const HomeRouteView().path);
+    } catch (e) {
+      print(e);
     }
   }
 
   Future<void> logOut() async {
     await _deleteTokens();
+    await _deleteCurrentUser();
     emit(
       state.copyWith(
         email: null,
         password: null,
         tokens: null,
+        currentUser: null,
         isLoggedIn: false,
       ),
     );
@@ -101,15 +144,27 @@ class AuthBloc extends BaseCubit<AuthState> {
     await _secureStorage.deleteTokens();
   }
 
+  Future<void> _saveCurrentUser(User user) async {
+    emit(state.copyWith(currentUser: user));
+    await _secureStorage.saveUser(user);
+  }
+
+  Future<void> _deleteCurrentUser() async {
+    emit(state.copyWith(currentUser: null));
+    await _secureStorage.deleteUser();
+  }
+
   Future<void> isLoggedIn() async {
     TokenModel? tokenModel = await _secureStorage.readTokens();
     if (tokenModel == null) {
       await _deleteTokens();
+      await _secureStorage.deleteUser();
       emit(
         state.copyWith(
           email: null,
           password: null,
           tokens: null,
+          currentUser: null,
           isLoggedIn: false,
         ),
       );
@@ -118,15 +173,4 @@ class AuthBloc extends BaseCubit<AuthState> {
       appRouter.replaceNamed(const HomeRouteView().path);
     }
   }
-
-  // void clear() {
-  //   emit(
-  //     state.copyWith(
-  //       email: const IsEmailText.pure(),
-  //       password: const IsPasswordValidate.pure(),
-  //       passwordConfirmation: const EqualText.pure(''),
-  //       responseMessage: null,
-  //     ),
-  //   );
-  // }
 }

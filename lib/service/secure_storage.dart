@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:testproject/models/token_model.dart';
+import 'package:testproject/models/user.dart';
 
 class SecureStorage {
   final _secureStorage = const FlutterSecureStorage();
@@ -35,6 +36,37 @@ class SecureStorage {
   Future<void> deleteTokens() async {
     await _secureStorage.delete(
       key: 'tokens',
+      aOptions: _getAndroidOptions(),
+    );
+  }
+
+  Future<void> saveUser(User currentUser) async {
+    Map<String, dynamic> tempCurrentUser = currentUser.toJson();
+    String currentUserJson = jsonEncode(tempCurrentUser);
+    await _secureStorage.write(
+      key: 'currentUser',
+      value: currentUserJson,
+      aOptions: _getAndroidOptions(),
+    );
+  }
+
+  Future<User?> readUser() async {
+    String? tempCurrentUser = await _secureStorage.read(
+      key: 'currentUser',
+      aOptions: _getAndroidOptions(),
+    );
+
+    if (tempCurrentUser != null) {
+      Map<String, dynamic> currentUserMap = json.decode(tempCurrentUser);
+      User currentUserModel = User.fromJson(currentUserMap);
+      return currentUserModel;
+    }
+    return null;
+  }
+
+  Future<void> deleteUser() async {
+    await _secureStorage.delete(
+      key: 'currentUser',
       aOptions: _getAndroidOptions(),
     );
   }

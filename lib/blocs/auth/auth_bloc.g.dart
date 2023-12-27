@@ -13,6 +13,8 @@ abstract class _$AuthStateCWProxy {
 
   AuthState tokens(TokenModel? tokens);
 
+  AuthState currentUser(User? currentUser);
+
   AuthState isLoggedIn(bool isLoggedIn);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -25,6 +27,7 @@ abstract class _$AuthStateCWProxy {
     String? email,
     String? password,
     TokenModel? tokens,
+    User? currentUser,
     bool? isLoggedIn,
   });
 }
@@ -45,6 +48,9 @@ class _$AuthStateCWProxyImpl implements _$AuthStateCWProxy {
   AuthState tokens(TokenModel? tokens) => this(tokens: tokens);
 
   @override
+  AuthState currentUser(User? currentUser) => this(currentUser: currentUser);
+
+  @override
   AuthState isLoggedIn(bool isLoggedIn) => this(isLoggedIn: isLoggedIn);
 
   @override
@@ -59,6 +65,7 @@ class _$AuthStateCWProxyImpl implements _$AuthStateCWProxy {
     Object? email = const $CopyWithPlaceholder(),
     Object? password = const $CopyWithPlaceholder(),
     Object? tokens = const $CopyWithPlaceholder(),
+    Object? currentUser = const $CopyWithPlaceholder(),
     Object? isLoggedIn = const $CopyWithPlaceholder(),
   }) {
     return AuthState(
@@ -74,6 +81,10 @@ class _$AuthStateCWProxyImpl implements _$AuthStateCWProxy {
           ? _value.tokens
           // ignore: cast_nullable_to_non_nullable
           : tokens as TokenModel?,
+      currentUser: currentUser == const $CopyWithPlaceholder()
+          ? _value.currentUser
+          // ignore: cast_nullable_to_non_nullable
+          : currentUser as User?,
       isLoggedIn:
           isLoggedIn == const $CopyWithPlaceholder() || isLoggedIn == null
               ? _value.isLoggedIn

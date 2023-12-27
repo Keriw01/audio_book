@@ -1,32 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testproject/blocs/auth/auth_bloc.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/repositories/auth_repository.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 @AutoRoute()
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({super.key});
+class RegistrationPage extends StatelessWidget {
+  RegistrationPage({super.key});
 
-  @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
-}
-
-const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
-  borderRadius: BorderRadius.all(Radius.circular(20)),
-  borderSide: BorderSide(
-    width: 2,
-    color: shadowColor,
-  ),
-);
-
-class _RegistrationPageState extends State<RegistrationPage> {
-  var formKey = GlobalKey<FormState>();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -147,11 +135,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       child: ElevatedButton(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
-                            final token = await AuthRepository().register(
-                              emailController.text.trim(),
-                              passwordController.text.trim(),
-                            );
-                            context.router.replace(const HomeRouteView());
+                            context.read<AuthBloc>().register(
+                                  emailController.text.trim(),
+                                  passwordController.text.trim(),
+                                );
                           }
                         },
                         style: ButtonStyle(
@@ -166,6 +153,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               ),
                             ),
                           ),
+                          overlayColor:
+                              const MaterialStatePropertyAll(primaryColor),
                         ),
                         child: Text(
                           S.of(context).register,
@@ -247,3 +236,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 }
+
+const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(20)),
+  borderSide: BorderSide(
+    width: 2,
+    color: shadowColor,
+  ),
+);

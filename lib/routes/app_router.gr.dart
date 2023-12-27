@@ -42,9 +42,11 @@ class AppRouter extends _i11.RootStackRouter {
       );
     },
     RegistrationRoute.name: (routeData) {
+      final args = routeData.argsAs<RegistrationRouteArgs>(
+          orElse: () => const RegistrationRouteArgs());
       return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i2.RegistrationPage(),
+        child: _i2.RegistrationPage(key: args.key),
       );
     },
     HomeRouteView.name: (routeData) {
@@ -194,14 +196,26 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [_i2.RegistrationPage]
-class RegistrationRoute extends _i11.PageRouteInfo<void> {
-  const RegistrationRoute()
+class RegistrationRoute extends _i11.PageRouteInfo<RegistrationRouteArgs> {
+  RegistrationRoute({_i12.Key? key})
       : super(
           RegistrationRoute.name,
           path: '/registration-page',
+          args: RegistrationRouteArgs(key: key),
         );
 
   static const String name = 'RegistrationRoute';
+}
+
+class RegistrationRouteArgs {
+  const RegistrationRouteArgs({this.key});
+
+  final _i12.Key? key;
+
+  @override
+  String toString() {
+    return 'RegistrationRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

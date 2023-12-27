@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:testproject/exceptions/exception.dart';
 
 import 'package:testproject/models/token_model.dart';
+import 'package:testproject/models/user.dart';
 import 'package:testproject/repositories/api/api_client.dart';
 import 'package:testproject/service/locator.dart';
 
@@ -65,6 +66,27 @@ class AuthRepository {
           throw RefreshTokenExpiredException();
         case 405:
           throw InternalRefreshTokenError();
+        default:
+          throw InternalServerError();
+      }
+    } catch (error) {
+      print(error);
+      throw DefaultException();
+    }
+  }
+
+  Future<User> getUserId(String accessToken) async {
+    try {
+      User currentUser =
+          await getIt<ApiClient>().getUserId(accessToken: accessToken);
+      return currentUser;
+    } on DioException catch (error) {
+      if (error.message!.contains('SocketException')) {
+        throw NoConnectionException();
+      }
+      switch (error.response?.statusCode) {
+        case 401:
+          throw RefreshTokenExpiredException();
         default:
           throw InternalServerError();
       }

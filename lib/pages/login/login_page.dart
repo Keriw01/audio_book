@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/blocs/auth/auth_bloc.dart';
 import 'package:testproject/generated/l10n.dart';
-import 'package:testproject/repositories/auth_repository.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
@@ -14,11 +13,9 @@ import 'package:testproject/widgets/loading_indicator.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  var formKey = GlobalKey<FormState>();
-
-  var emailController = TextEditingController();
-
-  var passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -149,10 +146,14 @@ class LoginPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: ElevatedButton(
-                            onPressed: () => context.read<AuthBloc>().login(
-                                  emailController.text.trim(),
-                                  passwordController.text.trim(),
-                                ),
+                            onPressed: () async {
+                              if (formKey.currentState!.validate()) {
+                                context.read<AuthBloc>().login(
+                                      emailController.text.trim(),
+                                      passwordController.text.trim(),
+                                    );
+                              }
+                            },
                             style: ButtonStyle(
                               padding: MaterialStateProperty.all<EdgeInsets>(
                                 const EdgeInsets.fromLTRB(75, 10, 75, 10),
@@ -166,6 +167,8 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              overlayColor:
+                                  const MaterialStatePropertyAll(primaryColor),
                             ),
                             child: Text(
                               S.of(context).login,
@@ -183,7 +186,7 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 10),
                         child: TextButton(
                           onPressed: () =>
-                              context.router.replace(const RegistrationRoute()),
+                              context.router.replace(RegistrationRoute()),
                           child: Text(
                             S.of(context).createAccount,
                             style: Theme.of(context)
