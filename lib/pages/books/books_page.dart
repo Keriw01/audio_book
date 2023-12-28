@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/pages/books/cubit/books_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
+import 'package:testproject/pages/books/cubit/favorites_cubit.dart';
 import 'package:testproject/pages/books/widgets/books_section.dart';
 import 'package:testproject/models/collection.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
@@ -32,8 +33,15 @@ class BooksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BooksCubit(collection.href),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => BooksCubit(collection.href),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => FavoritesCubit(context),
+        )
+      ],
       child: Scaffold(
         appBar: AppBar(
           title: Text(collection.title),

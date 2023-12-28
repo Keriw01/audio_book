@@ -16,10 +16,7 @@ class FavoriteBooksRepository {
 
       List<Book> favorites = response.favoriteBooks;
 
-      if (favorites.isNotEmpty) {
-        return favorites;
-      }
-      return [];
+      return favorites;
     } on DioException catch (error) {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
