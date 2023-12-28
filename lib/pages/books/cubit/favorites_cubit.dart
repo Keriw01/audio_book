@@ -1,22 +1,31 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:testproject/blocs/auth/auth_bloc.dart';
 import 'package:testproject/models/book.dart';
-import 'package:testproject/service/favorites_preferences.dart';
-import 'package:testproject/service/locator.dart';
+import 'package:testproject/repositories/favorite_books_repository.dart';
 
 part 'favorites_state.dart';
 
 class FavoritesCubit extends Cubit<FavoritesState> {
-  final favoritesPreferences = getIt<FavoritesPreferences>();
-  FavoritesCubit() : super(const FavoritesInitial()) {
+  late final AuthBloc _authBloc;
+  late final FavoriteBooksRepository _favoriteBooksRepository;
+  FavoritesCubit(BuildContext context)
+      : _authBloc = context.read<AuthBloc>(),
+        _favoriteBooksRepository = FavoriteBooksRepository(),
+        super(const FavoritesInitial()) {
     _loadFavorites();
   }
 
   Future<void> _loadFavorites() async {
     try {
-      List<Book> favorites = await favoritesPreferences.load();
+      List<Book> favorites = await _favoriteBooksRepository
+          .getFavoriteBooks(_authBloc.state.currentUser!.userId.toString());
+
       emit(FavoritesLoaded(favorites));
     } catch (error) {
+      print(error);
       emit(FavoritesError(error.toString()));
     }
   }
@@ -25,8 +34,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     try {
       List<Book> currentFavorites =
           List.from((state as FavoritesLoaded).favoriteBooks);
+      _favoriteBooksRepository.saveFavoriteBook(
+        book,
+        _authBloc.state.currentUser!.userId.toString(),
+      );
       currentFavorites.add(book);
-      favoritesPreferences.save(currentFavorites);
       emit(FavoritesLoaded(currentFavorites));
     } catch (error) {
       emit(FavoritesError(error.toString()));
@@ -37,8 +49,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     try {
       List<Book> currentFavorites =
           List.from((state as FavoritesLoaded).favoriteBooks);
+      _favoriteBooksRepository.deleteFavoriteBook(
+        book.title,
+        _authBloc.state.currentUser!.userId.toString(),
+      );
       currentFavorites.remove(book);
-      favoritesPreferences.save(currentFavorites);
       emit(FavoritesLoaded(currentFavorites));
     } catch (error) {
       emit(FavoritesError(error.toString()));

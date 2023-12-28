@@ -1,5 +1,6 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:testproject/models/book.dart';
 import 'package:testproject/models/token_model.dart';
 import 'package:testproject/models/user.dart';
 
@@ -35,5 +36,25 @@ abstract class ApiClient {
   @GET('$baseUrl/user')
   Future<User> getUserId({
     @Header("Authorization") required String accessToken,
+  });
+
+  @POST('$baseUrl/favorite-books')
+  @FormUrlEncoded()
+  Future<FavoriteBooksResponse> getFavoriteBooks({
+    @Field("user_id") required String userId,
+  });
+
+  @POST('$baseUrl/favorite-book-save')
+  @FormUrlEncoded()
+  Future<void> saveFavoriteBook({
+    @Field("book") required String book,
+    @Field("user_id") required String userId,
+  });
+
+  @POST('$baseUrl/favorite-book-delete')
+  @FormUrlEncoded()
+  Future<void> deleteFavoriteBook({
+    @Field("title") required String bookTitle,
+    @Field("user_id") required String userId,
   });
 }

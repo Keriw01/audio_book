@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => CollectionsCubit(),
         ),
         BlocProvider<FavoritesCubit>(
-          create: (BuildContext context) => FavoritesCubit(),
+          create: (BuildContext context) => FavoritesCubit(context),
         ),
       ],
       child: MaterialApp.router(
