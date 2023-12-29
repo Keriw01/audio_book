@@ -14,11 +14,9 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   FavoritesCubit(BuildContext context)
       : _authBloc = context.read<AuthBloc>(),
         _favoriteBooksRepository = FavoriteBooksRepository(),
-        super(const FavoritesInitial()) {
-    _loadFavorites();
-  }
+        super(const FavoritesInitial());
 
-  Future<void> _loadFavorites() async {
+  Future<void> loadFavorites() async {
     try {
       List<Book> favorites = await _favoriteBooksRepository
           .getFavoriteBooks(_authBloc.state.currentUser!.userId.toString());

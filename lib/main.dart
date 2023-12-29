@@ -33,9 +33,13 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthBloc(appRouter, context),
+          lazy: false,
         ),
         BlocProvider<CollectionsCubit>(
           create: (BuildContext context) => CollectionsCubit(),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => FavoritesCubit(context),
         ),
       ],
       child: MaterialApp.router(
