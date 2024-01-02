@@ -18,12 +18,11 @@ class AuthRepository {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
       }
-      switch (error.response?.statusCode) {
-        case 401:
-          throw InternalCredentialsError();
-        default:
-          throw InternalServerError();
+      if (error.response?.statusCode == 401) {
+        throw InternalCredentialsError();
       }
+
+      throw InternalServerError();
     } catch (error) {
       print(error);
       throw DefaultException();
@@ -40,12 +39,14 @@ class AuthRepository {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
       }
-      switch (error.response?.statusCode) {
-        case 401:
-          throw UserAlreadyExistsError();
-        default:
-          throw InternalServerError();
+      if (error.response?.statusCode == 401) {
+        throw UserAlreadyExistsError();
       }
+      if (error.response?.statusCode == 500) {
+        throw InternalServerError();
+      }
+
+      throw DefaultException();
     } catch (error) {
       print(error);
       throw DefaultException();
@@ -61,14 +62,14 @@ class AuthRepository {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
       }
-      switch (error.response?.statusCode) {
-        case 403:
-          throw RefreshTokenExpiredException();
-        case 405:
-          throw InternalRefreshTokenError();
-        default:
-          throw InternalServerError();
+      if (error.response?.statusCode == 403) {
+        throw RefreshTokenExpiredException();
       }
+      if (error.response?.statusCode == 405) {
+        throw InternalServerError();
+      }
+
+      throw DefaultException();
     } catch (error) {
       print(error);
       throw DefaultException();
@@ -84,14 +85,9 @@ class AuthRepository {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
       }
-      switch (error.response?.statusCode) {
-        case 401:
-          throw RefreshTokenExpiredException();
-        default:
-          throw InternalServerError();
-      }
+      throw InternalCredentialsError;
     } catch (error) {
-      print(error);
+      print(error.toString());
       throw DefaultException();
     }
   }

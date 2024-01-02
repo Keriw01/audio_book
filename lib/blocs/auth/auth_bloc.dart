@@ -3,6 +3,7 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:testproject/blocs/base_cubit.dart';
 import 'package:testproject/exceptions/exception.dart';
+import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/models/user.dart';
 import 'package:testproject/repositories/auth_repository.dart';
 import 'package:testproject/routes/app_router.gr.dart';
@@ -21,7 +22,7 @@ class AuthBloc extends BaseCubit<AuthState> {
       : _authRepository = AuthRepository(),
         super(
           appRouter,
-          AuthState(isLoggedIn: false),
+          AuthState(),
         ) {
     isLoggedIn();
   }
@@ -31,6 +32,8 @@ class AuthBloc extends BaseCubit<AuthState> {
       state.copyWith(
         email: email,
         password: password,
+        errorMessage: '',
+        isLoading: true,
       ),
     );
 
@@ -50,13 +53,46 @@ class AuthBloc extends BaseCubit<AuthState> {
         state.copyWith(
           tokens: tokenResponse,
           currentUser: userRespone,
-          isLoggedIn: true,
         ),
       );
 
-      appRouter.replaceNamed(const HomeRouteView().path);
+      _navigateToHomePage();
+    } on NoConnectionException {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.networkError,
+          isLoading: false,
+        ),
+      );
+    } on InternalServerError {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.internalServerError,
+          isLoading: false,
+        ),
+      );
+    } on InternalCredentialsError {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.internalCredentialsError,
+          isLoading: false,
+        ),
+      );
+    } on DefaultException {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.defaultError,
+          isLoading: false,
+        ),
+      );
     } catch (e) {
-      print(e);
+      print(e.toString());
+      emit(
+        state.copyWith(
+          errorMessage: S.current.defaultError,
+          isLoading: false,
+        ),
+      );
     }
   }
 
@@ -75,12 +111,32 @@ class AuthBloc extends BaseCubit<AuthState> {
       _saveTokens(newTokens);
 
       emit(state.copyWith(tokens: newTokens));
+    } on NoConnectionException {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.networkError,
+          isLoading: false,
+        ),
+      );
     } on RefreshTokenExpiredException {
       await logOut();
+    } on InternalServerError {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.internalServerError,
+          isLoading: false,
+        ),
+      );
+    } on DefaultException {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.defaultError,
+          isLoading: false,
+        ),
+      );
     } catch (e) {
-      print(e);
+      print(e.toString());
       emit(state.copyWith(tokens: null, currentUser: null));
-      return;
     }
   }
 
@@ -89,6 +145,8 @@ class AuthBloc extends BaseCubit<AuthState> {
       state.copyWith(
         email: email,
         password: password,
+        errorMessage: '',
+        isLoading: true,
       ),
     );
 
@@ -109,28 +167,60 @@ class AuthBloc extends BaseCubit<AuthState> {
         state.copyWith(
           tokens: tokenResponse,
           currentUser: userRespone,
-          isLoggedIn: true,
         ),
       );
 
-      appRouter.replaceNamed(const HomeRouteView().path);
+      _navigateToHomePage();
+    } on NoConnectionException {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.networkError,
+          isLoading: false,
+        ),
+      );
+    } on InternalCredentialsError {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.internalCredentialsError,
+          isLoading: false,
+        ),
+      );
+    } on UserAlreadyExistsError {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.userAlreadyExistsError,
+          isLoading: false,
+        ),
+      );
+    } on InternalServerError {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.internalServerError,
+          isLoading: false,
+        ),
+      );
+    } on DefaultException {
+      emit(
+        state.copyWith(
+          errorMessage: S.current.defaultError,
+          isLoading: false,
+        ),
+      );
     } catch (e) {
-      print(e);
+      print(e.toString());
+      emit(
+        state.copyWith(
+          errorMessage: S.current.defaultError,
+          isLoading: false,
+        ),
+      );
     }
   }
 
   Future<void> logOut() async {
     await _deleteTokens();
     await _deleteCurrentUser();
-    emit(
-      state.copyWith(
-        email: null,
-        password: null,
-        tokens: null,
-        currentUser: null,
-        isLoggedIn: false,
-      ),
-    );
+    _clearState();
     appRouter.replaceNamed(LoginRoute().path);
   }
 
@@ -159,18 +249,42 @@ class AuthBloc extends BaseCubit<AuthState> {
     if (tokenModel == null) {
       await _deleteTokens();
       await _secureStorage.deleteUser();
-      emit(
-        state.copyWith(
-          email: null,
-          password: null,
-          tokens: null,
-          currentUser: null,
-          isLoggedIn: false,
-        ),
-      );
+      _clearState();
     } else {
-      emit(state.copyWith(isLoggedIn: true));
-      appRouter.replaceNamed(const HomeRouteView().path);
+      _navigateToHomePage();
     }
+  }
+
+  void clearErrorMessage() {
+    emit(state.copyWith(errorMessage: ''));
+  }
+
+  void _clearState() {
+    emit(
+      state.copyWith(
+        email: null,
+        password: null,
+        tokens: null,
+        currentUser: null,
+        isLoggedIn: false,
+        isLoading: false,
+        errorMessage: '',
+      ),
+    );
+  }
+
+  void _navigateToHomePage() {
+    appRouter.replaceNamed(const HomeRouteView().path);
+    emit(state.copyWith(isLoading: false, isLoggedIn: true, errorMessage: ''));
+  }
+
+  void navigateToLoginPage() {
+    appRouter.replaceNamed(LoginRoute().path);
+    _clearState();
+  }
+
+  void navigateToRegisterPage() {
+    appRouter.replaceNamed(RegistrationRoute().path);
+    _clearState();
   }
 }

@@ -45,11 +45,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorOccured": MessageLookupByLibrary.simpleMessage("Wystąpił błąd:"),
         "fragment": MessageLookupByLibrary.simpleMessage("Fragment"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Strona główna"),
+        "internalCredentialsError":
+            MessageLookupByLibrary.simpleMessage("Błąd autoryzacji"),
+        "internalRefreshTokenError":
+            MessageLookupByLibrary.simpleMessage("Błąd pobrania autoryzacji"),
+        "internalServerError":
+            MessageLookupByLibrary.simpleMessage("Błąd serwera"),
         "listen": MessageLookupByLibrary.simpleMessage("Posłuchaj"),
         "logOut": MessageLookupByLibrary.simpleMessage("Wyloguj"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj"),
         "loginWhenHadAccount": MessageLookupByLibrary.simpleMessage(
             "Masz juz konto ? Zaloguj się"),
+        "networkError":
+            MessageLookupByLibrary.simpleMessage("Błąd połączenia sieci"),
         "nowPlaying": MessageLookupByLibrary.simpleMessage("Teraz odtwarzane"),
         "other": MessageLookupByLibrary.simpleMessage("lub"),
         "others": MessageLookupByLibrary.simpleMessage("Pozostałe"),
@@ -61,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hasło jest wymagane"),
         "userAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Użytkownik istnieje"),
+        "userAlreadyExistsError":
+            MessageLookupByLibrary.simpleMessage("Użytkownik już istnieje"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Twoje ulubione")
       };
 }

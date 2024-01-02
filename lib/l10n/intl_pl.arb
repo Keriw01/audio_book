@@ -28,5 +28,10 @@
     "userAlreadyExist": "Użytkownik istnieje",
     "badAuthorization": "Błąd autoryzacji",
     "emailAlreadyExist": "Email już istnieje",
-    "defaultError": "Błąd"
+    "defaultError": "Błąd",
+    "internalServerError": "Błąd serwera",
+    "internalCredentialsError": "Błąd autoryzacji",
+    "internalRefreshTokenError": "Błąd pobrania autoryzacji",
+    "userAlreadyExistsError": "Użytkownik już istnieje",
+    "networkError": "Błąd połączenia sieci"
 }

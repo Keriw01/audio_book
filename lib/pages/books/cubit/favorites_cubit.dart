@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:testproject/blocs/auth/auth_bloc.dart';
+import 'package:testproject/exceptions/exception.dart';
+import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/repositories/favorite_books_repository.dart';
 
@@ -18,18 +20,25 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   Future<void> loadFavorites() async {
     try {
+      await _authBloc.refreshTokenIfNeeded();
+
       List<Book> favorites = await _favoriteBooksRepository
           .getFavoriteBooks(_authBloc.state.currentUser!.userId.toString());
 
       emit(FavoritesLoaded(favorites));
+    } on NoConnectionException {
+      emit(FavoritesError(S.current.networkError));
+    } on DefaultException {
+      emit(FavoritesError(S.current.defaultError));
     } catch (error) {
-      print(error);
-      emit(FavoritesError(error.toString()));
+      print(error.toString());
     }
   }
 
-  void addToFavorites(Book book) {
+  Future<void> addToFavorites(Book book) async {
     try {
+      await _authBloc.refreshTokenIfNeeded();
+
       List<Book> currentFavorites =
           List.from((state as FavoritesLoaded).favoriteBooks);
       _favoriteBooksRepository.saveFavoriteBook(
@@ -38,13 +47,18 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       );
       currentFavorites.add(book);
       emit(FavoritesLoaded(currentFavorites));
+    } on NoConnectionException {
+      emit(FavoritesError(S.current.networkError));
+    } on DefaultException {
+      emit(FavoritesError(S.current.defaultError));
     } catch (error) {
-      emit(FavoritesError(error.toString()));
+      print(error.toString());
     }
   }
 
-  void removeFromFavorites(Book book) {
+  Future<void> removeFromFavorites(Book book) async {
     try {
+      await _authBloc.refreshTokenIfNeeded();
       List<Book> currentFavorites =
           List.from((state as FavoritesLoaded).favoriteBooks);
       _favoriteBooksRepository.deleteFavoriteBook(
@@ -53,8 +67,12 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       );
       currentFavorites.remove(book);
       emit(FavoritesLoaded(currentFavorites));
+    } on NoConnectionException {
+      emit(FavoritesError(S.current.networkError));
+    } on DefaultException {
+      emit(FavoritesError(S.current.defaultError));
     } catch (error) {
-      emit(FavoritesError(error.toString()));
+      print(error.toString());
     }
   }
 

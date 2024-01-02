@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/blocs/auth/auth_bloc.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
@@ -143,39 +142,55 @@ class LoginPage extends StatelessWidget {
                             obscureText: true,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              if (formKey.currentState!.validate()) {
-                                context.read<AuthBloc>().login(
-                                      emailController.text.trim(),
-                                      passwordController.text.trim(),
-                                    );
-                              }
-                            },
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                const EdgeInsets.fromLTRB(75, 10, 75, 10),
-                              ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(seedColor),
-                              shape: MaterialStateProperty.all(
-                                const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20.0),
-                                  ),
-                                ),
-                              ),
-                              overlayColor:
-                                  const MaterialStatePropertyAll(primaryColor),
-                            ),
-                            child: Text(
-                              S.of(context).login,
-                              style: Theme.of(context).textTheme.displayMedium,
+                        if (state.errorMessage != '')
+                          Text(
+                            state.errorMessage,
+                            style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 12.0,
                             ),
                           ),
-                        ),
+                        if (state.isLoading)
+                          const LoadingIndicator(width: 75, height: 75)
+                        else
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
+                                  context.read<AuthBloc>().login(
+                                        emailController.text.trim(),
+                                        passwordController.text.trim(),
+                                      );
+                                } else {
+                                  emailController.clear();
+                                  passwordController.clear();
+                                }
+                              },
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                  const EdgeInsets.fromLTRB(75, 10, 75, 10),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all(seedColor),
+                                shape: MaterialStateProperty.all(
+                                  const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20.0),
+                                    ),
+                                  ),
+                                ),
+                                overlayColor: const MaterialStatePropertyAll(
+                                  primaryColor,
+                                ),
+                              ),
+                              child: Text(
+                                S.of(context).login,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -186,7 +201,7 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 10),
                         child: TextButton(
                           onPressed: () =>
-                              context.router.replace(RegistrationRoute()),
+                              context.read<AuthBloc>().navigateToRegisterPage(),
                           child: Text(
                             S.of(context).createAccount,
                             style: Theme.of(context)

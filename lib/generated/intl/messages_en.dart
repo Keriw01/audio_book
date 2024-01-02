@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bookDetail": MessageLookupByLibrary.simpleMessage("Book detail"),
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Categories"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-        "defaultError": MessageLookupByLibrary.simpleMessage("Default error"),
+        "defaultError": MessageLookupByLibrary.simpleMessage("Error"),
         "emailAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Email already exist"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter e-mail"),
@@ -46,11 +46,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
         "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
+        "internalCredentialsError":
+            MessageLookupByLibrary.simpleMessage("Authorization error"),
+        "internalRefreshTokenError":
+            MessageLookupByLibrary.simpleMessage("Error refresh authorization"),
+        "internalServerError":
+            MessageLookupByLibrary.simpleMessage("Server error"),
         "listen": MessageLookupByLibrary.simpleMessage("Listen"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginWhenHadAccount": MessageLookupByLibrary.simpleMessage(
             "You already had account ? Login now"),
+        "networkError":
+            MessageLookupByLibrary.simpleMessage("Network connection error"),
         "nowPlaying": MessageLookupByLibrary.simpleMessage("Now playing"),
         "other": MessageLookupByLibrary.simpleMessage("other"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
@@ -61,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "requiredPassword":
             MessageLookupByLibrary.simpleMessage("Password is required"),
         "userAlreadyExist":
+            MessageLookupByLibrary.simpleMessage("User already exist"),
+        "userAlreadyExistsError":
             MessageLookupByLibrary.simpleMessage("User already exist"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Your favorite")
       };

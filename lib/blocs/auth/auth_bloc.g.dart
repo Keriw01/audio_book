@@ -17,6 +17,10 @@ abstract class _$AuthStateCWProxy {
 
   AuthState isLoggedIn(bool isLoggedIn);
 
+  AuthState errorMessage(String errorMessage);
+
+  AuthState isLoading(bool isLoading);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -29,6 +33,8 @@ abstract class _$AuthStateCWProxy {
     TokenModel? tokens,
     User? currentUser,
     bool? isLoggedIn,
+    String? errorMessage,
+    bool? isLoading,
   });
 }
 
@@ -54,6 +60,13 @@ class _$AuthStateCWProxyImpl implements _$AuthStateCWProxy {
   AuthState isLoggedIn(bool isLoggedIn) => this(isLoggedIn: isLoggedIn);
 
   @override
+  AuthState errorMessage(String errorMessage) =>
+      this(errorMessage: errorMessage);
+
+  @override
+  AuthState isLoading(bool isLoading) => this(isLoading: isLoading);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -67,6 +80,8 @@ class _$AuthStateCWProxyImpl implements _$AuthStateCWProxy {
     Object? tokens = const $CopyWithPlaceholder(),
     Object? currentUser = const $CopyWithPlaceholder(),
     Object? isLoggedIn = const $CopyWithPlaceholder(),
+    Object? errorMessage = const $CopyWithPlaceholder(),
+    Object? isLoading = const $CopyWithPlaceholder(),
   }) {
     return AuthState(
       email: email == const $CopyWithPlaceholder()
@@ -90,6 +105,15 @@ class _$AuthStateCWProxyImpl implements _$AuthStateCWProxy {
               ? _value.isLoggedIn
               // ignore: cast_nullable_to_non_nullable
               : isLoggedIn as bool,
+      errorMessage:
+          errorMessage == const $CopyWithPlaceholder() || errorMessage == null
+              ? _value.errorMessage
+              // ignore: cast_nullable_to_non_nullable
+              : errorMessage as String,
+      isLoading: isLoading == const $CopyWithPlaceholder() || isLoading == null
+          ? _value.isLoading
+          // ignore: cast_nullable_to_non_nullable
+          : isLoading as bool,
     );
   }
 }

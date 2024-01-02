@@ -349,6 +349,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Błąd serwera`
+  String get internalServerError {
+    return Intl.message(
+      'Błąd serwera',
+      name: 'internalServerError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd autoryzacji`
+  String get internalCredentialsError {
+    return Intl.message(
+      'Błąd autoryzacji',
+      name: 'internalCredentialsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd pobrania autoryzacji`
+  String get internalRefreshTokenError {
+    return Intl.message(
+      'Błąd pobrania autoryzacji',
+      name: 'internalRefreshTokenError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Użytkownik już istnieje`
+  String get userAlreadyExistsError {
+    return Intl.message(
+      'Użytkownik już istnieje',
+      name: 'userAlreadyExistsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd połączenia sieci`
+  String get networkError {
+    return Intl.message(
+      'Błąd połączenia sieci',
+      name: 'networkError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

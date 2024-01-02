@@ -21,12 +21,9 @@ class FavoriteBooksRepository {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
       }
-      switch (error.response?.statusCode) {
-        default:
-          throw InternalServerError();
-      }
+      throw DefaultException();
     } catch (error) {
-      print(error);
+      print(error.toString());
       throw DefaultException();
     }
   }
@@ -39,12 +36,12 @@ class FavoriteBooksRepository {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
       }
-      switch (error.response?.statusCode) {
-        default:
-          print(error.response);
+      if (error.response?.statusCode == 500) {
+        throw InternalServerError();
       }
+      throw DefaultException();
     } catch (error) {
-      print(error);
+      print(error.toString());
       throw DefaultException();
     }
   }
@@ -57,12 +54,12 @@ class FavoriteBooksRepository {
       if (error.message!.contains('SocketException')) {
         throw NoConnectionException();
       }
-      switch (error.response?.statusCode) {
-        default:
-          throw InternalServerError();
+      if (error.response?.statusCode == 500) {
+        throw InternalServerError();
       }
+      throw DefaultException();
     } catch (error) {
-      print(error);
+      print(error.toString());
       throw DefaultException();
     }
   }
