@@ -22,8 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "audioBook": MessageLookupByLibrary.simpleMessage("Audio Book"),
+        "badAuthorization":
+            MessageLookupByLibrary.simpleMessage("Bad authorization"),
         "bookDetail": MessageLookupByLibrary.simpleMessage("Book detail"),
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Categories"),
+        "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
+        "defaultError": MessageLookupByLibrary.simpleMessage("Default error"),
+        "emailAlreadyExist":
+            MessageLookupByLibrary.simpleMessage("Email already exist"),
+        "enterEmail": MessageLookupByLibrary.simpleMessage("Enter e-mail"),
+        "enterPassword":
+            MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "enterValidEmail":
+            MessageLookupByLibrary.simpleMessage("Enter valid e-mail"),
+        "enterValidPassword": MessageLookupByLibrary.simpleMessage(
+            "Password must contains minimum 8 characters"),
         "errorFetchBooks":
             MessageLookupByLibrary.simpleMessage("Error fetching book data!"),
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
@@ -33,11 +47,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "listen": MessageLookupByLibrary.simpleMessage("Listen"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginWhenHadAccount": MessageLookupByLibrary.simpleMessage(
+            "You already had account ? Login now"),
         "nowPlaying": MessageLookupByLibrary.simpleMessage("Now playing"),
+        "other": MessageLookupByLibrary.simpleMessage("other"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
         "readHtml": MessageLookupByLibrary.simpleMessage("Read HTML"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Read PDF"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Refresh data"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "requiredPassword":
+            MessageLookupByLibrary.simpleMessage("Password is required"),
+        "userAlreadyExist":
+            MessageLookupByLibrary.simpleMessage("User already exist"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Your favorite")
       };
 }

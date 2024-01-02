@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:just_audio_background/just_audio_background.dart';
+import 'package:testproject/blocs/auth/auth_bloc.dart';
 import 'package:testproject/pages/collections/cubit/collections_cubit.dart';
 import 'package:testproject/pages/books/cubit/favorites_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
@@ -24,16 +25,21 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
+
   final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => AuthBloc(appRouter, context),
+          lazy: false,
+        ),
         BlocProvider<CollectionsCubit>(
           create: (BuildContext context) => CollectionsCubit(),
         ),
-        BlocProvider<FavoritesCubit>(
-          create: (BuildContext context) => FavoritesCubit(),
+        BlocProvider(
+          create: (BuildContext context) => FavoritesCubit(context),
         ),
       ],
       child: MaterialApp.router(

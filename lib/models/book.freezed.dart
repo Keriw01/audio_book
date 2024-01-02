@@ -233,3 +233,151 @@ abstract class _Book implements Book {
   @JsonKey(ignore: true)
   _$$_BookCopyWith<_$_Book> get copyWith => throw _privateConstructorUsedError;
 }
+
+FavoriteBooksResponse _$FavoriteBooksResponseFromJson(
+    Map<String, dynamic> json) {
+  return _FavoriteBooksResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FavoriteBooksResponse {
+  List<Book> get favoriteBooks => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FavoriteBooksResponseCopyWith<FavoriteBooksResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FavoriteBooksResponseCopyWith<$Res> {
+  factory $FavoriteBooksResponseCopyWith(FavoriteBooksResponse value,
+          $Res Function(FavoriteBooksResponse) then) =
+      _$FavoriteBooksResponseCopyWithImpl<$Res, FavoriteBooksResponse>;
+  @useResult
+  $Res call({List<Book> favoriteBooks});
+}
+
+/// @nodoc
+class _$FavoriteBooksResponseCopyWithImpl<$Res,
+        $Val extends FavoriteBooksResponse>
+    implements $FavoriteBooksResponseCopyWith<$Res> {
+  _$FavoriteBooksResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favoriteBooks = null,
+  }) {
+    return _then(_value.copyWith(
+      favoriteBooks: null == favoriteBooks
+          ? _value.favoriteBooks
+          : favoriteBooks // ignore: cast_nullable_to_non_nullable
+              as List<Book>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_FavoriteBooksResponseCopyWith<$Res>
+    implements $FavoriteBooksResponseCopyWith<$Res> {
+  factory _$$_FavoriteBooksResponseCopyWith(_$_FavoriteBooksResponse value,
+          $Res Function(_$_FavoriteBooksResponse) then) =
+      __$$_FavoriteBooksResponseCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Book> favoriteBooks});
+}
+
+/// @nodoc
+class __$$_FavoriteBooksResponseCopyWithImpl<$Res>
+    extends _$FavoriteBooksResponseCopyWithImpl<$Res, _$_FavoriteBooksResponse>
+    implements _$$_FavoriteBooksResponseCopyWith<$Res> {
+  __$$_FavoriteBooksResponseCopyWithImpl(_$_FavoriteBooksResponse _value,
+      $Res Function(_$_FavoriteBooksResponse) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favoriteBooks = null,
+  }) {
+    return _then(_$_FavoriteBooksResponse(
+      favoriteBooks: null == favoriteBooks
+          ? _value._favoriteBooks
+          : favoriteBooks // ignore: cast_nullable_to_non_nullable
+              as List<Book>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_FavoriteBooksResponse implements _FavoriteBooksResponse {
+  const _$_FavoriteBooksResponse({required final List<Book> favoriteBooks})
+      : _favoriteBooks = favoriteBooks;
+
+  factory _$_FavoriteBooksResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_FavoriteBooksResponseFromJson(json);
+
+  final List<Book> _favoriteBooks;
+  @override
+  List<Book> get favoriteBooks {
+    if (_favoriteBooks is EqualUnmodifiableListView) return _favoriteBooks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteBooks);
+  }
+
+  @override
+  String toString() {
+    return 'FavoriteBooksResponse(favoriteBooks: $favoriteBooks)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FavoriteBooksResponse &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteBooks, _favoriteBooks));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_favoriteBooks));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FavoriteBooksResponseCopyWith<_$_FavoriteBooksResponse> get copyWith =>
+      __$$_FavoriteBooksResponseCopyWithImpl<_$_FavoriteBooksResponse>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FavoriteBooksResponseToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FavoriteBooksResponse implements FavoriteBooksResponse {
+  const factory _FavoriteBooksResponse(
+      {required final List<Book> favoriteBooks}) = _$_FavoriteBooksResponse;
+
+  factory _FavoriteBooksResponse.fromJson(Map<String, dynamic> json) =
+      _$_FavoriteBooksResponse.fromJson;
+
+  @override
+  List<Book> get favoriteBooks;
+  @override
+  @JsonKey(ignore: true)
+  _$$_FavoriteBooksResponseCopyWith<_$_FavoriteBooksResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}

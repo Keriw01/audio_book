@@ -11,37 +11,55 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:flutter/material.dart' as _i10;
-import 'package:testproject/models/book.dart' as _i11;
-import 'package:testproject/models/book_detail.dart' as _i13;
-import 'package:testproject/models/collection.dart' as _i12;
-import 'package:testproject/pages/book_detail/book_detail_page.dart' as _i2;
-import 'package:testproject/pages/books/books_page.dart' as _i3;
-import 'package:testproject/pages/category/category_page.dart' as _i8;
-import 'package:testproject/pages/collections/collections_page.dart' as _i7;
-import 'package:testproject/pages/home_page_view/home_page_view.dart' as _i1;
-import 'package:testproject/pages/listen/listen_page.dart' as _i6;
-import 'package:testproject/pages/pdf_view/pdf_page.dart' as _i5;
-import 'package:testproject/pages/web_view/web_view_page.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
+import 'package:testproject/models/book.dart' as _i13;
+import 'package:testproject/models/book_detail.dart' as _i15;
+import 'package:testproject/models/collection.dart' as _i14;
+import 'package:testproject/pages/book_detail/book_detail_page.dart' as _i4;
+import 'package:testproject/pages/books/books_page.dart' as _i5;
+import 'package:testproject/pages/category/category_page.dart' as _i10;
+import 'package:testproject/pages/collections/collections_page.dart' as _i9;
+import 'package:testproject/pages/home_page_view/home_page_view.dart' as _i3;
+import 'package:testproject/pages/listen/listen_page.dart' as _i8;
+import 'package:testproject/pages/login/login_page.dart' as _i1;
+import 'package:testproject/pages/pdf_view/pdf_page.dart' as _i7;
+import 'package:testproject/pages/registration/register_page.dart' as _i2;
+import 'package:testproject/pages/web_view/web_view_page.dart' as _i6;
 
-class AppRouter extends _i9.RootStackRouter {
-  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
+class AppRouter extends _i11.RootStackRouter {
+  AppRouter([_i12.GlobalKey<_i12.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i9.PageFactory> pagesMap = {
-    HomeRouteView.name: (routeData) {
-      return _i9.AdaptivePage<dynamic>(
+  final Map<String, _i11.PageFactory> pagesMap = {
+    LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomePageView(),
+        child: _i1.LoginPage(key: args.key),
+      );
+    },
+    RegistrationRoute.name: (routeData) {
+      final args = routeData.argsAs<RegistrationRouteArgs>(
+          orElse: () => const RegistrationRouteArgs());
+      return _i11.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: _i2.RegistrationPage(key: args.key),
+      );
+    },
+    HomeRouteView.name: (routeData) {
+      return _i11.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.HomePageView(),
       );
     },
     BookDetailRoute.name: (routeData) {
       final args = routeData.argsAs<BookDetailRouteArgs>();
-      return _i9.AdaptivePage<dynamic>(
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i2.BookDetailPage(
+        child: _i4.BookDetailPage(
           key: args.key,
           book: args.book,
         ),
@@ -49,9 +67,9 @@ class AppRouter extends _i9.RootStackRouter {
     },
     BooksRoute.name: (routeData) {
       final args = routeData.argsAs<BooksRouteArgs>();
-      return _i9.AdaptivePage<dynamic>(
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i3.BooksPage(
+        child: _i5.BooksPage(
           key: args.key,
           collection: args.collection,
         ),
@@ -59,9 +77,9 @@ class AppRouter extends _i9.RootStackRouter {
     },
     WebViewRoute.name: (routeData) {
       final args = routeData.argsAs<WebViewRouteArgs>();
-      return _i9.AdaptivePage<dynamic>(
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i4.WebViewPage(
+        child: _i6.WebViewPage(
           key: args.key,
           title: args.title,
           url: args.url,
@@ -70,9 +88,9 @@ class AppRouter extends _i9.RootStackRouter {
     },
     PdfRoute.name: (routeData) {
       final args = routeData.argsAs<PdfRouteArgs>();
-      return _i9.AdaptivePage<dynamic>(
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i5.PdfPage(
+        child: _i7.PdfPage(
           key: args.key,
           title: args.title,
           pdfUrl: args.pdfUrl,
@@ -81,63 +99,71 @@ class AppRouter extends _i9.RootStackRouter {
     },
     ListenRoute.name: (routeData) {
       final args = routeData.argsAs<ListenRouteArgs>();
-      return _i9.AdaptivePage<dynamic>(
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: _i6.ListenPage(
+        child: _i8.ListenPage(
           key: args.key,
           bookDetail: args.bookDetail,
         ),
       );
     },
     CollectionsRoute.name: (routeData) {
-      return _i9.AdaptivePage<dynamic>(
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i7.CollectionsPage(),
+        child: const _i9.CollectionsPage(),
       );
     },
     CategoryRoute.name: (routeData) {
-      return _i9.AdaptivePage<dynamic>(
+      return _i11.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i8.CategoryPage(),
+        child: const _i10.CategoryPage(),
       );
     },
   };
 
   @override
-  List<_i9.RouteConfig> get routes => [
-        _i9.RouteConfig(
-          HomeRouteView.name,
+  List<_i11.RouteConfig> get routes => [
+        _i11.RouteConfig(
+          LoginRoute.name,
           path: '/',
+        ),
+        _i11.RouteConfig(
+          RegistrationRoute.name,
+          path: '/registration-page',
+        ),
+        _i11.RouteConfig(
+          HomeRouteView.name,
+          path: '/home-page-view',
           children: [
-            _i9.RouteConfig(
+            _i11.RouteConfig(
               CollectionsRoute.name,
               path: 'collections-page',
               parent: HomeRouteView.name,
             ),
-            _i9.RouteConfig(
+            _i11.RouteConfig(
               CategoryRoute.name,
               path: 'category-page',
               parent: HomeRouteView.name,
             ),
           ],
         ),
-        _i9.RouteConfig(
+        _i11.RouteConfig(
           BookDetailRoute.name,
           path: '/book-detail-page',
         ),
-        _i9.RouteConfig(
+        _i11.RouteConfig(
           BooksRoute.name,
           path: '/books-page',
         ),
-        _i9.RouteConfig(
+        _i11.RouteConfig(
           WebViewRoute.name,
           path: '/web-view-page',
         ),
-        _i9.RouteConfig(
+        _i11.RouteConfig(
           PdfRoute.name,
           path: '/pdf-page',
         ),
-        _i9.RouteConfig(
+        _i11.RouteConfig(
           ListenRoute.name,
           path: '/listen-page',
         ),
@@ -145,12 +171,60 @@ class AppRouter extends _i9.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.HomePageView]
-class HomeRouteView extends _i9.PageRouteInfo<void> {
-  const HomeRouteView({List<_i9.PageRouteInfo>? children})
+/// [_i1.LoginPage]
+class LoginRoute extends _i11.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i12.Key? key})
+      : super(
+          LoginRoute.name,
+          path: '/',
+          args: LoginRouteArgs(key: key),
+        );
+
+  static const String name = 'LoginRoute';
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key});
+
+  final _i12.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i2.RegistrationPage]
+class RegistrationRoute extends _i11.PageRouteInfo<RegistrationRouteArgs> {
+  RegistrationRoute({_i12.Key? key})
+      : super(
+          RegistrationRoute.name,
+          path: '/registration-page',
+          args: RegistrationRouteArgs(key: key),
+        );
+
+  static const String name = 'RegistrationRoute';
+}
+
+class RegistrationRouteArgs {
+  const RegistrationRouteArgs({this.key});
+
+  final _i12.Key? key;
+
+  @override
+  String toString() {
+    return 'RegistrationRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i3.HomePageView]
+class HomeRouteView extends _i11.PageRouteInfo<void> {
+  const HomeRouteView({List<_i11.PageRouteInfo>? children})
       : super(
           HomeRouteView.name,
-          path: '/',
+          path: '/home-page-view',
           initialChildren: children,
         );
 
@@ -158,11 +232,11 @@ class HomeRouteView extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.BookDetailPage]
-class BookDetailRoute extends _i9.PageRouteInfo<BookDetailRouteArgs> {
+/// [_i4.BookDetailPage]
+class BookDetailRoute extends _i11.PageRouteInfo<BookDetailRouteArgs> {
   BookDetailRoute({
-    _i10.Key? key,
-    required _i11.Book book,
+    _i12.Key? key,
+    required _i13.Book book,
   }) : super(
           BookDetailRoute.name,
           path: '/book-detail-page',
@@ -181,9 +255,9 @@ class BookDetailRouteArgs {
     required this.book,
   });
 
-  final _i10.Key? key;
+  final _i12.Key? key;
 
-  final _i11.Book book;
+  final _i13.Book book;
 
   @override
   String toString() {
@@ -192,11 +266,11 @@ class BookDetailRouteArgs {
 }
 
 /// generated route for
-/// [_i3.BooksPage]
-class BooksRoute extends _i9.PageRouteInfo<BooksRouteArgs> {
+/// [_i5.BooksPage]
+class BooksRoute extends _i11.PageRouteInfo<BooksRouteArgs> {
   BooksRoute({
-    _i10.Key? key,
-    required _i12.Collection collection,
+    _i12.Key? key,
+    required _i14.Collection collection,
   }) : super(
           BooksRoute.name,
           path: '/books-page',
@@ -215,9 +289,9 @@ class BooksRouteArgs {
     required this.collection,
   });
 
-  final _i10.Key? key;
+  final _i12.Key? key;
 
-  final _i12.Collection collection;
+  final _i14.Collection collection;
 
   @override
   String toString() {
@@ -226,10 +300,10 @@ class BooksRouteArgs {
 }
 
 /// generated route for
-/// [_i4.WebViewPage]
-class WebViewRoute extends _i9.PageRouteInfo<WebViewRouteArgs> {
+/// [_i6.WebViewPage]
+class WebViewRoute extends _i11.PageRouteInfo<WebViewRouteArgs> {
   WebViewRoute({
-    _i10.Key? key,
+    _i12.Key? key,
     required String title,
     required String url,
   }) : super(
@@ -252,7 +326,7 @@ class WebViewRouteArgs {
     required this.url,
   });
 
-  final _i10.Key? key;
+  final _i12.Key? key;
 
   final String title;
 
@@ -265,10 +339,10 @@ class WebViewRouteArgs {
 }
 
 /// generated route for
-/// [_i5.PdfPage]
-class PdfRoute extends _i9.PageRouteInfo<PdfRouteArgs> {
+/// [_i7.PdfPage]
+class PdfRoute extends _i11.PageRouteInfo<PdfRouteArgs> {
   PdfRoute({
-    _i10.Key? key,
+    _i12.Key? key,
     required String title,
     required String pdfUrl,
   }) : super(
@@ -291,7 +365,7 @@ class PdfRouteArgs {
     required this.pdfUrl,
   });
 
-  final _i10.Key? key;
+  final _i12.Key? key;
 
   final String title;
 
@@ -304,11 +378,11 @@ class PdfRouteArgs {
 }
 
 /// generated route for
-/// [_i6.ListenPage]
-class ListenRoute extends _i9.PageRouteInfo<ListenRouteArgs> {
+/// [_i8.ListenPage]
+class ListenRoute extends _i11.PageRouteInfo<ListenRouteArgs> {
   ListenRoute({
-    _i10.Key? key,
-    required _i13.BookDetail bookDetail,
+    _i12.Key? key,
+    required _i15.BookDetail bookDetail,
   }) : super(
           ListenRoute.name,
           path: '/listen-page',
@@ -327,9 +401,9 @@ class ListenRouteArgs {
     required this.bookDetail,
   });
 
-  final _i10.Key? key;
+  final _i12.Key? key;
 
-  final _i13.BookDetail bookDetail;
+  final _i15.BookDetail bookDetail;
 
   @override
   String toString() {
@@ -338,8 +412,8 @@ class ListenRouteArgs {
 }
 
 /// generated route for
-/// [_i7.CollectionsPage]
-class CollectionsRoute extends _i9.PageRouteInfo<void> {
+/// [_i9.CollectionsPage]
+class CollectionsRoute extends _i11.PageRouteInfo<void> {
   const CollectionsRoute()
       : super(
           CollectionsRoute.name,
@@ -350,8 +424,8 @@ class CollectionsRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.CategoryPage]
-class CategoryRoute extends _i9.PageRouteInfo<void> {
+/// [_i10.CategoryPage]
+class CategoryRoute extends _i11.PageRouteInfo<void> {
   const CategoryRoute()
       : super(
           CategoryRoute.name,

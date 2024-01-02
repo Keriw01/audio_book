@@ -189,6 +189,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Audio Book`
+  String get audioBook {
+    return Intl.message(
+      'Audio Book',
+      name: 'audioBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wprowadź poprawny adres e-mail`
+  String get enterValidEmail {
+    return Intl.message(
+      'Wprowadź poprawny adres e-mail',
+      name: 'enterValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wpisz swój e-mail`
+  String get enterEmail {
+    return Intl.message(
+      'Wpisz swój e-mail',
+      name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hasło jest wymagane`
+  String get requiredPassword {
+    return Intl.message(
+      'Hasło jest wymagane',
+      name: 'requiredPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hasło musi mieć co najmniej 8 znaków`
+  String get enterValidPassword {
+    return Intl.message(
+      'Hasło musi mieć co najmniej 8 znaków',
+      name: 'enterValidPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wpisz swoje hasło`
+  String get enterPassword {
+    return Intl.message(
+      'Wpisz swoje hasło',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zaloguj`
+  String get login {
+    return Intl.message(
+      'Zaloguj',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Utwórz konto`
+  String get createAccount {
+    return Intl.message(
+      'Utwórz konto',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `lub`
+  String get other {
+    return Intl.message(
+      'lub',
+      name: 'other',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zarejestruj`
+  String get register {
+    return Intl.message(
+      'Zarejestruj',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Masz juz konto ? Zaloguj się`
+  String get loginWhenHadAccount {
+    return Intl.message(
+      'Masz juz konto ? Zaloguj się',
+      name: 'loginWhenHadAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wyloguj`
+  String get logOut {
+    return Intl.message(
+      'Wyloguj',
+      name: 'logOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Użytkownik istnieje`
+  String get userAlreadyExist {
+    return Intl.message(
+      'Użytkownik istnieje',
+      name: 'userAlreadyExist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd autoryzacji`
+  String get badAuthorization {
+    return Intl.message(
+      'Błąd autoryzacji',
+      name: 'badAuthorization',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email już istnieje`
+  String get emailAlreadyExist {
+    return Intl.message(
+      'Email już istnieje',
+      name: 'emailAlreadyExist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd`
+  String get defaultError {
+    return Intl.message(
+      'Błąd',
+      name: 'defaultError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

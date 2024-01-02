@@ -21,3 +21,17 @@ Map<String, dynamic> _$$_BookToJson(_$_Book instance) => <String, dynamic>{
       'simple_thumb': instance.simpleThumb,
       'has_audio': instance.hasAudio,
     };
+
+_$_FavoriteBooksResponse _$$_FavoriteBooksResponseFromJson(
+        Map<String, dynamic> json) =>
+    _$_FavoriteBooksResponse(
+      favoriteBooks: (json['favoriteBooks'] as List<dynamic>)
+          .map((e) => Book.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_FavoriteBooksResponseToJson(
+        _$_FavoriteBooksResponse instance) =>
+    <String, dynamic>{
+      'favoriteBooks': instance.favoriteBooks,
+    };

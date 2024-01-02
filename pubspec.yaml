@@ -54,6 +54,11 @@ dependencies:
   just_audio_background: ^0.0.1-beta.10
   audio_video_progress_bar: ^2.0.1
   rxdart: ^0.27.7
+  flutter_svg: ^2.0.7
+  font_awesome_flutter: ^10.6.0
+  equatable: ^2.0.5
+  flutter_secure_storage: ^9.0.0
+  dio: ^5.3.3
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +74,7 @@ dev_dependencies:
   freezed: ^2.4.1
   json_serializable: ^6.7.1
   retrofit_generator: ^7.0.8
+  copy_with_extension_gen: ^5.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -101,6 +107,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  assets:
+    - assets/images/
+
 flutter_intl:
   enabled: true
   main_locale: pl

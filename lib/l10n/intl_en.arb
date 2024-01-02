@@ -12,5 +12,21 @@
     "readHtml": "Read HTML",
     "readPdf": "Read PDF",
     "listen": "Listen",
-    "nowPlaying": "Now playing"
+    "nowPlaying": "Now playing",
+    "audioBook": "Audio Book",
+    "enterValidEmail": "Enter valid e-mail",
+    "enterEmail": "Enter e-mail",
+    "requiredPassword": "Password is required",
+    "enterValidPassword": "Password must contains minimum 8 characters",
+    "enterPassword": "Enter your password",
+    "login": "Login",
+    "createAccount": "Create account",
+    "other": "other",
+    "register": "Register",
+    "loginWhenHadAccount": "You already had account ? Login now",
+    "logOut": "Log out",
+    "userAlreadyExist": "User already exist",
+    "badAuthorization": "Bad authorization",
+    "emailAlreadyExist": "Email already exist",
+    "defaultError": "Default error"
 }

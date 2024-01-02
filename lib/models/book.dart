@@ -15,3 +15,13 @@ class Book with _$Book {
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
 }
+
+@freezed
+class FavoriteBooksResponse with _$FavoriteBooksResponse {
+  const factory FavoriteBooksResponse({
+    required List<Book> favoriteBooks,
+  }) = _FavoriteBooksResponse;
+
+  factory FavoriteBooksResponse.fromJson(Map<String, dynamic> json) =>
+      _$FavoriteBooksResponseFromJson(json);
+}
