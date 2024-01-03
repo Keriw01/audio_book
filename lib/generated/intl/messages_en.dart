@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Categories"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
         "defaultError": MessageLookupByLibrary.simpleMessage("Error"),
+        "email": MessageLookupByLibrary.simpleMessage("Email: "),
         "emailAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Email already exist"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter e-mail"),
@@ -44,8 +45,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error fetching collection data!"),
         "errorOccured":
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
+        "favoriteCount":
+            MessageLookupByLibrary.simpleMessage("Number of likes: "),
         "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
+        "infoAboutUser": MessageLookupByLibrary.simpleMessage(
+            "Information about current user"),
         "internalCredentialsError":
             MessageLookupByLibrary.simpleMessage("Authorization error"),
         "internalRefreshTokenError":
@@ -62,12 +67,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "nowPlaying": MessageLookupByLibrary.simpleMessage("Now playing"),
         "other": MessageLookupByLibrary.simpleMessage("other"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
+        "profilePageTitle": MessageLookupByLibrary.simpleMessage("Profile"),
         "readHtml": MessageLookupByLibrary.simpleMessage("Read HTML"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Read PDF"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Refresh data"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "requiredPassword":
             MessageLookupByLibrary.simpleMessage("Password is required"),
+        "soonContent": MessageLookupByLibrary.simpleMessage("Soon"),
         "userAlreadyExist":
             MessageLookupByLibrary.simpleMessage("User already exist"),
         "userAlreadyExistsError":

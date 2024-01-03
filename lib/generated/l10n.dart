@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Profil`
+  String get profilePageTitle {
+    return Intl.message(
+      'Profil',
+      name: 'profilePageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Kategorie`
   String get categoryPageTitle {
     return Intl.message(
@@ -105,6 +115,16 @@ class S {
     return Intl.message(
       'Pozostałe',
       name: 'others',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Niebawem`
+  String get soonContent {
+    return Intl.message(
+      'Niebawem',
+      name: 'soonContent',
       desc: '',
       args: [],
     );
@@ -395,6 +415,36 @@ class S {
     return Intl.message(
       'Błąd połączenia sieci',
       name: 'networkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Informacje o bieżącym użytkowniku`
+  String get infoAboutUser {
+    return Intl.message(
+      'Informacje o bieżącym użytkowniku',
+      name: 'infoAboutUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email: `
+  String get email {
+    return Intl.message(
+      'Email: ',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ilość polubionych: `
+  String get favoriteCount {
+    return Intl.message(
+      'Ilość polubionych: ',
+      name: 'favoriteCount',
       desc: '',
       args: [],
     );

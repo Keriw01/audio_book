@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/pages/collections/cubit/collections_cubit.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/pages/collections/widgets/collection_item.dart';
+import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/widgets/custom_divider.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
@@ -79,6 +80,10 @@ class _CollectionsPageState extends State<CollectionsPage> {
             icon: Icon(isSearching ? Icons.clear : Icons.search),
           )
         ],
+        leading: IconButton(
+          onPressed: () => context.router.navigate(const ProfileRoute()),
+          icon: const Icon(Icons.person),
+        ),
       ),
       body: BlocConsumer<CollectionsCubit, CollectionsState>(
         builder: (context, state) {

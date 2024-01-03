@@ -104,4 +104,12 @@ class FavoritesCubit extends Cubit<FavoritesState> {
         List.from((state as FavoritesLoaded).favoriteBooks);
     return currentFavorites.contains(book);
   }
+
+  int getCountFavorites() {
+    final currentState = state;
+    if (currentState is FavoritesLoaded) {
+      return currentState.favoriteBooks.length;
+    }
+    return 0;
+  }
 }

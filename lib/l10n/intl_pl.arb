@@ -1,10 +1,12 @@
 {
     "homePageTitle": "Strona główna",
+    "profilePageTitle": "Profil",
     "categoryPageTitle": "Kategorie",
     "yourFavorite": "Twoje ulubione",
     "errorOccured": "Wystąpił błąd:",
     "refreshData": "Odśwież dane",
     "others": "Pozostałe",
+    "soonContent": "Niebawem",
     "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
     "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
     "bookDetail": "Szczegóły książki",
@@ -33,5 +35,8 @@
     "internalCredentialsError": "Błąd autoryzacji",
     "internalRefreshTokenError": "Błąd pobrania autoryzacji",
     "userAlreadyExistsError": "Użytkownik już istnieje",
-    "networkError": "Błąd połączenia sieci"
+    "networkError": "Błąd połączenia sieci",
+    "infoAboutUser": "Informacje o bieżącym użytkowniku",
+    "email": "Email: ",
+    "favoriteCount": "Ilość polubionych: "
 }

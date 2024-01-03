@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Kategorie"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Utwórz konto"),
         "defaultError": MessageLookupByLibrary.simpleMessage("Błąd"),
+        "email": MessageLookupByLibrary.simpleMessage("Email: "),
         "emailAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Email już istnieje"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Wpisz swój e-mail"),
@@ -43,8 +44,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas pobierania danych o kolekcjach!"),
         "errorOccured": MessageLookupByLibrary.simpleMessage("Wystąpił błąd:"),
+        "favoriteCount":
+            MessageLookupByLibrary.simpleMessage("Ilość polubionych: "),
         "fragment": MessageLookupByLibrary.simpleMessage("Fragment"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Strona główna"),
+        "infoAboutUser": MessageLookupByLibrary.simpleMessage(
+            "Informacje o bieżącym użytkowniku"),
         "internalCredentialsError":
             MessageLookupByLibrary.simpleMessage("Błąd autoryzacji"),
         "internalRefreshTokenError":
@@ -61,12 +66,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "nowPlaying": MessageLookupByLibrary.simpleMessage("Teraz odtwarzane"),
         "other": MessageLookupByLibrary.simpleMessage("lub"),
         "others": MessageLookupByLibrary.simpleMessage("Pozostałe"),
+        "profilePageTitle": MessageLookupByLibrary.simpleMessage("Profil"),
         "readHtml": MessageLookupByLibrary.simpleMessage("Czytaj HTML"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Czytaj PDF"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Odśwież dane"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj"),
         "requiredPassword":
             MessageLookupByLibrary.simpleMessage("Hasło jest wymagane"),
+        "soonContent": MessageLookupByLibrary.simpleMessage("Niebawem"),
         "userAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Użytkownik istnieje"),
         "userAlreadyExistsError":
