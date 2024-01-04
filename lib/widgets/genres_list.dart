@@ -8,6 +8,7 @@ class GenresList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       shrinkWrap: true,
       itemCount: genres.length,
       itemBuilder: (context, index) {

@@ -61,6 +61,7 @@ class BookDetailPage extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Column(
+                          mainAxisSize: MainAxisSize.max,
                           children: [
                             const SizedBox(height: 15),
                             Stack(

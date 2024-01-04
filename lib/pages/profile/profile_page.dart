@@ -25,18 +25,17 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(S.of(context).infoAboutUser),
-            const SizedBox(
-              height: 20,
+            Text(
+              S.of(context).infoAboutUser,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
+            const SizedBox(height: 20),
             Row(
               children: [
                 Text(S.of(context).email + authBloc.state.currentUser!.email),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             Row(
               children: [
                 Text(
