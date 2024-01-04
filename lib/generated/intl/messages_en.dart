@@ -68,8 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "other": MessageLookupByLibrary.simpleMessage("other"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
         "profilePageTitle": MessageLookupByLibrary.simpleMessage("Profile"),
-        "readHtml": MessageLookupByLibrary.simpleMessage("Read HTML"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Read PDF"),
+        "readTxt": MessageLookupByLibrary.simpleMessage("Read TEXT"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Refresh data"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "requiredPassword":

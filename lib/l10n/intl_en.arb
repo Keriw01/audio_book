@@ -11,7 +11,7 @@
     "errorFetchBooks": "Error fetching book data!",
     "bookDetail": "Book detail",
     "fragment": "Excerpt",
-    "readHtml": "Read HTML",
+    "readTxt": "Read TEXT",
     "readPdf": "Read PDF",
     "listen": "Listen",
     "nowPlaying": "Now playing",

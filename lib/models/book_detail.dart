@@ -13,7 +13,7 @@ class BookDetail with _$BookDetail {
     required List<BookMetadata> authors,
     @JsonKey(name: 'fragment_data') required BookFragmentData? fragmentData,
     required String pdf,
-    required String html,
+    required String txt,
     required List<BookMedia> media,
     required String cover,
   }) = _BookDetail;

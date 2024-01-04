@@ -25,7 +25,7 @@ mixin _$BookDetail {
   @JsonKey(name: 'fragment_data')
   BookFragmentData? get fragmentData => throw _privateConstructorUsedError;
   String get pdf => throw _privateConstructorUsedError;
-  String get html => throw _privateConstructorUsedError;
+  String get txt => throw _privateConstructorUsedError;
   List<BookMedia> get media => throw _privateConstructorUsedError;
   String get cover => throw _privateConstructorUsedError;
 
@@ -46,7 +46,7 @@ abstract class $BookDetailCopyWith<$Res> {
       List<BookMetadata> authors,
       @JsonKey(name: 'fragment_data') BookFragmentData? fragmentData,
       String pdf,
-      String html,
+      String txt,
       List<BookMedia> media,
       String cover});
 
@@ -70,7 +70,7 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
     Object? authors = null,
     Object? fragmentData = freezed,
     Object? pdf = null,
-    Object? html = null,
+    Object? txt = null,
     Object? media = null,
     Object? cover = null,
   }) {
@@ -91,9 +91,9 @@ class _$BookDetailCopyWithImpl<$Res, $Val extends BookDetail>
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
               as String,
-      html: null == html
-          ? _value.html
-          : html // ignore: cast_nullable_to_non_nullable
+      txt: null == txt
+          ? _value.txt
+          : txt // ignore: cast_nullable_to_non_nullable
               as String,
       media: null == media
           ? _value.media
@@ -132,7 +132,7 @@ abstract class _$$_BookDetailCopyWith<$Res>
       List<BookMetadata> authors,
       @JsonKey(name: 'fragment_data') BookFragmentData? fragmentData,
       String pdf,
-      String html,
+      String txt,
       List<BookMedia> media,
       String cover});
 
@@ -155,7 +155,7 @@ class __$$_BookDetailCopyWithImpl<$Res>
     Object? authors = null,
     Object? fragmentData = freezed,
     Object? pdf = null,
-    Object? html = null,
+    Object? txt = null,
     Object? media = null,
     Object? cover = null,
   }) {
@@ -176,9 +176,9 @@ class __$$_BookDetailCopyWithImpl<$Res>
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
               as String,
-      html: null == html
-          ? _value.html
-          : html // ignore: cast_nullable_to_non_nullable
+      txt: null == txt
+          ? _value.txt
+          : txt // ignore: cast_nullable_to_non_nullable
               as String,
       media: null == media
           ? _value._media
@@ -200,7 +200,7 @@ class _$_BookDetail implements _BookDetail {
       required final List<BookMetadata> authors,
       @JsonKey(name: 'fragment_data') required this.fragmentData,
       required this.pdf,
-      required this.html,
+      required this.txt,
       required final List<BookMedia> media,
       required this.cover})
       : _genres = genres,
@@ -232,7 +232,7 @@ class _$_BookDetail implements _BookDetail {
   @override
   final String pdf;
   @override
-  final String html;
+  final String txt;
   final List<BookMedia> _media;
   @override
   List<BookMedia> get media {
@@ -246,7 +246,7 @@ class _$_BookDetail implements _BookDetail {
 
   @override
   String toString() {
-    return 'BookDetail(genres: $genres, authors: $authors, fragmentData: $fragmentData, pdf: $pdf, html: $html, media: $media, cover: $cover)';
+    return 'BookDetail(genres: $genres, authors: $authors, fragmentData: $fragmentData, pdf: $pdf, txt: $txt, media: $media, cover: $cover)';
   }
 
   @override
@@ -259,7 +259,7 @@ class _$_BookDetail implements _BookDetail {
             (identical(other.fragmentData, fragmentData) ||
                 other.fragmentData == fragmentData) &&
             (identical(other.pdf, pdf) || other.pdf == pdf) &&
-            (identical(other.html, html) || other.html == html) &&
+            (identical(other.txt, txt) || other.txt == txt) &&
             const DeepCollectionEquality().equals(other._media, _media) &&
             (identical(other.cover, cover) || other.cover == cover));
   }
@@ -272,7 +272,7 @@ class _$_BookDetail implements _BookDetail {
       const DeepCollectionEquality().hash(_authors),
       fragmentData,
       pdf,
-      html,
+      txt,
       const DeepCollectionEquality().hash(_media),
       cover);
 
@@ -297,7 +297,7 @@ abstract class _BookDetail implements BookDetail {
       @JsonKey(name: 'fragment_data')
       required final BookFragmentData? fragmentData,
       required final String pdf,
-      required final String html,
+      required final String txt,
       required final List<BookMedia> media,
       required final String cover}) = _$_BookDetail;
 
@@ -314,7 +314,7 @@ abstract class _BookDetail implements BookDetail {
   @override
   String get pdf;
   @override
-  String get html;
+  String get txt;
   @override
   List<BookMedia> get media;
   @override

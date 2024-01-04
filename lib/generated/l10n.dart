@@ -170,11 +170,11 @@ class S {
     );
   }
 
-  /// `Czytaj HTML`
-  String get readHtml {
+  /// `Czytaj TEXT`
+  String get readTxt {
     return Intl.message(
-      'Czytaj HTML',
-      name: 'readHtml',
+      'Czytaj TEXT',
+      name: 'readTxt',
       desc: '',
       args: [],
     );

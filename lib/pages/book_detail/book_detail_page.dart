@@ -108,13 +108,13 @@ class BookDetailPage extends StatelessWidget {
                           alignment: WrapAlignment.spaceBetween,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            if (state.bookDetail.html.isNotEmpty)
+                            if (state.bookDetail.txt.isNotEmpty)
                               ReadButton(
-                                text: S.of(context).readHtml,
+                                text: S.of(context).readTxt,
                                 navigate: () => context.router.push(
                                   WebViewRoute(
                                     title: book.title,
-                                    url: state.bookDetail.html,
+                                    url: state.bookDetail.txt,
                                   ),
                                 ),
                               ),

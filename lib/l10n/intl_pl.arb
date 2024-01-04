@@ -11,7 +11,7 @@
     "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
     "bookDetail": "Szczegóły książki",
     "fragment": "Fragment",
-    "readHtml": "Czytaj HTML",
+    "readTxt": "Czytaj TEXT",
     "readPdf": "Czytaj PDF",
     "listen": "Posłuchaj",
     "nowPlaying": "Teraz odtwarzane",
