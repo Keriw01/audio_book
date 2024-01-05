@@ -8,6 +8,7 @@ import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
+/// FavoriteItem is a widget representing a favorite book in a horizontal list.
 class FavoriteItem extends StatelessWidget {
   final Book book;
   const FavoriteItem({super.key, required this.book});
@@ -16,6 +17,7 @@ class FavoriteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoritesCubit = context.read<FavoritesCubit>();
 
+    // Navigate to the Book Detail Page when the Book is pressed
     return RawMaterialButton(
       onPressed: () => context.router.push(BookDetailRoute(book: book)),
       padding: const EdgeInsets.all(5),

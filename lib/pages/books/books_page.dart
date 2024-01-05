@@ -7,12 +7,14 @@ import 'package:testproject/pages/books/widgets/books_section.dart';
 import 'package:testproject/models/collection.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
+/// Books Page load books from a given collection
 @AutoRoute()
 class BooksPage extends StatelessWidget {
   final Collection collection;
 
   const BooksPage({super.key, required this.collection});
 
+  /// Listener method to handle state changes and show SnackBars which right content and allow to refresh data
   void _listener(BuildContext context, BooksState state) {
     if (state is BooksError) {
       ScaffoldMessenger.of(context).showSnackBar(

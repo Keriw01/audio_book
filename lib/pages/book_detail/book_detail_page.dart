@@ -14,11 +14,13 @@ import 'package:testproject/widgets/listen_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:testproject/widgets/read_button.dart';
 
+/// Book Detail Page with the cover, title, author, list of genres, book excerpt, read TEXT button, PDF, favorites button, listen button
 @AutoRoute()
 class BookDetailPage extends StatelessWidget {
   final Book book;
   const BookDetailPage({super.key, required this.book});
 
+  /// Listener method to handle state changes and display error messages
   void _listener(BuildContext context, BookDetailState state) {
     if (state is BookDetailError) {
       ScaffoldMessenger.of(context).showSnackBar(

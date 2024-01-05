@@ -20,6 +20,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
+        // If the user is already logged in, show a loading indicator
         if (state.isLoggedIn) {
           return const Scaffold(
             backgroundColor: Colors.white,
@@ -30,6 +31,8 @@ class LoginPage extends StatelessWidget {
             ),
           );
         }
+
+        // If the user is not logged in, show the login form
         return Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -165,6 +168,8 @@ class LoginPage extends StatelessWidget {
                             ],
                           ),
                         ),
+
+                        // Display error message if any
                         if (state.errorMessage != '')
                           Text(
                             state.errorMessage,
@@ -173,6 +178,8 @@ class LoginPage extends StatelessWidget {
                               fontSize: 12.0,
                             ),
                           ),
+
+                        // Loading indicator if authentication is in progress
                         if (state.isLoading)
                           const LoadingIndicator(width: 75, height: 75)
                         else
@@ -292,6 +299,7 @@ class LoginPage extends StatelessWidget {
   }
 }
 
+/// Custom UnderlineInputBorder
 const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(20)),
   borderSide: BorderSide(
@@ -300,6 +308,7 @@ const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
   ),
 );
 
+/// Custom getColor function for Checkbox
 Color getColor(Set<MaterialState> states) {
   const Set<MaterialState> interactiveStates = <MaterialState>{
     MaterialState.pressed,

@@ -4,12 +4,14 @@ import 'package:testproject/pages/books/cubit/favorites_cubit.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/styles/colors.dart';
 
+/// LikedButton is a custom widget representing a button to add/remove a book from favorites.
 class LikedButton extends StatelessWidget {
   final Book book;
   const LikedButton({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
+    // Determine whether the book is liked by querying the FavoritesCubit
     final isLiked =
         context.select((FavoritesCubit cubit) => cubit.isFavorited(book));
 
@@ -41,6 +43,7 @@ class LikedButton extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               final favoritesCubit = context.read<FavoritesCubit>();
+              // Toggle the liked status of the book when the button is pressed
               isLiked
                   ? favoritesCubit.removeFromFavorites(book)
                   : favoritesCubit.addToFavorites(book);

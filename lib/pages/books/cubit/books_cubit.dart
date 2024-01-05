@@ -8,12 +8,14 @@ import 'package:testproject/service/locator.dart';
 
 part 'books_state.dart';
 
+/// Books Cubit is used to manage books downloaded from a given collection in the application
 class BooksCubit extends Cubit<BooksState> {
   final String href;
   BooksCubit(this.href) : super(const BooksInitial()) {
     fetchBooks(href);
   }
 
+  /// Method to fetch books from the API or local cache
   Future<void> fetchBooks(String href) async {
     emit(const BooksLoading());
     try {

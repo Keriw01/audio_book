@@ -11,6 +11,9 @@ import 'package:testproject/pages/profile/profile_page.dart';
 import 'package:testproject/pages/registration/register_page.dart';
 import 'package:testproject/pages/web_view/web_view_page.dart';
 
+/// [AppRouter] defines the application's navigation routes using the `auto_route` package.
+/// It includes routes for various pages such as login, registration, home, collections, categories,
+/// book details, books, web view, PDF view, listen, and profile.
 @AdaptiveAutoRouter(
   routes: <AutoRoute>[
     AutoRoute(

@@ -12,6 +12,7 @@ import 'package:testproject/models/position_data.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:just_audio/just_audio.dart';
 
+/// Listen Page used to display a given book with its cover, chapter name and multimedia buttons
 @AutoRoute()
 class ListenPage extends StatefulWidget {
   final BookDetail bookDetail;
@@ -22,6 +23,7 @@ class ListenPage extends StatefulWidget {
 }
 
 class _ListenPageState extends State<ListenPage> {
+  // Filter media list to include only MP3 files
   List<BookMedia> filterMp3Media(List<BookMedia> bookMediaList) {
     return bookMediaList.where((media) => media.type == 'mp3').toList();
   }
@@ -31,6 +33,7 @@ class _ListenPageState extends State<ListenPage> {
   late AudioSource _playList;
   late AudioPlayer _audioPlayer;
 
+  // Stream of information about the playback position
   Stream<PositionData> get _positionDataStream =>
       Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
         _audioPlayer.positionStream,
@@ -48,6 +51,7 @@ class _ListenPageState extends State<ListenPage> {
     super.initState();
     mp3MediaList = filterMp3Media(widget.bookDetail.media);
 
+    // Create audio sources from MP3 media
     mp3MediaList.asMap().forEach((index, mediaItem) {
       audioSource.add(
         AudioSource.uri(
@@ -62,6 +66,7 @@ class _ListenPageState extends State<ListenPage> {
       );
     });
 
+    // Create a playlist with audio sources
     _playList = ConcatenatingAudioSource(children: audioSource);
 
     _audioPlayer = AudioPlayer();
@@ -69,12 +74,15 @@ class _ListenPageState extends State<ListenPage> {
   }
 
   Future<void> _init() async {
+    // Set loop mode for continuous playback
     await _audioPlayer.setLoopMode(LoopMode.all);
+    // Set audio source for the audio player
     await _audioPlayer.setAudioSource(_playList);
   }
 
   @override
   void dispose() {
+    // Dispose of the audio player to release resources
     _audioPlayer.dispose();
     super.dispose();
   }
@@ -101,6 +109,8 @@ class _ListenPageState extends State<ListenPage> {
                       return const SizedBox();
                     }
                     final metaData = state!.currentSource!.tag as MediaItem;
+
+                    // Display cached network image for the current media
                     return Column(
                       children: [
                         CachedNetworkImage(
@@ -128,6 +138,8 @@ class _ListenPageState extends State<ListenPage> {
                   stream: _positionDataStream,
                   builder: (context, snapshot) {
                     final positionData = snapshot.data;
+
+                    // Display progress bar
                     return ProgressBar(
                       progress: positionData?.position ?? Duration.zero,
                       buffered: positionData?.bufferedPosition ?? Duration.zero,
@@ -136,6 +148,8 @@ class _ListenPageState extends State<ListenPage> {
                     );
                   },
                 ),
+
+                // Display play controls (play, pause, skip)
                 Controls(audioPlayer: _audioPlayer)
               ],
             ),

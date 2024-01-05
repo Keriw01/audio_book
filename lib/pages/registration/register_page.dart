@@ -20,6 +20,7 @@ class RegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
+        // If the user is already logged in, show a loading indicator
         if (state.isLoggedIn) {
           return const Scaffold(
             backgroundColor: Colors.white,
@@ -30,6 +31,8 @@ class RegistrationPage extends StatelessWidget {
             ),
           );
         }
+
+        // If the user is not logged in, show the registration form
         return Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -142,6 +145,8 @@ class RegistrationPage extends StatelessWidget {
                             obscureText: true,
                           ),
                         ),
+
+                        // Display error message if any
                         if (state.errorMessage != '')
                           Text(
                             state.errorMessage,
@@ -150,6 +155,8 @@ class RegistrationPage extends StatelessWidget {
                               fontSize: 12.0,
                             ),
                           ),
+
+                        // Loading indicator if registration is in progress
                         if (state.isLoading)
                           const LoadingIndicator(width: 75, height: 75)
                         else
@@ -269,6 +276,7 @@ class RegistrationPage extends StatelessWidget {
   }
 }
 
+/// Custom UnderlineInputBorder
 const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(20)),
   borderSide: BorderSide(

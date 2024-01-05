@@ -6,6 +6,7 @@ import 'package:testproject/service/locator.dart';
 
 part 'collections_state.dart';
 
+/// Collections Cubit is used to manage downloaded collections
 class CollectionsCubit extends Cubit<CollectionsState> {
   CollectionsCubit() : super(const CollectionsInitial()) {
     fetchCollections();

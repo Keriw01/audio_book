@@ -14,8 +14,12 @@ import 'package:testproject/service/secure_storage.dart';
 part 'auth_state.dart';
 part 'auth_bloc.g.dart';
 
+/// AuthBloc is responsible for managing authorization in the application
 class AuthBloc extends BaseCubit<AuthState> {
+  // AuthRepository instance for handling authentication-related operations
   late final AuthRepository _authRepository;
+
+  // SecureStorage instance for secure data storage
   final SecureStorage _secureStorage = SecureStorage();
 
   AuthBloc(AppRouter appRouter, BuildContext context)
@@ -27,6 +31,7 @@ class AuthBloc extends BaseCubit<AuthState> {
     isLoggedIn();
   }
 
+  /// Method for handling user login
   Future<void> login(String email, String password) async {
     emit(
       state.copyWith(
@@ -96,6 +101,7 @@ class AuthBloc extends BaseCubit<AuthState> {
     }
   }
 
+  /// Method for refreshing the access token if needed
   Future<void> refreshTokenIfNeeded() async {
     final tokenModel = state.tokens;
 
@@ -140,6 +146,7 @@ class AuthBloc extends BaseCubit<AuthState> {
     }
   }
 
+  /// Method for user registration
   Future<void> register(String email, String password) async {
     emit(
       state.copyWith(
@@ -217,6 +224,7 @@ class AuthBloc extends BaseCubit<AuthState> {
     }
   }
 
+  /// Method for logging out the user
   Future<void> logOut() async {
     await _deleteTokens();
     await _deleteCurrentUser();
@@ -225,36 +233,43 @@ class AuthBloc extends BaseCubit<AuthState> {
     appRouter.replaceNamed(LoginRoute().path);
   }
 
+  /// Method for saving tokens securely
   Future<void> _saveTokens(TokenModel tokens) async {
     emit(state.copyWith(tokens: tokens));
     await _secureStorage.saveTokens(tokens);
   }
 
+  /// Method for deleting tokens
   Future<void> _deleteTokens() async {
     emit(state.copyWith(tokens: null));
     await _secureStorage.deleteTokens();
   }
 
+  /// Method for saving the current user securely
   Future<void> _saveCurrentUser(User user) async {
     emit(state.copyWith(currentUser: user));
     await _secureStorage.saveUser(user);
   }
 
+  /// Method for deleting the current user
   Future<void> _deleteCurrentUser() async {
     emit(state.copyWith(currentUser: null));
     await _secureStorage.deleteUser();
   }
 
+  /// Method for deleting the "Remember Me" flag in checkbox used in LoginPage
   Future<void> _deleteRememberMe() async {
     emit(state.copyWith(rememberMe: false));
     await _secureStorage.deleteRememberFlag();
   }
 
+  /// Method for changing the "Remember Me" flag in checkbox used in LoginPage
   Future<void> changeRememberMe(bool? checkboxValue) async {
     await _secureStorage.saveRememberFlag(checkboxValue);
     emit(state.copyWith(rememberMe: checkboxValue));
   }
 
+  /// Method for checking if the user is already logged in
   Future<void> isLoggedIn() async {
     bool? rememberMe = await _secureStorage.readRememberFlag();
     if (rememberMe == true) {
@@ -265,10 +280,12 @@ class AuthBloc extends BaseCubit<AuthState> {
     }
   }
 
+  /// Method for clearing the error message in the auth state
   void clearErrorMessage() {
     emit(state.copyWith(errorMessage: ''));
   }
 
+  /// Method for clearing the entire auth state
   void _clearState() {
     emit(
       state.copyWith(
@@ -284,16 +301,19 @@ class AuthBloc extends BaseCubit<AuthState> {
     );
   }
 
+  /// Method for navigating to the home page
   void _navigateToHomePage() {
     appRouter.replaceNamed(const HomeRouteView().path);
     emit(state.copyWith(isLoading: false, isLoggedIn: true, errorMessage: ''));
   }
 
+  /// Method for navigating to the login page
   void navigateToLoginPage() {
     appRouter.replaceNamed(LoginRoute().path);
     _clearState();
   }
 
+  /// Method for navigating to the registration page
   void navigateToRegisterPage() {
     appRouter.replaceNamed(RegistrationRoute().path);
     _clearState();

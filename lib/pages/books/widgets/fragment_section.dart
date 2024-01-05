@@ -4,6 +4,7 @@ import 'package:testproject/styles/colors.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
+/// Fragment Section define section where html fragment of book is display
 class FragmentSection extends StatelessWidget {
   final String htmlFragment;
   const FragmentSection({super.key, required this.htmlFragment});

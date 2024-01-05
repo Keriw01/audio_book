@@ -6,6 +6,7 @@ import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/pages/books/cubit/favorites_cubit.dart';
 import 'package:testproject/styles/colors.dart';
 
+/// ProfilePage displays user profile information, email, count of favorite books.
 @AutoRoute()
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -20,7 +21,7 @@ class ProfilePage extends StatelessWidget {
         title: Text(S.current.profilePageTitle),
       ),
       body: Container(
-        padding: const EdgeInsets.fromLTRB(40, 30, 40, 0),
+        padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -32,7 +33,10 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 20),
             Row(
               children: [
-                Text(S.of(context).email + authBloc.state.currentUser!.email),
+                Text(
+                  S.of(context).email + authBloc.state.currentUser!.email,
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
               ],
             ),
             const SizedBox(height: 10),
@@ -41,6 +45,7 @@ class ProfilePage extends StatelessWidget {
                 Text(
                   S.of(context).favoriteCount +
                       favoritesCubit.getCountFavorites().toString(),
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
               ],
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 
+/// Abstract base class for Cubits in the project
 abstract class BaseCubit<State> extends Cubit<State> {
   final AppRouter _appRouter;
 

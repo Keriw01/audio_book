@@ -5,6 +5,7 @@ import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/pages/books/widgets/favorite_item.dart';
 import 'package:testproject/models/book.dart';
 
+/// Favorite Section is a widget displaying a horizontal list of favorite books.
 class FavoriteSection extends StatelessWidget {
   final List<Book> books;
   const FavoriteSection({super.key, required this.books});
@@ -14,6 +15,7 @@ class FavoriteSection extends StatelessWidget {
     final favoritesCubit = context.read<FavoritesCubit>();
     List<Book> favorites = favoritesCubit.booksFavorites(books);
 
+    // If there are favorite books, display the FavoriteSection
     if (favorites.isNotEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +46,7 @@ class FavoriteSection extends StatelessWidget {
       );
     }
 
+    // If there are no favorite books, return an empty SizedBox
     return const SizedBox();
   }
 }

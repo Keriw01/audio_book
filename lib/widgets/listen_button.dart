@@ -2,6 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:testproject/styles/colors.dart';
 
+/// ListenButton is a custom button widget for initiating audio playback.
+/// It is designed for use in the application's UI, providing a consistent
+/// look and behavior for listening actions.
 @AutoRoute()
 class ListenButton extends StatelessWidget {
   final String text;

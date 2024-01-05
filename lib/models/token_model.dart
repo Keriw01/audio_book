@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'token_model.freezed.dart';
 part 'token_model.g.dart';
 
+/// Token class, containing accessToken and refreshToken assignated by the server
 @freezed
 class TokenModel with _$TokenModel {
   const factory TokenModel({

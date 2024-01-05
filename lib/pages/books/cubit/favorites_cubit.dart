@@ -10,6 +10,7 @@ import 'package:testproject/repositories/favorite_books_repository.dart';
 
 part 'favorites_state.dart';
 
+/// Favorites Cubit used to manage your favorite books in the application
 class FavoritesCubit extends Cubit<FavoritesState> {
   late final AuthBloc _authBloc;
   late final FavoriteBooksRepository _favoriteBooksRepository;
@@ -18,6 +19,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
         _favoriteBooksRepository = FavoriteBooksRepository(),
         super(const FavoritesInitial());
 
+  /// Method to load favorite books
   Future<void> loadFavorites() async {
     try {
       await _authBloc.refreshTokenIfNeeded();
@@ -35,6 +37,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     }
   }
 
+  /// Method to add a book to favorites
   Future<void> addToFavorites(Book book) async {
     try {
       await _authBloc.refreshTokenIfNeeded();
@@ -56,6 +59,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     }
   }
 
+  /// Method to remove a book from favorites
   Future<void> removeFromFavorites(Book book) async {
     try {
       await _authBloc.refreshTokenIfNeeded();
@@ -76,6 +80,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     }
   }
 
+  /// Method to get a list of books without favorites
   List<Book> booksWithoutFavorite(List<Book> books) {
     List<Book> booksWithoutFavorite = [];
     final currentState = state;
@@ -87,6 +92,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     return booksWithoutFavorite;
   }
 
+  /// Method to get a list of favorite books
   List<Book> booksFavorites(List<Book> books) {
     List<Book> favorites = [];
     final currentState = state;
@@ -99,12 +105,14 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     return favorites;
   }
 
+  /// Method to check if a book is favorited
   bool isFavorited(Book book) {
     List<Book> currentFavorites =
         List.from((state as FavoritesLoaded).favoriteBooks);
     return currentFavorites.contains(book);
   }
 
+  /// Method to get the count of favorite books
   int getCountFavorites() {
     final currentState = state;
     if (currentState is FavoritesLoaded) {

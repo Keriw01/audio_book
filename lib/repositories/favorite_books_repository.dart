@@ -6,9 +6,11 @@ import 'package:testproject/models/book.dart';
 import 'package:testproject/repositories/api/api_client.dart';
 import 'package:testproject/service/locator.dart';
 
+/// Repository responsible for handling operations related to favorite books.
 class FavoriteBooksRepository {
   FavoriteBooksRepository();
 
+  /// Fetches the list of favorite books for the given user.
   Future<List<Book>> getFavoriteBooks(String userId) async {
     try {
       FavoriteBooksResponse response =
@@ -28,6 +30,7 @@ class FavoriteBooksRepository {
     }
   }
 
+  /// Saves a book as a favorite for the given user.
   Future<void> saveFavoriteBook(Book book, String userId) async {
     try {
       await getIt<ApiClient>()
@@ -46,6 +49,7 @@ class FavoriteBooksRepository {
     }
   }
 
+  /// Deletes a book from the list of favorite books for the given user.
   Future<void> deleteFavoriteBook(String bookTitle, String userId) async {
     try {
       await getIt<ApiClient>()

@@ -10,6 +10,7 @@ class BooksSection extends StatelessWidget {
   final List<Book> books;
   const BooksSection({super.key, required this.books});
 
+  /// Listener method to handle state changes and display error messages about FavoritesCubit
   void _listener(BuildContext context, FavoritesState state) {
     if (state is FavoritesError) {
       ScaffoldMessenger.of(context).showSnackBar(

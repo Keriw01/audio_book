@@ -5,6 +5,7 @@ import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/models/book.dart';
 import 'package:testproject/widgets/featured_list.dart';
 
+/// Featured Section allows displaying non-favorite books from the current collection.
 class FeaturedSection extends StatelessWidget {
   final List<Book> books;
   const FeaturedSection({super.key, required this.books});
@@ -14,6 +15,7 @@ class FeaturedSection extends StatelessWidget {
     final favoritesCubit = context.read<FavoritesCubit>();
     List<Book> favorites = favoritesCubit.booksFavorites(books);
 
+    // If there are no favorite books, display all books in a FeaturedList
     if (favorites.isEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,6 +25,7 @@ class FeaturedSection extends StatelessWidget {
       );
     }
 
+    // If there are non-favorite books, display them in a FeaturedList
     List<Book> notFavoriteBooks = favoritesCubit.booksWithoutFavorite(books);
 
     if (notFavoriteBooks.isNotEmpty) {
@@ -45,6 +48,7 @@ class FeaturedSection extends StatelessWidget {
       );
     }
 
+    // If there are no non-favorite books, return an empty SizedBox
     return const SizedBox();
   }
 }

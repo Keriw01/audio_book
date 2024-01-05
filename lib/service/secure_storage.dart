@@ -4,11 +4,13 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:testproject/models/token_model.dart';
 import 'package:testproject/models/user.dart';
 
+/// SecureStorage class handles the secure storage of sensitive information such as tokens and user data.
 class SecureStorage {
   final _secureStorage = const FlutterSecureStorage();
 
   AndroidOptions _getAndroidOptions() => const AndroidOptions();
 
+  /// Saves the provided tokens securely in the storage.
   Future<void> saveTokens(TokenModel tokens) async {
     Map<String, dynamic> tempTokens = tokens.toJson();
     String tokenJson = jsonEncode(tempTokens);
@@ -19,6 +21,7 @@ class SecureStorage {
     );
   }
 
+  /// Reads and returns the stored tokens from secure storage.
   Future<TokenModel?> readTokens() async {
     String? tempTokens = await _secureStorage.read(
       key: 'tokens',
@@ -33,6 +36,7 @@ class SecureStorage {
     return null;
   }
 
+  /// Deletes the stored tokens from secure storage.
   Future<void> deleteTokens() async {
     await _secureStorage.delete(
       key: 'tokens',
@@ -40,6 +44,7 @@ class SecureStorage {
     );
   }
 
+  /// Saves the provided user data securely in the storage.
   Future<void> saveUser(User currentUser) async {
     Map<String, dynamic> tempCurrentUser = currentUser.toJson();
     String currentUserJson = jsonEncode(tempCurrentUser);
@@ -50,6 +55,7 @@ class SecureStorage {
     );
   }
 
+  /// Reads and returns the stored user data from secure storage.
   Future<User?> readUser() async {
     String? tempCurrentUser = await _secureStorage.read(
       key: 'currentUser',
@@ -64,6 +70,7 @@ class SecureStorage {
     return null;
   }
 
+  /// Deletes the stored user data from secure storage.
   Future<void> deleteUser() async {
     await _secureStorage.delete(
       key: 'currentUser',
@@ -71,6 +78,7 @@ class SecureStorage {
     );
   }
 
+  /// Saves the provided rememberMe flag securely in the storage.
   Future<void> saveRememberFlag(bool? rememberMe) async {
     String rememberFlagJson = jsonEncode(rememberMe);
     await _secureStorage.write(
@@ -80,6 +88,7 @@ class SecureStorage {
     );
   }
 
+  /// Reads and returns the stored rememberMe flag from secure storage.
   Future<bool> readRememberFlag() async {
     String? tempRememberFlag = await _secureStorage.read(
       key: 'rememberMeFlag',
@@ -92,6 +101,7 @@ class SecureStorage {
     return false;
   }
 
+  /// Deletes the stored rememberMe flag from secure storage.
   Future<void> deleteRememberFlag() async {
     await _secureStorage.delete(
       key: 'rememberMeFlag',

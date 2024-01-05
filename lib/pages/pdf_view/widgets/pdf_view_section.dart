@@ -6,6 +6,7 @@ import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:testproject/pages/pdf_view/cubit/pdf_cubit.dart';
 import 'package:testproject/models/pdf_reading_state.dart';
 
+/// Pdf View Section is a widget that displays a PDF using the FlutterPdfView package.
 class PdfViewSection extends StatelessWidget {
   final String pdfUrl;
   final PdfReadingState pdf;
@@ -18,10 +19,12 @@ class PdfViewSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Completer to handle PDFViewController initialization
     final Completer<PDFViewController> _controller =
         Completer<PDFViewController>();
     final pdfCubit = context.read<PdfCubit>();
 
+    // PDFView widget to display the PDF
     return PDFView(
       filePath: pdf.pdfPath,
       swipeHorizontal: true,

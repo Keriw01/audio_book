@@ -6,9 +6,16 @@ import 'package:testproject/models/user.dart';
 import 'package:testproject/repositories/api/api_client.dart';
 import 'package:testproject/service/locator.dart';
 
+/// Repository responsible for handling authentication-related API requests.
 class AuthRepository {
   AuthRepository();
 
+  /// Performs a user login by sending an email and password to the API.
+  ///
+  /// - Throws [NoConnectionException] if there is no internet connection.
+  /// - Throws [InternalCredentialsError] if the provided credentials are invalid.
+  /// - Throws [InternalServerError] for other server errors.
+  /// - Throws [DefaultException] for any other unexpected errors.
   Future<TokenModel> login(String email, String password) async {
     try {
       TokenModel tokens =
@@ -29,6 +36,12 @@ class AuthRepository {
     }
   }
 
+  /// Registers a new user by sending an email and password to the API.
+  ///
+  /// - Throws [NoConnectionException] if there is no internet connection.
+  /// - Throws [UserAlreadyExistsError] if the user already exists.
+  /// - Throws [InternalServerError] for other server errors.
+  /// - Throws [DefaultException] for any other unexpected errors.
   Future<TokenModel> register(String email, String password) async {
     try {
       TokenModel tokens = await getIt<ApiClient>()
@@ -53,6 +66,12 @@ class AuthRepository {
     }
   }
 
+  /// Refreshes the access token using a refresh token.
+  ///
+  /// - Throws [NoConnectionException] if there is no internet connection.
+  /// - Throws [RefreshTokenExpiredException] if the refresh token has expired.
+  /// - Throws [InternalServerError] for other server errors.
+  /// - Throws [DefaultException] for any other unexpected errors.
   Future<TokenModel> refreshToken(String refreshToken) async {
     try {
       TokenModel tokens = await getIt<ApiClient>()
@@ -76,6 +95,11 @@ class AuthRepository {
     }
   }
 
+  /// Retrieves user details based on the provided access token.
+  ///
+  /// - Throws [NoConnectionException] if there is no internet connection.
+  /// - Throws [InternalCredentialsError] if the credentials are invalid.
+  /// - Throws [DefaultException] for any other unexpected errors.
   Future<User> getUserId(String accessToken) async {
     try {
       User currentUser =
@@ -91,23 +115,4 @@ class AuthRepository {
       throw DefaultException();
     }
   }
-
-  // Future<void> logOut(String accessToken) async {
-  //   try {
-  //     return await getIt<ApiClient>()
-  //         .logout(accessToken: 'Bearer $accessToken');
-  //   } on DioException catch (error) {
-  //     if (error.message!.contains('SocketException')) {
-  //       throw Future.error("No Connection");
-  //     }
-  //     switch (error.response?.statusCode) {
-  //       case 401:
-  //         throw Future.error("Invalid Credentail");
-  //       default:
-  //         throw Future.error("Invalid server error");
-  //     }
-  //   } catch (error) {
-  //     throw Future.error(error.toString());
-  //   }
-  // }
 }

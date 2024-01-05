@@ -6,6 +6,7 @@ import 'package:testproject/models/book_metadata.dart';
 part 'book_detail.freezed.dart';
 part 'book_detail.g.dart';
 
+/// Class for details about the book
 @freezed
 class BookDetail with _$BookDetail {
   const factory BookDetail({

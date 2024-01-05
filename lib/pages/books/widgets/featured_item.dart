@@ -8,6 +8,7 @@ import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/widgets/heart_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
+/// Featured Item is a widget representing an individual book in the featured list.
 class FeaturedItem extends StatelessWidget {
   final Book book;
   const FeaturedItem({super.key, required this.book});
@@ -16,6 +17,7 @@ class FeaturedItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoritesCubit = context.read<FavoritesCubit>();
 
+    // RawMaterialButton for the book, triggers navigation to the book detail page on press
     return RawMaterialButton(
       onPressed: () => context.router.push(BookDetailRoute(book: book)),
       padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),

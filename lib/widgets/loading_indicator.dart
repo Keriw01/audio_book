@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// LoadingIndicator is a reusable widget that displays a centered CircularProgressIndicator.
 class LoadingIndicator extends StatelessWidget {
   final double width;
   final double height;
