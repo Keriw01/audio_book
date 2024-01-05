@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book.freezed.dart';
 part 'book.g.dart';
 
+/// Single book class
 @freezed
 class Book with _$Book {
   const factory Book({

@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Profil`
+  String get profilePageTitle {
+    return Intl.message(
+      'Profil',
+      name: 'profilePageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Kategorie`
   String get categoryPageTitle {
     return Intl.message(
@@ -110,6 +120,16 @@ class S {
     );
   }
 
+  /// `Niebawem`
+  String get soonContent {
+    return Intl.message(
+      'Niebawem',
+      name: 'soonContent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Błąd podczas pobierania danych o kolekcjach!`
   String get errorFetchCollection {
     return Intl.message(
@@ -150,11 +170,11 @@ class S {
     );
   }
 
-  /// `Czytaj HTML`
-  String get readHtml {
+  /// `Czytaj TEXT`
+  String get readTxt {
     return Intl.message(
-      'Czytaj HTML',
-      name: 'readHtml',
+      'Czytaj TEXT',
+      name: 'readTxt',
       desc: '',
       args: [],
     );
@@ -260,6 +280,16 @@ class S {
     );
   }
 
+  /// `Zapamiętaj mnie`
+  String get rememberMe {
+    return Intl.message(
+      'Zapamiętaj mnie',
+      name: 'rememberMe',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Utwórz konto`
   String get createAccount {
     return Intl.message(
@@ -345,6 +375,86 @@ class S {
     return Intl.message(
       'Błąd',
       name: 'defaultError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd serwera`
+  String get internalServerError {
+    return Intl.message(
+      'Błąd serwera',
+      name: 'internalServerError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd autoryzacji`
+  String get internalCredentialsError {
+    return Intl.message(
+      'Błąd autoryzacji',
+      name: 'internalCredentialsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd pobrania autoryzacji`
+  String get internalRefreshTokenError {
+    return Intl.message(
+      'Błąd pobrania autoryzacji',
+      name: 'internalRefreshTokenError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Użytkownik już istnieje`
+  String get userAlreadyExistsError {
+    return Intl.message(
+      'Użytkownik już istnieje',
+      name: 'userAlreadyExistsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd połączenia sieci`
+  String get networkError {
+    return Intl.message(
+      'Błąd połączenia sieci',
+      name: 'networkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Informacje o bieżącym użytkowniku`
+  String get infoAboutUser {
+    return Intl.message(
+      'Informacje o bieżącym użytkowniku',
+      name: 'infoAboutUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email: `
+  String get email {
+    return Intl.message(
+      'Email: ',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ilość polubionych: `
+  String get favoriteCount {
+    return Intl.message(
+      'Ilość polubionych: ',
+      name: 'favoriteCount',
       desc: '',
       args: [],
     );

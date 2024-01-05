@@ -4,6 +4,7 @@ import 'package:testproject/models/collection.dart';
 import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 
+/// CollectionItem is a widget representing an item in the collection list.
 class CollectionItem extends StatelessWidget {
   final Collection collection;
 

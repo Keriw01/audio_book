@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'book_media.freezed.dart';
 part 'book_media.g.dart';
 
+/// Media class, including a link to the mp4 format of a given book
 @freezed
 class BookMedia with _$BookMedia {
   const factory BookMedia({

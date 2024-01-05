@@ -14,11 +14,13 @@ import 'package:testproject/widgets/listen_button.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 import 'package:testproject/widgets/read_button.dart';
 
+/// Book Detail Page with the cover, title, author, list of genres, book excerpt, read TEXT button, PDF, favorites button, listen button
 @AutoRoute()
 class BookDetailPage extends StatelessWidget {
   final Book book;
   const BookDetailPage({super.key, required this.book});
 
+  /// Listener method to handle state changes and display error messages
   void _listener(BuildContext context, BookDetailState state) {
     if (state is BookDetailError) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -61,6 +63,7 @@ class BookDetailPage extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Column(
+                          mainAxisSize: MainAxisSize.max,
                           children: [
                             const SizedBox(height: 15),
                             Stack(
@@ -108,13 +111,13 @@ class BookDetailPage extends StatelessWidget {
                           alignment: WrapAlignment.spaceBetween,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            if (state.bookDetail.html.isNotEmpty)
+                            if (state.bookDetail.txt.isNotEmpty)
                               ReadButton(
-                                text: S.of(context).readHtml,
+                                text: S.of(context).readTxt,
                                 navigate: () => context.router.push(
                                   WebViewRoute(
                                     title: book.title,
-                                    url: state.bookDetail.html,
+                                    url: state.bookDetail.txt,
                                   ),
                                 ),
                               ),

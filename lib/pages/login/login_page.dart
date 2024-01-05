@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testproject/blocs/auth/auth_bloc.dart';
 import 'package:testproject/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:testproject/routes/app_router.gr.dart';
 import 'package:testproject/styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
@@ -21,6 +20,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
+        // If the user is already logged in, show a loading indicator
         if (state.isLoggedIn) {
           return const Scaffold(
             backgroundColor: Colors.white,
@@ -31,6 +31,8 @@ class LoginPage extends StatelessWidget {
             ),
           );
         }
+
+        // If the user is not logged in, show the login form
         return Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -46,7 +48,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: 300,
+                    height: 240,
                     child: SvgPicture.asset('assets/images/login_logo.svg'),
                   ),
                   const SizedBox(height: 20),
@@ -144,38 +146,81 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              if (formKey.currentState!.validate()) {
-                                context.read<AuthBloc>().login(
-                                      emailController.text.trim(),
-                                      passwordController.text.trim(),
-                                    );
-                              }
-                            },
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                const EdgeInsets.fromLTRB(75, 10, 75, 10),
+                          padding: const EdgeInsets.fromLTRB(55, 0, 55, 0),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                checkColor: whiteColor,
+                                fillColor:
+                                    MaterialStateProperty.resolveWith(getColor),
+                                value: state.rememberMe,
+                                onChanged: (bool? value) => context
+                                    .read<AuthBloc>()
+                                    .changeRememberMe(value),
                               ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(seedColor),
-                              shape: MaterialStateProperty.all(
-                                const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20.0),
-                                  ),
-                                ),
+                              Text(
+                                S.of(context).rememberMe,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall
+                                    ?.copyWith(color: blackColor),
                               ),
-                              overlayColor:
-                                  const MaterialStatePropertyAll(primaryColor),
-                            ),
-                            child: Text(
-                              S.of(context).login,
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
+                            ],
                           ),
                         ),
+
+                        // Display error message if any
+                        if (state.errorMessage != '')
+                          Text(
+                            state.errorMessage,
+                            style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 12.0,
+                            ),
+                          ),
+
+                        // Loading indicator if authentication is in progress
+                        if (state.isLoading)
+                          const LoadingIndicator(width: 75, height: 75)
+                        else
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
+                                  context.read<AuthBloc>().login(
+                                        emailController.text.trim(),
+                                        passwordController.text.trim(),
+                                      );
+                                } else {
+                                  emailController.clear();
+                                  passwordController.clear();
+                                }
+                              },
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                  const EdgeInsets.fromLTRB(75, 10, 75, 10),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all(seedColor),
+                                shape: MaterialStateProperty.all(
+                                  const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20.0),
+                                    ),
+                                  ),
+                                ),
+                                overlayColor: const MaterialStatePropertyAll(
+                                  primaryColor,
+                                ),
+                              ),
+                              child: Text(
+                                S.of(context).login,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -186,7 +231,7 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 10),
                         child: TextButton(
                           onPressed: () =>
-                              context.router.replace(RegistrationRoute()),
+                              context.read<AuthBloc>().navigateToRegisterPage(),
                           child: Text(
                             S.of(context).createAccount,
                             style: Theme.of(context)
@@ -254,6 +299,7 @@ class LoginPage extends StatelessWidget {
   }
 }
 
+/// Custom UnderlineInputBorder
 const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(20)),
   borderSide: BorderSide(
@@ -261,3 +307,16 @@ const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
     color: shadowColor,
   ),
 );
+
+/// Custom getColor function for Checkbox
+Color getColor(Set<MaterialState> states) {
+  const Set<MaterialState> interactiveStates = <MaterialState>{
+    MaterialState.pressed,
+    MaterialState.hovered,
+    MaterialState.focused,
+  };
+  if (states.any(interactiveStates.contains)) {
+    return whiteColor;
+  }
+  return seedColor;
+}

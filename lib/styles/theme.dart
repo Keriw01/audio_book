@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testproject/styles/colors.dart';
 
+/// Custom theme for the application.
 ThemeData customTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
     seedColor: seedColor,
@@ -9,15 +10,15 @@ ThemeData customTheme = ThemeData(
   ),
   useMaterial3: true,
   textTheme: TextTheme(
-    /// nazwa aplikacji
-    displayLarge: GoogleFonts.getFont(
+    /// Profile
+    displaySmall: GoogleFonts.getFont(
       'Open Sans',
-      fontSize: 30,
-      color: primaryColor,
-      fontWeight: FontWeight.bold,
+      fontSize: 14,
+      color: darkGreyColor,
+      fontWeight: FontWeight.w400,
     ),
 
-    /// przycisk Login
+    /// Login button
     displayMedium: GoogleFonts.getFont(
       'Open Sans',
       fontSize: 20,
@@ -25,14 +26,22 @@ ThemeData customTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
 
-    // tytul ksiazki Dla ciebie
+    /// Application name
+    displayLarge: GoogleFonts.getFont(
+      'Open Sans',
+      fontSize: 30,
+      color: primaryColor,
+      fontWeight: FontWeight.bold,
+    ),
+
+    /// Title of the book in "For You"
     titleSmall: GoogleFonts.getFont(
       'Lato',
       fontSize: 14,
       fontWeight: FontWeight.bold,
     ),
 
-    // tytul ksiazki w Wybrane
+    /// Title of the book in "Selected"
     titleMedium: GoogleFonts.getFont(
       'Lato',
       fontSize: 16,
@@ -40,14 +49,14 @@ ThemeData customTheme = ThemeData(
       height: 1.1,
     ),
 
-    // autor ksiazki w Dla ciebie
+    /// Author of the book in "For You"
     headlineSmall: GoogleFonts.getFont(
       'Lato',
       fontSize: 12,
       color: lightGreyColor,
     ),
 
-    // nazwa kolekcji Strona glowna
+    /// Name of the collection in the home page
     headlineMedium: GoogleFonts.getFont(
       'Lato',
       fontSize: 14,
@@ -55,21 +64,21 @@ ThemeData customTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
 
-    // tekst naglowek Dla ciebie
+    /// Header text in "For You"
     headlineLarge: GoogleFonts.getFont(
       'Lato',
       fontSize: 18,
       fontWeight: FontWeight.bold,
     ),
 
-    // gatunek
+    /// Genre
     labelSmall: GoogleFonts.getFont(
       'Lato',
       fontSize: 14,
       color: lightGreyColor,
     ),
 
-    // przycisk czytaj
+    /// Read button
     labelMedium: GoogleFonts.getFont(
       'Roboto',
       fontSize: 14,

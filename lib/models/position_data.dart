@@ -1,3 +1,4 @@
+/// Class for media player
 class PositionData {
   const PositionData(this.position, this.bufferedPosition, this.duration);
   final Duration position;

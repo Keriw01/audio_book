@@ -12,23 +12,34 @@ import 'package:testproject/service/locator.dart';
 import 'package:testproject/styles/theme.dart';
 
 void main() async {
+  // Ensure Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Setup dependency injection
   await setupLocator();
+
+  // Clear books preferences
   await getIt<BooksPreferences>().clear();
+
+  // Initialize JustAudioBackground
   await JustAudioBackground.init(
     androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
     androidNotificationChannelName: 'Audio playback',
     androidNotificationOngoing: true,
   );
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  // Create an instance of AppRouter
   final appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
+    // MultiBlocProvider for managing BLoCs
     return MultiBlocProvider(
       providers: [
         BlocProvider(

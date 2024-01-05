@@ -6,6 +6,7 @@ import 'package:testproject/models/book_metadata.dart';
 part 'book_detail.freezed.dart';
 part 'book_detail.g.dart';
 
+/// Class for details about the book
 @freezed
 class BookDetail with _$BookDetail {
   const factory BookDetail({
@@ -13,7 +14,7 @@ class BookDetail with _$BookDetail {
     required List<BookMetadata> authors,
     @JsonKey(name: 'fragment_data') required BookFragmentData? fragmentData,
     required String pdf,
-    required String html,
+    required String txt,
     required List<BookMedia> media,
     required String cover,
   }) = _BookDetail;

@@ -28,7 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "bookDetail": MessageLookupByLibrary.simpleMessage("Book detail"),
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Categories"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create account"),
-        "defaultError": MessageLookupByLibrary.simpleMessage("Default error"),
+        "defaultError": MessageLookupByLibrary.simpleMessage("Error"),
+        "email": MessageLookupByLibrary.simpleMessage("Email: "),
         "emailAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Email already exist"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter e-mail"),
@@ -44,23 +45,40 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error fetching collection data!"),
         "errorOccured":
             MessageLookupByLibrary.simpleMessage("An error occurred:"),
+        "favoriteCount":
+            MessageLookupByLibrary.simpleMessage("Number of likes: "),
         "fragment": MessageLookupByLibrary.simpleMessage("Excerpt"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Home"),
+        "infoAboutUser": MessageLookupByLibrary.simpleMessage(
+            "Information about current user"),
+        "internalCredentialsError":
+            MessageLookupByLibrary.simpleMessage("Authorization error"),
+        "internalRefreshTokenError":
+            MessageLookupByLibrary.simpleMessage("Error refresh authorization"),
+        "internalServerError":
+            MessageLookupByLibrary.simpleMessage("Server error"),
         "listen": MessageLookupByLibrary.simpleMessage("Listen"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginWhenHadAccount": MessageLookupByLibrary.simpleMessage(
             "You already had account ? Login now"),
+        "networkError":
+            MessageLookupByLibrary.simpleMessage("Network connection error"),
         "nowPlaying": MessageLookupByLibrary.simpleMessage("Now playing"),
         "other": MessageLookupByLibrary.simpleMessage("other"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
-        "readHtml": MessageLookupByLibrary.simpleMessage("Read HTML"),
+        "profilePageTitle": MessageLookupByLibrary.simpleMessage("Profile"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Read PDF"),
+        "readTxt": MessageLookupByLibrary.simpleMessage("Read TEXT"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Refresh data"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
         "requiredPassword":
             MessageLookupByLibrary.simpleMessage("Password is required"),
+        "soonContent": MessageLookupByLibrary.simpleMessage("Soon"),
         "userAlreadyExist":
+            MessageLookupByLibrary.simpleMessage("User already exist"),
+        "userAlreadyExistsError":
             MessageLookupByLibrary.simpleMessage("User already exist"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Your favorite")
       };

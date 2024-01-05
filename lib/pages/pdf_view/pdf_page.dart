@@ -6,6 +6,7 @@ import 'package:testproject/generated/l10n.dart';
 import 'package:testproject/pages/pdf_view/widgets/pdf_view_section.dart';
 import 'package:testproject/widgets/loading_indicator.dart';
 
+/// PDF Page displays a PDF document based on the provided title and PDF URL.
 @AutoRoute()
 class PdfPage extends StatelessWidget {
   final String title;
@@ -14,6 +15,7 @@ class PdfPage extends StatelessWidget {
   const PdfPage({Key? key, required this.title, required this.pdfUrl})
       : super(key: key);
 
+  /// Listener function to handle PDF-related state changes and show error messages
   void _listener(BuildContext context, PdfState state) {
     if (state is PdfError) {
       ScaffoldMessenger.of(context).showSnackBar(

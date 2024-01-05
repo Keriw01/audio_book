@@ -10,6 +10,7 @@ import 'package:testproject/service/pdf_preferences.dart';
 
 part 'pdf_state.dart';
 
+/// Pdf Cubit is used to support PDF reading, allows you to download PDF and save the current page to memory
 class PdfCubit extends Cubit<PdfState> {
   final pdfPreferences = getIt<PdfPreferences>();
   final String pdfUrl;
@@ -18,6 +19,7 @@ class PdfCubit extends Cubit<PdfState> {
     _fetchPDF(pdfUrl);
   }
 
+  /// Method fetches the PDF content, either from cache or by downloading it
   Future<void> _fetchPDF(String pdfUrl) async {
     emit(const PdfLoading());
     try {
@@ -42,6 +44,7 @@ class PdfCubit extends Cubit<PdfState> {
     }
   }
 
+  /// Method updates the current page of the PDF, saving to storage
   Future<void> updateCurrentPage(int newPage) async {
     if (state is PdfLoaded) {
       PdfLoaded currentState = state as PdfLoaded;
@@ -56,6 +59,7 @@ class PdfCubit extends Cubit<PdfState> {
     }
   }
 
+  /// Sets the PDF as ready and updates the total number of pages
   void setPdfReadyAndPages(int pages) {
     if (state is PdfLoaded) {
       PdfLoaded currentState = state as PdfLoaded;
@@ -64,6 +68,7 @@ class PdfCubit extends Cubit<PdfState> {
     }
   }
 
+  /// Sets the PDF state to an error state with the provided error message
   void setPdfError(String error) {
     emit(PdfError(error));
   }

@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "categoryPageTitle": MessageLookupByLibrary.simpleMessage("Kategorie"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Utwórz konto"),
         "defaultError": MessageLookupByLibrary.simpleMessage("Błąd"),
+        "email": MessageLookupByLibrary.simpleMessage("Email: "),
         "emailAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Email już istnieje"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Wpisz swój e-mail"),
@@ -43,24 +44,41 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas pobierania danych o kolekcjach!"),
         "errorOccured": MessageLookupByLibrary.simpleMessage("Wystąpił błąd:"),
+        "favoriteCount":
+            MessageLookupByLibrary.simpleMessage("Ilość polubionych: "),
         "fragment": MessageLookupByLibrary.simpleMessage("Fragment"),
         "homePageTitle": MessageLookupByLibrary.simpleMessage("Strona główna"),
+        "infoAboutUser": MessageLookupByLibrary.simpleMessage(
+            "Informacje o bieżącym użytkowniku"),
+        "internalCredentialsError":
+            MessageLookupByLibrary.simpleMessage("Błąd autoryzacji"),
+        "internalRefreshTokenError":
+            MessageLookupByLibrary.simpleMessage("Błąd pobrania autoryzacji"),
+        "internalServerError":
+            MessageLookupByLibrary.simpleMessage("Błąd serwera"),
         "listen": MessageLookupByLibrary.simpleMessage("Posłuchaj"),
         "logOut": MessageLookupByLibrary.simpleMessage("Wyloguj"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj"),
         "loginWhenHadAccount": MessageLookupByLibrary.simpleMessage(
             "Masz juz konto ? Zaloguj się"),
+        "networkError":
+            MessageLookupByLibrary.simpleMessage("Błąd połączenia sieci"),
         "nowPlaying": MessageLookupByLibrary.simpleMessage("Teraz odtwarzane"),
         "other": MessageLookupByLibrary.simpleMessage("lub"),
         "others": MessageLookupByLibrary.simpleMessage("Pozostałe"),
-        "readHtml": MessageLookupByLibrary.simpleMessage("Czytaj HTML"),
+        "profilePageTitle": MessageLookupByLibrary.simpleMessage("Profil"),
         "readPdf": MessageLookupByLibrary.simpleMessage("Czytaj PDF"),
+        "readTxt": MessageLookupByLibrary.simpleMessage("Czytaj TEXT"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Odśwież dane"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj"),
+        "rememberMe": MessageLookupByLibrary.simpleMessage("Zapamiętaj mnie"),
         "requiredPassword":
             MessageLookupByLibrary.simpleMessage("Hasło jest wymagane"),
+        "soonContent": MessageLookupByLibrary.simpleMessage("Niebawem"),
         "userAlreadyExist":
             MessageLookupByLibrary.simpleMessage("Użytkownik istnieje"),
+        "userAlreadyExistsError":
+            MessageLookupByLibrary.simpleMessage("Użytkownik już istnieje"),
         "yourFavorite": MessageLookupByLibrary.simpleMessage("Twoje ulubione")
       };
 }

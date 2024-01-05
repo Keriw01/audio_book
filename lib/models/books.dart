@@ -4,6 +4,7 @@ import 'package:testproject/models/book.dart';
 part 'books.freezed.dart';
 part 'books.g.dart';
 
+/// Multi-book class
 @freezed
 class Books with _$Books {
   const factory Books({

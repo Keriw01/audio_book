@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'pdf_reading_state.freezed.dart';
 part 'pdf_reading_state.g.dart';
 
+/// Class about the properties of a read book in PDF format
 @freezed
 class PdfReadingState with _$PdfReadingState {
   const factory PdfReadingState({

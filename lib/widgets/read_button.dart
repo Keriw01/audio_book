@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testproject/styles/colors.dart';
 
+/// ReadButton is a custom widget representing a button for reading content.
 class ReadButton extends StatelessWidget {
   final String text;
   final VoidCallback navigate;
@@ -15,6 +16,7 @@ class ReadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // Positioned container to create a shadowed background for the button
         Positioned(
           left: 0,
           right: 0,
@@ -35,6 +37,7 @@ class ReadButton extends StatelessWidget {
             ),
           ),
         ),
+        // ElevatedButton with custom styling for the reading TEXT/PDF button
         ElevatedButton(
           onPressed: navigate,
           style: ElevatedButton.styleFrom(

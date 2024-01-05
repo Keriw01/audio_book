@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'collection.freezed.dart';
 part 'collection.g.dart';
 
+/// Class for a single collection
 @freezed
 class Collection with _$Collection {
   const factory Collection({

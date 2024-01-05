@@ -4,6 +4,7 @@ import 'package:testproject/models/book.dart';
 part 'collection_detail.freezed.dart';
 part 'collection_detail.g.dart';
 
+/// Class on multiple book collections
 @freezed
 class CollectionDetail with _$CollectionDetail {
   const factory CollectionDetail({

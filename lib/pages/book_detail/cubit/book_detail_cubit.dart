@@ -12,6 +12,7 @@ class BookDetailCubit extends Cubit<BookDetailState> {
     fetchBookDetail(href);
   }
 
+  /// Method which fetch book details from href
   Future<void> fetchBookDetail(String href) async {
     emit(const BookDetailLoading());
     try {
