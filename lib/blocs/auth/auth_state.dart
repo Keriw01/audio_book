@@ -9,6 +9,7 @@ class AuthState with EquatableMixin {
   bool isLoggedIn;
   String errorMessage;
   bool isLoading;
+  bool rememberMe;
 
   AuthState({
     this.email,
@@ -18,6 +19,7 @@ class AuthState with EquatableMixin {
     this.isLoggedIn = false,
     this.errorMessage = '',
     this.isLoading = false,
+    this.rememberMe = false,
   });
 
   @override
@@ -29,5 +31,6 @@ class AuthState with EquatableMixin {
         isLoggedIn,
         errorMessage,
         isLoading,
+        rememberMe,
       ];
 }

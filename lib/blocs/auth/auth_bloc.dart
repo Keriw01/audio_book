@@ -220,6 +220,7 @@ class AuthBloc extends BaseCubit<AuthState> {
   Future<void> logOut() async {
     await _deleteTokens();
     await _deleteCurrentUser();
+    await _deleteRememberMe();
     _clearState();
     appRouter.replaceNamed(LoginRoute().path);
   }
@@ -244,13 +245,22 @@ class AuthBloc extends BaseCubit<AuthState> {
     await _secureStorage.deleteUser();
   }
 
+  Future<void> _deleteRememberMe() async {
+    emit(state.copyWith(rememberMe: false));
+    await _secureStorage.deleteRememberFlag();
+  }
+
+  Future<void> changeRememberMe(bool? checkboxValue) async {
+    await _secureStorage.saveRememberFlag(checkboxValue);
+    emit(state.copyWith(rememberMe: checkboxValue));
+  }
+
   Future<void> isLoggedIn() async {
-    TokenModel? tokenModel = await _secureStorage.readTokens();
-    if (tokenModel == null) {
-      await _deleteTokens();
-      await _secureStorage.deleteUser();
-      _clearState();
-    } else {
+    bool? rememberMe = await _secureStorage.readRememberFlag();
+    if (rememberMe == true) {
+      TokenModel? tokenModel = await _secureStorage.readTokens();
+      User? currentUser = await _secureStorage.readUser();
+      emit(state.copyWith(tokens: tokenModel, currentUser: currentUser));
       _navigateToHomePage();
     }
   }
@@ -267,8 +277,9 @@ class AuthBloc extends BaseCubit<AuthState> {
         tokens: null,
         currentUser: null,
         isLoggedIn: false,
-        isLoading: false,
         errorMessage: '',
+        isLoading: false,
+        rememberMe: false,
       ),
     );
   }

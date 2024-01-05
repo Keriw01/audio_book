@@ -22,6 +22,7 @@
     "enterValidPassword": "Hasło musi mieć co najmniej 8 znaków",
     "enterPassword": "Wpisz swoje hasło",
     "login": "Zaloguj",
+    "rememberMe": "Zapamiętaj mnie",
     "createAccount": "Utwórz konto",
     "other": "lub",
     "register": "Zarejestruj",

@@ -142,6 +142,29 @@ class LoginPage extends StatelessWidget {
                             obscureText: true,
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(55, 0, 55, 0),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                checkColor: whiteColor,
+                                fillColor:
+                                    MaterialStateProperty.resolveWith(getColor),
+                                value: state.rememberMe,
+                                onChanged: (bool? value) => context
+                                    .read<AuthBloc>()
+                                    .changeRememberMe(value),
+                              ),
+                              Text(
+                                S.of(context).rememberMe,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall
+                                    ?.copyWith(color: blackColor),
+                              ),
+                            ],
+                          ),
+                        ),
                         if (state.errorMessage != '')
                           Text(
                             state.errorMessage,
@@ -276,3 +299,15 @@ const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
     color: shadowColor,
   ),
 );
+
+Color getColor(Set<MaterialState> states) {
+  const Set<MaterialState> interactiveStates = <MaterialState>{
+    MaterialState.pressed,
+    MaterialState.hovered,
+    MaterialState.focused,
+  };
+  if (states.any(interactiveStates.contains)) {
+    return whiteColor;
+  }
+  return seedColor;
+}

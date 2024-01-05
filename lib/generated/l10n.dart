@@ -280,6 +280,16 @@ class S {
     );
   }
 
+  /// `Zapamiętaj mnie`
+  String get rememberMe {
+    return Intl.message(
+      'Zapamiętaj mnie',
+      name: 'rememberMe',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Utwórz konto`
   String get createAccount {
     return Intl.message(

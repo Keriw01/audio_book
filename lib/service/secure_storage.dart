@@ -70,4 +70,32 @@ class SecureStorage {
       aOptions: _getAndroidOptions(),
     );
   }
+
+  Future<void> saveRememberFlag(bool? rememberMe) async {
+    String rememberFlagJson = jsonEncode(rememberMe);
+    await _secureStorage.write(
+      key: 'rememberMeFlag',
+      value: rememberFlagJson,
+      aOptions: _getAndroidOptions(),
+    );
+  }
+
+  Future<bool> readRememberFlag() async {
+    String? tempRememberFlag = await _secureStorage.read(
+      key: 'rememberMeFlag',
+      aOptions: _getAndroidOptions(),
+    );
+
+    if (tempRememberFlag != null) {
+      return json.decode(tempRememberFlag);
+    }
+    return false;
+  }
+
+  Future<void> deleteRememberFlag() async {
+    await _secureStorage.delete(
+      key: 'rememberMeFlag',
+      aOptions: _getAndroidOptions(),
+    );
+  }
 }

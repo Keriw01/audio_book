@@ -72,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "readTxt": MessageLookupByLibrary.simpleMessage("Read TEXT"),
         "refreshData": MessageLookupByLibrary.simpleMessage("Refresh data"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
         "requiredPassword":
             MessageLookupByLibrary.simpleMessage("Password is required"),
         "soonContent": MessageLookupByLibrary.simpleMessage("Soon"),
