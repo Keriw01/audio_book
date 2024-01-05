@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: 300,
+                    height: 240,
                     child: SvgPicture.asset('assets/images/login_logo.svg'),
                   ),
                   const SizedBox(height: 20),
