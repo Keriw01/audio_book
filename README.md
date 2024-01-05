@@ -1,5 +1,5 @@
 # audio_book
-Opis projektu "Audio Book"
+Opis projektu "Audio Book":
     - Pattern UI: "https://themeforest.net/item/meron-ebook-and-audio-book-app-ui-kit/26567667"
     - API: "https://wolnelektury.pl/api/"
 
