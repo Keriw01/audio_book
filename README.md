@@ -1,7 +1,7 @@
 # audio_book
-Opis projektu "Audio Book":
-    - Pattern UI: "https://themeforest.net/item/meron-ebook-and-audio-book-app-ui-kit/26567667"
-    - API: "https://wolnelektury.pl/api/"
+Opis projektu "Audio Book"
+Pattern UI: "https://themeforest.net/item/meron-ebook-and-audio-book-app-ui-kit/26567667"
+API: "https://wolnelektury.pl/api/"
 
 1. Strona logowania:
     - Zawiera nazwę aplikacji oraz logo.
