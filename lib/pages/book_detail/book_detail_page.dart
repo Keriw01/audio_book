@@ -25,7 +25,7 @@ class BookDetailPage extends StatelessWidget {
     if (state is BookDetailError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(S.of(context).errorOccured + state.message),
+          content: Text(S.of(context).errorFetchDetailBook),
           actionOverflowThreshold: 1,
           action: SnackBarAction(
             label: S.of(context).refreshData,

@@ -43,7 +43,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas pobierania danych o książkach!"),
         "errorFetchCollection": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas pobierania danych o kolekcjach!"),
+        "errorFetchDetailBook": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas pobierania szczegółowych danych o książce!"),
         "errorOccured": MessageLookupByLibrary.simpleMessage("Wystąpił błąd:"),
+        "errorPdfReadBook": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas pobierania książki w formacie PDF!"),
         "favoriteCount":
             MessageLookupByLibrary.simpleMessage("Ilość polubionych: "),
         "fragment": MessageLookupByLibrary.simpleMessage("Fragment"),

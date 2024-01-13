@@ -150,6 +150,26 @@ class S {
     );
   }
 
+  /// `Błąd podczas pobierania szczegółowych danych o książce!`
+  String get errorFetchDetailBook {
+    return Intl.message(
+      'Błąd podczas pobierania szczegółowych danych o książce!',
+      name: 'errorFetchDetailBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Błąd podczas pobierania książki w formacie PDF!`
+  String get errorPdfReadBook {
+    return Intl.message(
+      'Błąd podczas pobierania książki w formacie PDF!',
+      name: 'errorPdfReadBook',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Szczegóły książki`
   String get bookDetail {
     return Intl.message(

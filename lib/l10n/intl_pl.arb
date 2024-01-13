@@ -9,6 +9,8 @@
     "soonContent": "Niebawem",
     "errorFetchCollection": "Błąd podczas pobierania danych o kolekcjach!",
     "errorFetchBooks": "Błąd podczas pobierania danych o książkach!",
+    "errorFetchDetailBook": "Błąd podczas pobierania szczegółowych danych o książce!",
+    "errorPdfReadBook": "Błąd podczas pobierania książki w formacie PDF!",
     "bookDetail": "Szczegóły książki",
     "fragment": "Fragment",
     "readTxt": "Czytaj TEXT",

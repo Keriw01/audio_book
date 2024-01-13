@@ -20,7 +20,13 @@ class PdfPage extends StatelessWidget {
     if (state is PdfError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(S.of(context).errorOccured + state.message),
+          content: Text(S.of(context).errorPdfReadBook),
+          actionOverflowThreshold: 1,
+          action: SnackBarAction(
+            label: S.of(context).refreshData,
+            onPressed: () => context.read<PdfCubit>().fetchPDF(pdfUrl),
+          ),
+          duration: const Duration(seconds: 30),
         ),
       );
     }

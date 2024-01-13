@@ -16,11 +16,11 @@ class PdfCubit extends Cubit<PdfState> {
   final String pdfUrl;
 
   PdfCubit(this.pdfUrl) : super(const PdfInitial()) {
-    _fetchPDF(pdfUrl);
+    fetchPDF(pdfUrl);
   }
 
   /// Method fetches the PDF content, either from cache or by downloading it
-  Future<void> _fetchPDF(String pdfUrl) async {
+  Future<void> fetchPDF(String pdfUrl) async {
     emit(const PdfLoading());
     try {
       PdfReadingState? cachedPdf = await pdfPreferences.load(pdfUrl);

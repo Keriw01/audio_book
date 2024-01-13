@@ -118,7 +118,7 @@ class _ListenPageState extends State<ListenPage> {
                           placeholder: (context, url) =>
                               const LoadingIndicator(),
                           errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                              const SizedBox(),
                           alignment: Alignment.centerLeft,
                           width: 200,
                         ),

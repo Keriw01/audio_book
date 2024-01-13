@@ -9,6 +9,8 @@
     "soonContent": "Soon",
     "errorFetchCollection": "Error fetching collection data!",
     "errorFetchBooks": "Error fetching book data!",
+    "errorFetchDetailBook": "Error fetching book details data!",
+    "errorPdfReadBook": "Error fetching book in PDF format!",
     "bookDetail": "Book detail",
     "fragment": "Excerpt",
     "readTxt": "Read TEXT",
