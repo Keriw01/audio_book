@@ -87,11 +87,19 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<TokenModel> refreshToken({required String refreshToken}) async {
+  Future<TokenModel> refreshToken({
+    required String refreshToken,
+    String? userId,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = {'refresh_token': refreshToken};
+    final _data = {
+      'refresh_token': refreshToken,
+      'user_id': userId,
+    };
+    _data.removeWhere((k, v) => v == null);
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<TokenModel>(Options(
       method: 'POST',

@@ -111,8 +111,12 @@ class AuthBloc extends BaseCubit<AuthState> {
     }
     try {
       final refreshToken = tokenModel.refreshToken;
+      final userId = state.currentUser?.userId;
 
-      final newTokens = await _authRepository.refreshToken(refreshToken);
+      final newTokens = await _authRepository.refreshToken(
+        refreshToken,
+        userId.toString(),
+      );
 
       _saveTokens(newTokens);
 

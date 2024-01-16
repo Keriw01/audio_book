@@ -36,6 +36,7 @@ abstract class ApiClient {
   @FormUrlEncoded()
   Future<TokenModel> refreshToken({
     @Field("refresh_token") required String refreshToken,
+    @Field("user_id") required String? userId,
   });
 
   /// Endpoint for getting user details

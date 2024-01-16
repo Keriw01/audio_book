@@ -71,11 +71,17 @@ class AuthRepository {
   /// - Throws [NoConnectionException] if there is no internet connection.
   /// - Throws [RefreshTokenExpiredException] if the refresh token has expired.
   /// - Throws [InternalServerError] for other server errors.
+  /// - Throws [InvalidSessionId] if the session id has changed.
   /// - Throws [DefaultException] for any other unexpected errors.
-  Future<TokenModel> refreshToken(String refreshToken) async {
+  Future<TokenModel> refreshToken(
+    String refreshToken,
+    String? userId,
+  ) async {
     try {
-      TokenModel tokens = await getIt<ApiClient>()
-          .refreshToken(refreshToken: 'Bearer $refreshToken');
+      TokenModel tokens = await getIt<ApiClient>().refreshToken(
+        refreshToken: 'Bearer $refreshToken',
+        userId: userId,
+      );
       return tokens;
     } on DioException catch (error) {
       if (error.message!.contains('SocketException')) {
