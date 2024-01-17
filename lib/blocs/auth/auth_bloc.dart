@@ -234,7 +234,7 @@ class AuthBloc extends BaseCubit<AuthState> {
     await _deleteCurrentUser();
     await _deleteRememberMe();
     _clearState();
-    appRouter.replaceNamed(LoginRoute().path);
+    appRouter.replaceAll([LoginRoute()]);
   }
 
   /// Method for saving tokens securely
