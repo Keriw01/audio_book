@@ -1,5 +1,6 @@
 # audio_book
 Opis projektu "Audio Book"
+Pattern UI: "https://themeforest.net/item/meron-ebook-and-audio-book-app-ui-kit/26567667"
 API: "https://wolnelektury.pl/api/"
 1. Strona główna z listą, która zawiera nazwy kolekcji książek pobranych z endpointa "/api/collections/", w postaci listy wertykalnej umożliwiającej przeglądanie wszystkich kolekcji książek (oraz naszych dodanych jako pierwszy element). Każdy element jest wizualnie oddzielony i posiada efekt tapnięcia, który pozwala przejść do zawartości kolekcji. Możliwe jest wyszukiwanie interesującej nas kolekcji.
 
